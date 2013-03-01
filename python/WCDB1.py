@@ -7,10 +7,11 @@ def importXml ( r ):
     return xml
 
 def exportXml ( w, xml ):
-    text = ET.tostring ( xml )
-    text = text.strip ( "\t\n\r" )
+    rawText = ET.tostring ( xml )
+    pattern = re.compile (r'[^\S ]+')
+    text = re.sub ( pattern, '', rawText )
     reparsed = MD.parseString ( text )
-    w.write ( reparsed.toprettyxml ( indent = "    " ) )
+    w.write ( reparsed.toprettyxml ( indent = "\t" ) )
     
 def start ( r, w ):
     xml = importXml ( r )
