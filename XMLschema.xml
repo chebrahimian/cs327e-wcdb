@@ -1,0 +1,54 @@
+<!DOCTYPE ICDB [
+	<!ELEMENT Event 	(Name, Date, LocationID, Description, URL)*>
+		<!ELEMENT Name		#PCDATA>
+		<!ELEMENT Date		#PCDATA
+		<!ELEMENT Time		(Hours, Minutes, Seconds)>
+		<!ELEMENT Hours		#PCDATA>
+		<!ELEMENT Minutes	#PCDATA>
+		<!ELEMENT Seconds	#PCDATA>
+		<!ELEMENT LocationID	EMPTY>
+		<!ELEMENT Event_Description (	(Links to Social)	)>
+		<!ELEMENT URL 		(Social, Wiki, Visual)>
+		<!ELEMENT Social	(Facebook, Twitter)>
+		<!ELEMENT Facebook	#PCDATA>
+		<!ELEMENT Twitter	#PCDATA>
+		<!ELEMENT Wiki		#PCDATA>
+		<!ELEMENT Visual	(Map, Image, Video)>
+		<!ELEMENT Map		#PCDATA>
+		<!ELEMENT Image		#PCDATA>
+		<!ELEMENT Video		#PCDATA>
+
+	<!ELEMENT Location	(countryName, regionName, cityName)>
+		<!ELEMENT countryName	EMPTY>
+		<!ELEMENT regionName EMPTY>
+		<!ELEMENT cityName EMPTY>
+	
+	<!ELEMENT Cities	(cityName)>
+		<!ELEMENT cityName	#PCDATA>
+	
+	<!ELEMENT Regions 	(regionName)>
+		<!ELEMENT regionName	#PCDATA>
+	
+	<!ELEMENT Countries	(countryName)>
+		<!ELEMENT countryName	#PCDATA>
+		
+	<!ELEMENT Organizations	(Name, Org_Description, URL, LocationID, DateFounded, ContactInfo)*>
+		<!ELEMENT Name		#PCDATA>
+		<!ELEMENT Org_Description (Kind, History>
+		<!ELEMENT DateFounded #PCDATA>
+		<!ELEMENT ContactInfo	(Email, PhoneNumber)
+		<!ELEMENT Email		#PCDATA>
+		<!ELEMENT PhoneNumber #PCDATA>
+	
+	<!ELEMENT Person	(First_name, Last_name, Description, 
+	
+	
+	<!ATTLIST	Event	eventID	ID #REQUIRED>
+	<!ATTLIST	Location	countryRef	IDREFS	#REQUIRED
+							regionRef	IDREFS	#IMPLIED
+							cityRef		IDREFS	#IMPLIED>
+	<!ATTLIST	Cities		cityID		ID 	#REQUIRED>
+	<!ATTLIST	Regions		regionID	ID	#REQUIRED>
+	<!ATTLIST	Countries	countryID	ID	#REQUIRED>
+	<!ATTLIST	Organizations	OrgID	ID	#REQUIRED>
+	

@@ -1,0 +1,87 @@
+Event:
+	eventID (ID)
+	name (string)
+	description (string)
+	image (url)
+	wiki (url)
+	startDate (dateID)
+	duration (float- number of days)
+	location (locationID)
+	superEvent (eventID)
+
+OrganizationsInvolved: ((or Event_to_Organization))
+	eventID (eventID)
+	organizationID (personID)
+
+PeopleInvolved: ((or Event_to_Person))
+	eventID (eventID)
+	personID (personID)
+	
+People_to_Organization:
+	personID (personID)
+	organizationID (organizationID)
+
+Organization:
+	organizationID (ID)
+	name (string)
+	description (string)
+	image (url)
+	url (url)
+	HQ_location (locationID)
+	dateFounded (dateID)
+
+Person:
+	personID (ID)
+	first_name (string)
+	last_name (string)
+	description (string)
+	image (url)
+	url (url)
+	birthDate (dateID)
+	gender (genderID) (or string-- whichever)
+	
+Gender: (if we don't decide to make gender a string)
+	genderID (int- 1 or 2)
+	gender_name (male or female)
+
+Location:
+	locationID (ID)
+	cityName (string)
+	cityID (ID)
+	regionName (string)
+	regionID (ID)
+	countryName (string)
+	countryID (ID)
+
+Cities:
+	cityID (ID)
+	cityName (string)
+	regionID (ID)
+	countryID (ID)
+
+Regions:
+	regionID (ID)
+	regionName (string)
+	countryID (ID)
+
+Countries:
+	countryID (ID)
+	countryName (string)
+	continent (string) (maybe?)
+
+Date: ((we could also use a date object-- if so don't need this table, just thinking of search options))
+	dateID (ID)
+	year (int)
+	month (int)
+	day (int)
+
+human impact, economic impact, resources needed, ways to help
+
+image URLs (e.g. Bing, Flickr, Google), video URLs (e.g. Bing, Google, Vimeo),
+ map URLs (e.g. Google Maps), social network feed URLs (e.g. Facebook, Twitter),
+ citations, external link URLs
+
+name, kind, location, history, contact info, 
+image URLs (e.g. Bing, Flickr, Google), video URLs (e.g. Bing, Google, Vimeo),
+ map URLs (e.g. Google Maps), social network feed URLs (e.g. Facebook, Twitter),
+ citations, external link URLs, crises, people
