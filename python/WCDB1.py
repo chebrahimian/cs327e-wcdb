@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as MD
-import re
 
 def importXml ( r ):
     rawText = r.read ()
@@ -9,8 +8,7 @@ def importXml ( r ):
 
 def exportXml ( w, xml ):
     text = ET.tostring ( xml )
-    pattern = re.compile(r'\s+')
-    text = re.sub(pattern, '', text) 
+    text = text.strip ( "\t\n\r" )
     reparsed = MD.parseString ( text )
     w.write ( reparsed.toprettyxml ( indent = "    " ) )
     
