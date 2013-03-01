@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as MD
-import sys
 
 def importXml ( r ):
     text = r.read ()
@@ -15,5 +14,3 @@ def exportXml ( w, xml ):
 def start ( r, w ):
     xml = importXml ( r )
     exportXml ( w, xml )
-
-start ( sys.stdin, sys.stdout )
