@@ -1,0 +1,109 @@
+<!DOCTYPE WCDB [
+<!ELEMENT WCDB					(Crises, People, Organizations, UrlTable, Locations, Resources)
+
+<!ELEMENT Crises				(Crisis)*>
+<!ELEMENT People				(Person)*>
+<!ELEMENT Organization			(Organization)*>	
+							
+<!ELEMENT Crisis 				(Date, Description, 
+								LocationID, UrlID, HumanImpact, EconomicImpact, 
+								WaysToHelp)*>
+	<!ELEMENT Date				(#PCDATA)>
+	<!ELEMENT Description 		(#PCDATA)>
+	<!ELEMENT LocationID		EMPTY>
+	<!ELEMENT UrlID				EMPTY>
+	<!ELEMENT HumanImpact		EMPTY>
+	<!ELEMENT EconomicImpact	(#PCDATA)>
+	<!ELEMENT WaysToHelp		(#PCDATA)>
+
+<!ELEMENT Person				(FirstName, LastName, Description, LocationID,
+								 UrlID, BirthDate, DeathDate, Gender)>
+		<!ELEMENT FirstName		(#PCDATA)>
+		<!ELEMENT LastName		(#PCDATA)>
+		<!ELEMENT Birthdate		(#PCDATA)>
+		<!ELEMENT Deathdate		(#PCDATA)?>
+		<!ELEMENT Gender		(#PCDATA)>
+		
+<!ELEMENT Organization			(Description, LocationID, History, 
+								Phone, Email, Address, UrlID)*>
+	<!ELEMENT History	 		(#PCDATA)>
+	<!ELEMENT Phone			 	(#PCDATA)>
+	<!ELEMENT Email				(#PCDATA)>
+	<!ELEMENT Address			(Street, Zip)>
+	<!ELEMENT Street	 		(#PCDATA)>
+	<!ELEMENT Zip			 	(#PCDATA)>	
+
+<!ELEMENT UrlTable				(Url, UrlTypes)>
+	<!ELEMENT Urls				(Url)*>
+		<!ELEMENT Url			EMPTY>
+	<!ELEMENT UrlTypes			(URLTYPE)*>
+		<!ELEMENT UrlType		EMPTY>
+	
+<!ELEMENT Locations				(Location*, Countries, Regions, States, Cities)>
+	<!ELEMENT Location			EMPTY>
+	<!ELEMENT Countries			(Country)*>
+	<!ELEMENT Country			EMPTY>
+	<!ELEMENT Regions			(Region)*>
+	<!ELEMENT Region			EMPTY>
+	<!ELEMENT States			(State)*>
+	<!ELEMENT State				EMPTY>
+	<!ELEMENT Cities			(City)*>
+	<!ELEMENT City				EMPTY>
+	
+<!ELEMENT Resources				(Resource)*>
+	<!ELEMENT Resource			EMPTY>
+									
+	<!ATTLIST 	Crisis			crisisID			ID 		#REQUIRED
+								crisisName			CDATA	#REQUIRED
+								crisisType			IDREF	#REQUIRED
+								resources			IDREFS	#IMPLIED
+								personRefs			IDREFS	#IMPLIED
+								orgRefs				IDREFS	#IMPLIED>									
+	<!ATTLIST	CrisisType		crisisTypeID		ID		#REQUIRED
+								crisisTypeName		CDATA	#REQUIRED>	
+	<!ATTLIST	HumanImpact		casualties			CDATA	#IMPLIED
+								numAffected			CDATA	#IMPLIED>
+									
+	<!ATTLIST	Organization	orgID				ID		#REQUIRED
+								orgName				CDATA	#REQUIRED
+								orgType				IDREF	#REQUIRED
+								personRefs			IDREFS	#IMPLIED
+								crisisRefs			IDREFS	#IMPLIED>	
+	<!ATTLIST	OrgType			orgTypeID			ID		#REQUIRED
+								orgTypeName			CDATA	#REQUIRED>
+	<!ATTLIST	Address			CityRef				IDREF	#REQUIRED
+								StateRef			IDREF	#IMPLIED
+								CountryRef			IDREF	#REQUIRED>
+									
+	<!ATTLIST 	Person			personID			ID		#REQUIRED
+								personType			IDREF	#REQUIRED
+								orgRefs				IDREFS	#IMPLIED
+								crisisRefs			IDREFS	#IMPLIED>	
+	<!ATTLIST	PersonType		personTypeID		ID		#REQUIRED
+								personTypeName		CDATA	#REQUIRED>	
+	
+	<!ATTLIST	UrlID			urlIDs				IDREFS	#REQUIRED>
+	<!ATTLIST	Url				urlID				ID		#REQUIRED
+								urlTypeID			IDREF	#REQUIRED
+								urlString			CDATA	#REQUIRED>
+	<!ATTLIST	UrlType			urlTypeID			ID		#REQUIRED
+								urlTypeName			CDATA	#REQUIRED>									
+	
+	
+	<!ATTLIST	LocationID		fullLocation		IDREFS	#REQUIRED>
+	<!ATTLIST	Location		locationID			ID		#REQUIRED
+								countryID			IDREF	#REQUIRED
+								regionID			IDREF	#IMPLIED
+								cityID				IDREF	#REQUIRED>	
+	<!ATTLIST	Country			countryID			ID 		#REQUIRED
+								countryName			CDATA	#REQUIRED>
+	<!ATTLIST	Region			regionID			ID		#REQUIRED
+								regionName			CDATA	#REQUIRED>
+	<!ATTLIST	State			stateID				ID		#REQUIRED
+								stateName			CDATA	#REQUIRED>
+	<!ATTLIST	City			cityID				ID		#REQUIRED
+								cityName			CDATA	#REQUIRED>
+	
+	<!ATTLIST	Resource		resourceID			ID		#REQUIRED
+								resourceName		CDATA	#REQUIRED>
+]>
