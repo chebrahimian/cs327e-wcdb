@@ -1,0 +1,107 @@
+<WCDB>
+	<Crises>
+		<Crisis CrisisID="" <!-- key to be reffed in other parts of schema --> <!--resources...(might want to make subelement) -->>*
+			<CrisisName></CrisisName>
+			<Date></Date>
+			<Description></Description>
+			<CrisiTypes></CrisisType>
+			<Location CountryRef="" RegionRef="" StateRef="" CityRef="" <!-- All keyref attributes from Locations table -->/>
+			<Urls>
+				<Url urlRef="" <!-- keyref from the Urls table urlFullID attribute -->>*
+			</Urls>
+			<HumanImpact casualties="" numAffected="" />
+			<EconomicImpact></EconomicImpact>
+			<WaysToHelp></WaysToHelp>
+			<References>
+				<OrgReferences>
+					<OrgReference OrgRef="" <!-- keyref of OrgID attribute in Organizations table --> />*
+				</OrgReferences>
+				<PersonReferences>
+					<PersonReference PersonRef=""  <!-- keyref of PersonID attribute in Persons table --> />*
+				</PersonReferences>
+			</References>
+	</Crises>
+	
+	<People>
+		<Person PersonID="" <!-- key to be reffed in other parts of schema -->>*
+			<FirstName></FirstName>
+			<LastName></LastName>
+			<PersonType personTypeRef="" />
+			<Birthdate></Birthdate>
+			<Deathdate></Deathdate>?
+			<Gender></Gender>
+			<Location CountryRef="" RegionRef="" StateRef="" CityRef=""  <!-- All keyref attributes from Locations table -->/>
+			<Urls>
+				<Url urlRef="" />*
+			</Urls>
+			<References>
+				<OrgReferences>
+					<OrgReference OrgRef="" <!-- keyref of OrgID attribute in Organizations table -->/>*
+				</OrgReferences>
+				<CrisisReferences>
+					<CrisesReference CrisisRef="" <!-- keyref of PersonID attribute in Persons table -->/>*
+				</CrisisReferences>
+			</References>
+		</Person>
+	</People>
+	
+	<Organizations>
+		<Organization OrgID="" >*
+			<OrgName></OrgName>
+			<Description></Description>
+			<OrgType orgTypeRef="" <!-- Not sure what to do here yet -->/>
+			<History></History>
+			<Phone></Phone>
+			<Email></Email>
+			<Address CityRef="" StateRef="" CountryRef="" <!-- All keyref attributes from Locations table -->>
+				<Street></Street>
+				<Zip></Zip>
+			</Address>
+			<Urls>
+				<Url urlRef="" <!-- keyref from the Urls table urlFullID attribute --> />*
+			</Urls>
+			<References>
+				<CrisisReferences>
+					<CrisisReference CrisisRef="" <!-- keyref of PersonID attribute in Persons table -->/>*
+				</CrisisReferences>
+				<PersonReferences>
+					<PersonReference PersonRef="" <!-- keyref of PersonID attribute in Persons table --> />
+				</PersonReferences>
+			</References>
+		</Organization>
+	</Organizations>
+	
+	<UrlTable>
+		<Urls>
+			<Url urlFullID="" urlRef="" urlString="" <!-- urlFullID is a key to be reffed out. urlRef pulls the urlTypeKey from below. urlString is the path-->/>*
+		</Urls>
+		<UrlTypes>
+			<UrlType urlTypeName="" urlTypeKey="" <!-- urlTypeKey is a key to be reffed by urlRef above ^. urlTypeName is the outle i.e. social, image, video --> />*
+		</UrlTypes>
+	</UrlTable>
+	
+	<Location>
+		<Countries>
+			<Country countryID="" <!-- key to be reffed by other tables in the Location elements -->>
+				<CountryName></CountryName>
+			</Country>*
+		</Countries>
+		<Regions>
+			<Region RegionID="" <!-- key to be reffed by other tables in the Location elements -->>
+				<RegionName></RegionName>
+			</Region>*
+		</Regions>	
+		<States>
+			<State StateID="" <!-- key to be reffed by other tables in the Location elements -->>
+				<StateName></StateName>
+			</State>*
+		</States>
+		<Cities>
+			<City StateID="" <!-- key to be reffed by other tables in the Location elements -->>
+				<CityName></CityName>
+			</City>*
+		</City>
+	</Locations>
+
+
+</WCDB>
