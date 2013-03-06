@@ -347,7 +347,7 @@
 					</xsd:element>
 					<xsd:element name="History" type="xsd:string" />
 					<xsd:element name="Phone" type="xsd:string" />
-					<xsd:element name="Email" type="xsd:string" />
+					<xsd:element name="Email" type="xsd:anyURI" />
 					<xsd:element name="Address">
 						<xsd:complexType mixed="true">
 							<xsd:sequence>
@@ -373,14 +373,26 @@
 					<xsd:element name="References">
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:element name="CrisisReference" maxOccurs="unbounded">
+								<xsd:element name="CrisisReferences">
 									<xsd:complexType>
-										<xsd:attribute name="CrisisRef" type="xsd:string" />
+										<xsd:sequence>
+											<xsd:element name="CrisisReference" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="CrisisRef" type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
 									</xsd:complexType>
 								</xsd:element>
-								<xsd:element name="PersonReference" maxOccurs="unbounded">
+								<xsd:element name="PersonReferences">
 									<xsd:complexType>
-										<xsd:attribute name="PersonRef"  type="xsd:string" />
+										<xsd:sequence>
+											<xsd:element name="PersonReference" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="PersonRef"  type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>
@@ -400,9 +412,11 @@
 					<xsd:sequence>
 					<xsd:element name="Url" maxOccurs="unbounded">
 						<xsd:complexType>
+							<!-- urlFullID is the key to be reffed by other elements. urlRef is the keyref of UrlType.
+							urlString is the website address itself -->
 							<xsd:attribute name="urlFullID" type="xsd:string" />
 							<xsd:attribute name="urlRef" type="xsd:string" />
-							<xsd:attribute name="urlString" type="xsd:string" />
+							<xsd:attribute name="urlString" type="xsd:anyURI" />
 						</xsd:complexType>
 					</xsd:element>
 					</xsd:sequence>
@@ -458,8 +472,10 @@
 					<xsd:sequence>
 					<xsd:element name="State" maxOccurs="unbounded">
 						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="StateName" type="xsd:string" />
+							</xsd:sequence>
 							<xsd:attribute name="StateID" type="xsd:string" />
-							<xsd:attribute name="StateName" type="xsd:string" />
 						</xsd:complexType>
 					</xsd:element>	
 					</xsd:sequence>
@@ -470,9 +486,10 @@
 					<xsd:sequence>
 					<xsd:element name="City" maxOccurs="unbounded">
 						<xsd:complexType>
-							<xsd:attribute name="CityID" type="xsd:string" />
-							<xsd:attribute name="CityName" type="xsd:string" />
-						</xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CityName" type="xsd:string" />
+							</xsd:sequence>
+							<xsd:attribute name="CityID" type="xsd:string" />						</xsd:complexType>
 					</xsd:element>	
 					</xsd:sequence>
 				</xsd:complexType>
