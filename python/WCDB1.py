@@ -16,6 +16,7 @@ def exportXml ( w, xml ):
     """
     converts an ElementTree to a string, then outputs a formatted xml document to stdout ( a file )
     w is the writer
+    xml is an ElementTree
     """
     rawText = ET.tostring ( xml )
     pattern = re.compile (r'[^\S ]+')
