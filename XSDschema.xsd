@@ -247,7 +247,7 @@
 								<xsd:attribute name="numAffected" type="xsd:integer" use="optional" />
 							</xsd:complexType>
 						</xsd:element>
-						<xsd:element name="EconomicImpact" type="xsd:integer" />
+						<xsd:element name="EconomicImpact" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
 						<xsd:element name="WaysToHelp" type="xsd:string" />
 						<xsd:element name="Resources">
 							<xsd:complexType>
@@ -404,16 +404,16 @@
 					</xsd:element>
 					<xsd:element name="History" type="xsd:string" />
 					<xsd:element name="Phone" type="xsd:string" />
-					<xsd:element name="Email" type="xsd:anyURI" />
+					<xsd:element name="Email" type="xsd:string" />
 					<xsd:element name="Address">
 						<xsd:complexType mixed="true">
 							<xsd:sequence>
 							<xsd:element name="Street" type="xsd:string" />
 							<xsd:element name="Zip" type="xsd:integer" minOccurs="0" maxOccurs="1" />
 							</xsd:sequence>
-							<xsd:attribute name="cityRef" type="xsd:string" />
-							<xsd:attribute name="regionRef" type="xsd:string" use="optional" />
 							<xsd:attribute name="countryRef" type="xsd:string" />
+							<xsd:attribute name="regionRef" type="xsd:string" use="optional" />
+							<xsd:attribute name="cityRef" type="xsd:string" />
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="Urls">
