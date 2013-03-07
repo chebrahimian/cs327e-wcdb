@@ -230,7 +230,7 @@
 						<xsd:element name="References">
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:element name="OrgReferences">
+								<xsd:element name="OrgReferences" minOccurs="0" maxOccurs="1">
 									<xsd:complexType>
 										<xsd:sequence>
 											<!-- OrgReference: Empty element with a keyref attribute to OrgKey -->
@@ -242,7 +242,7 @@
 										</xsd:sequence>
 									</xsd:complexType>
 								</xsd:element>
-								<xsd:element name="PersonReferences">
+								<xsd:element name="PersonReferences" minOccurs="0" maxOccurs="1">
 									<xsd:complexType>
 										<xsd:sequence>
 											<!-- PersonReference: Empty element with a keyref attribute to PersonKey -->
@@ -310,7 +310,7 @@
 						<xsd:element name="References">
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:element name="OrgReferences">
+								<xsd:element name="OrgReferences" minOccurs="0" maxOccurs="1">
 									<xsd:complexType>
 										<xsd:sequence>
 											<xsd:element name="OrgReference" minOccurs="0" maxOccurs="unbounded">
@@ -321,7 +321,7 @@
 										</xsd:sequence>
 									</xsd:complexType>
 								</xsd:element>
-								<xsd:element name="CrisisReferences">
+								<xsd:element name="CrisisReferences" minOccurs="0" maxOccurs="1">
 									<xsd:complexType>
 										<xsd:sequence>
 											<xsd:element name="CrisisReference" minOccurs="0" maxOccurs="unbounded">
@@ -382,7 +382,7 @@
 					<xsd:element name="References">
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:element name="CrisisReferences">
+								<xsd:element name="CrisisReferences" minOccurs="0" maxOccurs="1">
 									<xsd:complexType>
 										<xsd:sequence>
 											<xsd:element name="CrisisReference" maxOccurs="unbounded">
@@ -393,7 +393,7 @@
 										</xsd:sequence>
 									</xsd:complexType>
 								</xsd:element>
-								<xsd:element name="PersonReferences">
+								<xsd:element name="PersonReferences" minOccurs="0" maxOccurs="1">
 									<xsd:complexType>
 										<xsd:sequence>
 											<xsd:element name="PersonReference" maxOccurs="unbounded">
@@ -416,7 +416,7 @@
 	
 	<xsd:complexType name="LinkType">
 		<xsd:sequence>
-			<xsd:element name="Url" maxOccurs="unbounded">
+			<xsd:element name="UrlInstance" maxOccurs="unbounded">
 				<xsd:complexType>
 					<xsd:simpleContent>
 						<xsd:extension base="xsd:string">
