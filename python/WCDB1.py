@@ -22,7 +22,7 @@ def exportXml ( w, xml ):
     pattern = re.compile (r'[^\S ]+')
     text = re.sub ( pattern, '', rawText )
     reparsed = MD.parseString ( text )
-    w.write ( reparsed.toprettyxml ( indent = "\t" ) )
+    w.write ( reparsed.toprettyxml ( indent = "\t", encoding = "UTF-8" ) )
     
 def start ( r, w ):
     """
