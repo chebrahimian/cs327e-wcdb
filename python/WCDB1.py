@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as MD
+import re
 
 def importXml ( r ):
     rawText = r.read ()
