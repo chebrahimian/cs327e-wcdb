@@ -9,6 +9,7 @@ def importXml ( r ):
     returns an ElementTree
     """
     rawText = r.read ()
+    rawText = rawText.strip ()
     xml = ET.fromstring ( rawText )
     return xml
 
