@@ -21,88 +21,78 @@ import xml.etree.ElementTree as ET
 # -----------
 
 class TestWCDB1 (unittest.TestCase) :
-	"""
-	# ---------
-	# importXml
-	# ---------
-	
-	def test_importXml (self) : #xml all in one line
-		r = StringIO.StringIO("<THU><Team></Team><Team></Team></THU>")
-		a = importXml(r)
-		self.assert_(len(a) == 2) #2 because 1st element defines type, 2nd element defines the xml element
 
-	def test_importXml2 (self) : #xml all in one line, starts with tab
-		r = StringIO.StringIO("\t<Root><THU><Team></Team></THU><Team></Team></Root>")
-		a = importXml(r)
-		self.assert_(len(a) == 2)
+    # ---------
+    # importXml
+    # ---------
+    
+    def test_importXml (self) : #xml all in one line
+        r = StringIO.StringIO("<THU><Team></Team><Team></Team></THU>")
+        a = importXml(r)
+        self.assert_(len(a) == 2) #2 because 1st element defines type, 2nd element defines the xml element
+
+    def test_importXml2 (self) : #xml all in one line, starts with tab
+        r = StringIO.StringIO("\t<Root><THU><Team></Team></THU><Team></Team></Root>")
+        a = importXml(r)
+        self.assert_(len(a) == 2)
 
 
-	def test_importXml3 (self) : #xml in multiple lines w/o tabs
-		r = StringIO.StringIO("<Root><THU>\n\n\t<Team>\n\t</Team>\n</THU>\n<Team></Team>\n</Root>")
-		a = importXml(r)
-		self.assert_(len(a) == 2)
+    def test_importXml3 (self) : #xml in multiple lines w/o tabs
+        r = StringIO.StringIO("<Root><THU>\n\n<Team>\n</Team>\n</THU>\n<Team></Team>\n</Root>")
+        a = importXml(r)
+        self.assert_(len(a) == 2)
 
-	def test_importXml4 (self) : #xml in multiple lines with tabs (pretty xml)
-		r = StringIO.StringIO("<Root><THU>\n\n\t<Team>\n\t</Team>\n</THU>\n<Team></Team>\n</Root>")
-		a = importXml(r)
-		self.assert_(len(a) == 2)
-	"""
-	# ---------
-	# exportXml
-	# ---------
-	def test_exportXml (self):
-		r = "<Root><THU></THU></Root>"
-		w = StringIO.StringIO()
-		xml = ET.fromstring ( r )
-		exportXml( w, xml )
-		t = w.readline #first line defines element type
-		t = w.read()
-		self.assert_(t == "<Root>\n\t<THU/>\n</Root>")
-"""
-	def test_exportXml1 (self):
-		r = StringIO.StringIO("<THU><Team></Team></THU>\n<Team></Team>\n")
-		w = StringIO.StringIO()
-		a = exportXml( w, r )
-		self.assert_(a == "<THU>\n\t<Team>\n</Team>\n</THU>\n<Team>\n</Team>")
+    def test_importXml4 (self) : #xml in multiple lines with tabs (pretty xml)
+        r = StringIO.StringIO("<Root><THU>\n\n\t<Team>\n\t</Team>\n</THU>\n<Team></Team>\n</Root>")
+        a = importXml(r)
+        self.assert_(len(a) == 2)
 
-	def test_exportXml2 (self):
-		r = StringIO.StringIO("<THU><Team></Team></THU>\n<Team></Team>\n")
-		w = StringIO.StringIO()
-		a = exportXml( w, r )
-		self.assert_(a == "<THU>\n\t<Team>\n</Team>\n</THU>\n<Team>\n</Team>")
+    # ---------
+    # exportXml
+    # ---------
+    def test_exportXml (self): # XML all in one line, 1 empty element
+        r = "<Root><THU></THU></Root>"
+        w = StringIO.StringIO()
+        xml = ET.fromstring ( r )
+        exportXml( w, xml )
+        t = w.getvalue()
+        self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root>\n\t<THU/>\n</Root>\n")
+
+    def test_exportXml1 (self): # XML in one line, with new line characters before and after xml
+        r = "\n<THU><Team></Team></THU>\n"
+        w = StringIO.StringIO()
+        xml = ET.fromstring ( r )
+        exportXml( w, xml )
+        self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<THU>\n\t<Team/>\n</THU>\n")
+
+    def test_exportXml2 (self): # 
+        r = "<THU><Team><Cooly></Cooly></Team></THU>"
+        w = StringIO.StringIO()
+        xml = ET.fromstring ( r )
+        exportXml( w, xml )
+        self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<THU>\n\t<Team>\n\t\t<Cooly/>\n\t</Team>\n</THU>\n")
 
     # -----
     # start
     # -----
 
-	def test_start (self):
-		r = StringIO.StringIO("<Root/>")
-		w = StringIO.StringIO()
-		start(r , w)
-		t = w.readline() #first line describes version
-		t = w.read()
-		self.assert_(t == "<Root/>")
+    def test_start (self): # Empty root element
+        r = StringIO.StringIO("<Root/>")
+        w = StringIO.StringIO()
+        start(r , w)
+        self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root/>\n")
 
-    def test_start2 (self):
-        r = StringIO.StringIO("<THU></THU><THU></THU>")
-        a = []
-        b = xml_read(r, a)
-        queryList = b.getElementsByTagName(a[0])
-        self.assert_(find_index(b.documentElement, [queryList[0], 0, 0]) == 1)
+    def test_start2 (self): # Multiple elements in one line
+        r = StringIO.StringIO("<Root><E1><E2></E2></E1></Root>")
+        w = StringIO.StringIO()
+        start(r , w)
+        self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root>\n\t<E1>\n\t\t<E2/>\n\t</E1>\n</Root>\n")
 
-    def test_start3 (self):
-        r = StringIO.StringIO("<THU>\n<Team>\n<ACRush></ACRush>\n<Jelly></Jelly>"+\
-                              "<Cooly></Cooly>\n</Team>\n<JiaJia>\n<Team>\n"+\
-                              "<Ahyangyi></Ahyangyi>\n<Dragon></Dragon>\n"+\
-                              "<Cooly><Amber></Amber></Cooly>\n</Team>\n"+\
-                              "</JiaJia>\n</THU>\n<Team><Cooly><Amber></Amber>"+\
-                              "<ACRush></ACRush></Cooly></Team>")
-        a = []
-        b = xml_read(r, a)
-        queryList = b.getElementsByTagName(a[0])
-        self.assert_(find_index(b.documentElement, [queryList[0], 0, 0]) == 2)
-"""
-
+    def test_start3 (self): # Pretty xml, with one empty element written <E1/> and one empty element as <E2></E2>
+        r = StringIO.StringIO("<Root>\n\t<E1/>\n\t<E2></E2>\n</Root>")
+        w = StringIO.StringIO()
+        start(r , w)
+        self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root>\n\t<E1/>\n\t<E2/>\n</Root>\n")
       
 print "TestXML.py"
 unittest.main()
