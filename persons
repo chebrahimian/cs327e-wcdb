@@ -1,0 +1,89 @@
+FirstName = "MOHAMMAD"
+LastName = "KHATAMI"
+Birthdate = "08/02/1987"
+Deathdate = "08/03/2005"
+Gender: "male"
+PersonType = VP
+OrgRef = ?
+CrisisRef = Iran Earthquake
+
+FirstName ="KOFI" 
+LastName = "ANNAN"
+Birthdate = "1/1/1997"
+Deathdate = "12/31/2006"
+Gender: "male"
+PersonType = Secretary-General
+OrgRef = United Nations, WHO
+CrisisRef = ?
+
+FirstName = "MICHAEL"
+LastName = "BROWN"
+Birthdate = "11/8/1954"
+Deathdate = null
+Gender = "male"
+PersonType = Director 
+OrgRef = FEMA
+CrisisRef = Hurricane Katrina 
+
+FirstName = "JULIE"
+LastName = "GERBERDING"
+Birthdate = "8/22/1955"
+Deathdate = null
+Gender = "female"
+PersonType = Member of Board of Directors
+OrgRef = null 
+CrisisRef = ?
+
+FirstName = "JIMMY"
+LastName = "CARTER"
+Birthdate = "10/1/1924"
+Deathdate = null
+Gender = "male"
+PersonType = President
+OrgRef = null
+CrisisRef = 
+
+FirstName = "RUDY"
+LastName = "GIULIANI"
+Birthdate = "5/28/1944"
+Deathdate = null
+Gender = "male"
+PersonType = Mayor
+OrgRef = ?
+CrisisRef = 9/11
+
+FirstName = "NAOTO"
+LastName = "KAN"
+Birthdate = "10/10/1946"
+Deathdate = null
+Gender = "male"
+PersonType = Prime Minister
+OrgRef = null
+CrisisRef = Japanese Tsnuami
+
+FirstName = "RONALD"
+LastName = "REAGAN"
+Birthdate = "3/6/1911"
+Deathdate = "6/5/2004"
+Gender = "male"
+PersonType = President
+OrgRef = null
+CrisisRef = Three Mile Island
+
+FirstName = "MARGARET" 
+LastName = "CHAN"
+Birthdate = "?/?/1947"
+Deathdate = null
+Gender = "female"
+PersonType = Director General
+OrgRef = WHO
+CrisisRef: SARS
+
+FirstName = "GEORGE W"
+LastName = "BUSH"
+Birthdate = "7/6/1946"
+Deathdate = empty
+Gender = "male"
+PersonType = President
+OrgRef = ?
+CrisisRef = 9/11
