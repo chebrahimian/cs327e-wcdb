@@ -1,0 +1,89 @@
+commit 1ab1cd0b003418b0000b4109c81ce9655fc15ece
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Thu Mar 7 07:15:57 2013 -0600
+
+    Done.
+
+commit 12e54cf29512310aaac97e97f09a44544834a1b1
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Thu Mar 7 05:29:07 2013 -0600
+
+    Finished and validated schema
+
+commit 9640c0c7f3bc1bfa82d2113d66ad9449726129ba
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Thu Mar 7 00:58:24 2013 -0600
+
+    finished schema. need to check against xml file
+
+commit bb4602273cc61e69b5da3c395e31031b6bf2fa62
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Thu Mar 7 00:51:29 2013 -0600
+
+    Completed scheman. Still need to check against XML file
+
+commit 973ef7a0763787719a06e07d80ea8c6fc6714920
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Wed Mar 6 15:02:23 2013 -0600
+
+    Updated schema. Still need to work on Types and Resources
+
+commit 13f74a129469328f66ba7257f62e3ce594c24943
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Wed Mar 6 15:01:49 2013 -0600
+
+    What the tree should look like based on the schema (to my knowledge)
+
+commit d237d72e7ae621c32ba5986aae77f4df2a97d4ba
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Wed Mar 6 12:21:44 2013 -0600
+
+    still working on key/ref pairs
+
+commit 076fc4031f1d03d15f3f94541691b053f356ecbf
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Wed Mar 6 02:59:11 2013 -0600
+
+    What the tree will resemble from the xsd schema
+
+commit 1de0e5553c6e3938923293c5cb3ddf7a5d0a6ae5
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Wed Mar 6 02:58:44 2013 -0600
+
+    Updated xsd schema. still needs work
+
+commit 58999eabfd8e0d1fc6c32e6ae7bf4fc289210e2d
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Wed Mar 6 01:09:41 2013 -0600
+
+    modified table arrangement. started adding key/refs
+
+commit 37a41d7265cdf8b44e365dc1399d58a8445da538
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Tue Mar 5 23:01:25 2013 -0600
+
+    updated schema. need to add key and keyrefs
+
+commit d74d6fc8841845637b2fc9f41cf1109c2e8e22fd
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Tue Mar 5 21:39:41 2013 -0600
+
+    First draft xsd schema
+
+commit deff52eecdaca6e5d525fca05cd255f497354c37
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Mon Mar 4 21:34:14 2013 -0600
+
+    DTD model to be turned into XSD
+
+commit e0e47b38822a13d24a1824e1f886de0efcb82def
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Fri Mar 1 13:56:25 2013 -0600
+
+    XML schema work in progress, and schema idea
+
+commit 0fdc635f2ae768d1b81e1fece50fcc0a7a9c6e40
+Author: Cameron <chebrahimian@gmail.com>
+Date:   Fri Mar 1 12:19:34 2013 -0600
+
+    first commit

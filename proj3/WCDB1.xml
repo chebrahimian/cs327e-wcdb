@@ -1,0 +1,940 @@
+<WCDB>
+  <Crises>
+    <Crisis crisisKey="CCD">
+      <CrisisName>Chernobyl Disaster</CrisisName>
+    <Date>1986-04-26</Date>
+    <Description>The Chernobyl disaster is widely considered to have been the worst nuclear power plant accident in history, and is one of only two classified as a level 7 event on the International Nuclear  Event Scale.</Description>
+      <CrisisType>Non-natural</CrisisType>
+    <Location>
+        <Country countryRef="COUK"/>
+        <City cityRef="CIPR"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CCDUTIM" urlTypeRef="UTIM" />
+        <Url urlRef="PRRUTEL" urlTypeRef="UTEL" />
+        <Url urlRef="OIAEAUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <HumanImpact casualties="31" numAffected="500000" />
+      <EconomicImpact>588M USD</EconomicImpact>
+      <WaysToHelp>Providing room and board for refugees, medical care for those affected. </WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTTR" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTSH" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OIAEA"/>
+        <OrgReference orgRef="OUN"/>
+        </OrgReferences>
+        <PersonReferences>
+          <PersonReference personRef="PRR"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CTMIA">
+      <CrisisName>Three Mile Island Accident</CrisisName>
+    <Date>1979-03-28</Date>
+      <Description>The worst accident in U.S. commercial nuclear power plant history.</Description>
+      <CrisisType>Non-natural</CrisisType>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="REPN"/>
+        <City cityRef="CIHA"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CTMIAUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <HumanImpact casualties="0" />
+      <EconomicImpact>1B USD</EconomicImpact>
+      <WaysToHelp>Room and board for refugees, cleanup.</WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTTR" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTSH" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OIAEA"/>
+        </OrgReferences>
+        <PersonReferences>
+          <PersonReference personRef="PJC"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CSO">
+      <CrisisName>SARS Outbreak</CrisisName>
+      <Date>2002-11-06</Date>
+    <Description>Severe Acute Respiratory Syndrome- Between November 2002 and June 2003, outbreak infected individuals in over 37 countries.</Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="COCH"/>
+        <Region regionRef="REGD"/>
+        <City cityRef="CIFO"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CSOUTEL" urlTypeRef="UTEL" />
+        <Url urlRef="PMCUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <HumanImpact casualties="775" numAffected="8273" />
+      <EconomicImpact>unknown</EconomicImpact>
+      <WaysToHelp>Research for treatments and cures, Funding for medical care. </WaysToHelp>
+    <Resources>
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTMS" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OWHO"/>
+        <OrgReference orgRef="OCDC"/>
+        </OrgReferences>
+        <PersonReferences>
+          <PersonReference personRef="PMC"/>
+          <PersonReference personRef="PJG"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CHE">
+      <CrisisName>2010 Haiti Earthquake</CrisisName>
+      <Date>2010-01-12</Date>
+      <Description>The 2010 Haiti earthquake was a catastrophic magnitude 7.0 Mw earthquake, with an epicenter near the town of Leogane(Ouest Department), approximately 25 km (16 miles) west of Port-au-Prince, Haitis capital.</Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="COHA"/>
+        <Region regionRef="REOD"/>
+        <City cityRef="CIPP"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CHEUTIM" urlTypeRef="UTIM" />
+    </Urls>
+    <HumanImpact casualties="316000" numAffected="3000000" />
+      <EconomicImpact>5300M USD</EconomicImpact>
+      <WaysToHelp>Shelter, food, and medical care for refugees, funding for reconstruction </WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTMS" />
+        <Resource resRef="RTSH" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OPH"/>
+        </OrgReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CJTS">
+      <CrisisName>2011 Japanese Tsunami</CrisisName>
+      <Date>2011-03-11</Date>
+    <Description>The most powerful known earthquake ever to have hit Japan, and one of the five most powerful earthquakes in the world since modern record-keeping began in 1900. The earthquake triggered powerful tsunami waves that reached heights of up to 40.5 metres (133 ft) in Miyako in Tohokus Iwate Prefecture, and which, in the Sendaiarea, travelled up to 10 km (6 mi) inland.</Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="COJA"/>
+        <City cityRef="CITO"/>
+     </Location>
+    <Urls>
+        <Url urlRef="CJTSUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <HumanImpact casualties="16000" numAffected="23000" />
+      <EconomicImpact>35B USD</EconomicImpact>
+      <WaysToHelp>Shelter, food, and medical care for refugees, funding for reconstruction </WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTMS" />
+        <Resource resRef="RTSH" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OFEMA"/>
+        </OrgReferences>
+        <PersonReferences>
+        <PersonReference personRef="PNK"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CJTO">
+      <CrisisName>Joplin Tornado</CrisisName>
+      <Date>2011-05-22</Date>
+      <Description>The 2011 Joplin tornado was a catastrophic EF5 multiple-vortex tornadothat struck Joplin, Missouri in the late afternoon of Sunday, May 22, 2011. It was part of a larger late-May tornado outbreak sequence and reached a maximum width of nearly 1 mile (1.6 km) during its path through the southern part of the city.</Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="REMO"/>
+        <City cityRef="CIJO"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CJTOUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <HumanImpact casualties="158" numAffected="17000" />
+      <EconomicImpact>2800M USD</EconomicImpact>
+      <WaysToHelp>Shelter, food, and medical care for refugees, funding for reconstruction </WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTMS" />
+        <Resource resRef="RTSH" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OFEMA"/>
+        </OrgReferences>
+        <PersonReferences>
+         <PersonReference personRef="PMB"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CIE">
+      <CrisisName>Iran Earthquake</CrisisName>
+      <Date>2003-12-26</Date>
+      <Description>Bam Earthquake was a major earthquake that struck Bam and the surrounding Kerman province of Southeastern Iran. The magnitude of the earthquake is a moment magnitude of 6.6.</Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="CORI"/>
+        <Region regionRef="REBA"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CIEUTCI" urlTypeRef="UTCI" />
+        <Url urlRef="CIEUTCI2" urlTypeRef="UTCI" />
+        <Url urlRef="PMKUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <HumanImpact casualties="26271" numAffected="145500" />
+      <EconomicImpact>1500M USD</EconomicImpact>
+      <WaysToHelp>Shelter, food, and medical care for refugees, funding for reconstruction </WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTMS" />
+        <Resource resRef="RTSH" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="ORC"/>
+        <OrgReference orgRef="OIAEA"/>
+        </OrgReferences>
+        <PersonReferences>
+        <PersonReference personRef="PMK"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CHK">
+      <CrisisName>Hurricane Katrina</CrisisName>
+      <Date>2005-10-23</Date>
+      <Description>Hurricane Katrina was the deadliest and most destructive Atlantic hurricane of the 2005 Atlantic hurricane season. Katrinas storm surge led to 53 levee breaches in the federally built levee system protecting metro New Orleans. Federal disaster declarations covered 90,000 square miles of the United States.</Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RELA"/>
+        <City cityRef="CINO"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CHKUTVI" urlTypeRef="UTVI" />
+    </Urls>
+    <HumanImpact casualties="1833" />
+      <EconomicImpact>81B USD</EconomicImpact>
+      <WaysToHelp>Shelter, food, transportation, and medical care for refugees. Labor and funding for reconstruction</WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTMO" />
+        <Resource resRef="RTMS" />
+        <Resource resRef="RTSH" />
+        <Resource resRef="RTTR" />
+        <Resource resRef="RTFW" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OFEMA"/>
+        </OrgReferences>
+        <PersonReferences>
+          <PersonReference personRef="PGW"/>
+         <PersonReference personRef="PMB"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CSE">
+      <CrisisName>September 11th</CrisisName>
+      <Date>2001-09-11</Date>
+    <Description>Four terrorist attacks launched against the United States by the Islamic terrorist group al-Qaeda. Nineteen al-Qaeda terrorists hijacked four passenger jets intending to fly them in suicide attacks into targeted buildings, most notably the two World Trade Towers</Description>
+      <CrisisType>Non-natural</CrisisType>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RENY"/>
+        <City cityRef="CINY"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CSEUTIM" urlTypeRef="UTIM" /> 
+        <Url urlRef="PRGUTVI" urlTypeRef="UTVI" />
+    </Urls>
+    <HumanImpact casualties="2996" numAffected="6000" />
+      <EconomicImpact>40B USD</EconomicImpact>
+      <WaysToHelp></WaysToHelp>
+    <Resources>
+        <Resource resRef="RTLA" />
+        <Resource resRef="RTMS" />
+    </Resources>
+    <References>
+      <OrgReferences>
+        <OrgReference orgRef="ONYFD" />
+      </OrgReferences>
+      <PersonReferences>
+          <PersonReference personRef="PGW"/>
+          <PersonReference personRef="PRG"/>
+      </PersonReferences>
+    </References>
+    </Crisis>
+ 
+    <Crisis crisisKey="CSF">
+      <CrisisName>Swine Flu</CrisisName>
+      <Date>2009-04-01</Date>
+      <Description></Description>
+      <CrisisType>Natural</CrisisType>
+    <Location>
+        <Country countryRef="COIR"/>
+        <Region regionRef="RENI"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CSFUTEL" urlTypeRef="UTEL"/>
+        <Url urlRef="OCDCUTEL" urlTypeRef="UTEL"/>
+    </Urls>
+    <HumanImpact casualties="14286" />
+      <EconomicImpact></EconomicImpact>
+      <WaysToHelp></WaysToHelp>
+    <Resources>
+        <Resource resRef="RTMS" />
+    </Resources>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OWHO"/>
+        </OrgReferences>
+        <PersonReferences>
+          <PersonReference personRef="PJG"/>
+        </PersonReferences>
+    </References>
+    </Crisis>
+ 
+  </Crises>
+ 
+ <People>
+    <Person personKey="PMK">
+      <FirstName>Mohammad</FirstName>
+      <LastName>Khatami</LastName>
+    <PersonType personTypeRef="PTPO" />
+    <Birthdate>1987-08-02</Birthdate>
+    <Deathdate>2005-08-03</Deathdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="CORI"/>
+        <Region regionRef="REBA"/>
+        <City cityRef="CITE"/>
+    </Location>
+    <Urls>
+        <Url urlRef="PMKUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CIE"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+ 
+    <Person personKey="PKA">
+      <FirstName>Kofi</FirstName>
+      <LastName>Annan</LastName>
+    <PersonType personTypeRef="PTHO" />
+      <Birthdate>1997-01-01</Birthdate>
+      <Deathdate>2006-12-31</Deathdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COGH"/>
+        <City cityRef="CIKU"/>
+    </Location>
+    <Urls>
+        <Url urlRef="PKAUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OUN"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CSE"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+ 
+    <Person personKey="PMB">
+      <FirstName>Michael</FirstName>
+    <LastName>Brown</LastName>
+    <PersonType personTypeRef="PTHO" />
+      <Birthdate>1954-11-08</Birthdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RECO"/>
+        <City cityRef="CIBO"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CHKUTVI" urlTypeRef="UTVI" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OFEMA"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CJTO"/>
+          <CrisisReference crisisRef="CHK"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+ 
+    <Person personKey="PJG">
+      <FirstName>Julie</FirstName>
+      <LastName>Gerberding</LastName>
+    <PersonType personTypeRef="PTHO" />
+      <Birthdate>1955-08-22</Birthdate>
+      <Gender>Female</Gender>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RECA"/>
+        <City cityRef="CISF"/>
+    </Location>
+    <Urls>
+        <Url urlRef="PJGUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OCDC"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CSF"/>
+          <CrisisReference crisisRef="CSO"/>
+          <CrisisReference crisisRef="CHK"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+ 
+  <Person personKey="PJC">
+      <FirstName>Jimmy</FirstName>
+      <LastName>Carter</LastName>
+    <PersonType personTypeRef="PTPO" />
+      <Birthdate>1924-10-01</Birthdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="REGA"/>
+        <City cityRef="CIPL"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CTMIAUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OPC"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CTMIA"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+    
+    <Person personKey="PRG">
+      <FirstName>Rudy</FirstName>
+      <LastName>Giuliani</LastName>
+    <PersonType personTypeRef="PTPO" />
+      <Birthdate>1944-05-28</Birthdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RENY"/>
+        <City cityRef="CINY"/>
+    </Location>
+    <Urls>
+        <Url urlRef="PRGUTVI" urlTypeRef="UTVI" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="ONYFD"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CSE"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+    
+    <Person personKey="PNK">
+      <FirstName>Naoto</FirstName>
+      <LastName>Kan</LastName>
+    <PersonType personTypeRef="PTPO" />
+      <Birthdate>1946-10-10</Birthdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COJA"/>
+        <Region regionRef="REYA"/>
+        <City cityRef="CIUB"/>
+    </Location>
+    <Urls>
+        <Url urlRef="CJTSUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OIAEA"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CJTS"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+    
+    <Person personKey="PRR">
+      <FirstName>Ronald</FirstName>
+      <LastName>Reagan</LastName>
+    <PersonType personTypeRef="PTPO" />
+      <Birthdate>1911-02-06</Birthdate>
+    <Deathdate>2004-06-05</Deathdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RECA"/>
+        <City cityRef="CILA"/>
+    </Location>
+    <Urls>
+        <Url urlRef="PRRUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CCD"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+    
+    <Person personKey="PMC">
+      <FirstName>Margaret</FirstName>
+      <LastName>Chan</LastName>
+    <PersonType personTypeRef="PTHO" />
+      <Birthdate>1947-01-01</Birthdate>
+      <Gender>Female</Gender>
+    <Location>
+        <Country countryRef="COCH"/>
+        <City cityRef="CIHK"/>
+    </Location>
+    <Urls>
+        <Url urlRef="PMCUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OWHO"/>
+        </OrgReferences>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CSO"/>
+          <CrisisReference crisisRef="CSF"/>
+          <CrisisReference crisisRef="CHE"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+    
+    <Person personKey="PGW">
+      <FirstName>George W.</FirstName>
+      <LastName>Bush</LastName>
+    <PersonType personTypeRef="PTPO" />
+      <Birthdate>1946-07-06</Birthdate>
+      <Gender>Male</Gender>
+    <Location>
+        <Country countryRef="COUS"/>
+        <Region regionRef="RETX"/>
+        <City cityRef="CIDA"/>
+     </Location>
+    <Urls>
+        <Url urlRef="CHKUTVI" urlTypeRef="UTVI" />
+    </Urls>
+    <References>
+        <OrgReferences>
+        <OrgReference orgRef="OFEMA"/>
+        </OrgReferences>
+        <CrisisReferences>
+			<CrisisReference crisisRef="CHK"/>
+			<CrisisReference crisisRef="CSE"/>
+        </CrisisReferences>
+    </References>
+    </Person>
+    
+  </People>
+ 
+	<Organizations>
+    <Organization orgKey="ORC" >
+    <OrgName>Red Crescent</OrgName>
+      <Description>The International Federation of Red Cross and Red Crescent Societies (IFRC) is the worlds largest humanitarian and development network, with millions of volunteers in 187 member National Societies.</Description>
+    <OrgType orgTypeRef="OTPU"/>
+    <History>The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention. </History>
+      <Phone>1 212-338-0161</Phone>
+      <Email>admin@redcrescentpenang.org.my</Email>
+    <Address cityRef="CIGE" countryRef="COSW">
+        <Street>P.O. Box 303</Street>
+        <Zip>1236</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="CSOUTEL" urlTypeRef="UTEL" />
+        <Url urlRef="CIEUTCI2" urlTypeRef="UTCI" /> 
+    </Urls>
+    <References>
+       <CrisisReferences>
+          <CrisisReference crisisRef="CIE"/>
+          <CrisisReference crisisRef="CSO"/>
+        </CrisisReferences>
+    </References>
+    </Organization>
+    
+    <Organization orgKey="OPH" >
+      <OrgName>Partners in Health</OrgName>
+      <Description>In the past 25 years, PIH has expanded in Haitis Artibonite and Central Plateau regions and has launched additional projects around the world.</Description>
+    <OrgType orgTypeRef="OTPU"/>
+      <History>PIH was founded in 1987 to deliver health care to the residents of Haitis mountainous Central Plateau region.</History>
+      <Phone>1 617-998-8922</Phone>
+      <Email>americorpsnational@cns.gov</Email>
+    <Address cityRef="CIBS" regionRef="REMA" countryRef="COUS">
+        <Street>888 Commonwealth Ave</Street>
+        <Zip>02215</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="OPHUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CHE"/>
+      </CrisisReferences>
+    </References>
+    </Organization>
+    
+    <Organization orgKey="OAC" >
+      <OrgName>Americorps</OrgName>
+      <Description>AmeriCorps is a program of the U.S. federal government engaging adults in intensive community service work with the goal of helping others and meeting critical needs in the community.</Description>
+    <OrgType orgTypeRef="OTGO"/>
+      <History>The reasoning behind AmeriCorps comes from a long historical tradition of community service through civic associations.</History>
+      <Phone>202-606-5000</Phone>
+      <Email>americorpsnational@cns.gov</Email>
+    <Address cityRef="CINY" regionRef="RENY" countryRef="COUS">
+        <Street>1201 New York Avenue</Street>
+        <Zip>20525</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="CJTOUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CJTO"/>
+        </CrisisReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="OPC" >
+    <OrgName>Peace Corps</OrgName>
+      <Description>A federal government agency devoted to world peace and friendship</Description>
+    <OrgType orgTypeRef="OTHU"/>
+      <History>The Peace Corps traces its roots and mission to 1960, when then-Sen. John F. Kennedy challenged students at the University of Michigan to serve their country in the cause of peace by living and working in developing countries.</History>
+      <Phone>1 855-855-1961</Phone>
+      <Email>psa@peacecorps.gov</Email>
+    <Address cityRef="CINY" regionRef="RENY" countryRef="COUS">
+        <Street>1111 20th Street</Street>
+        <Zip>20526</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="CHEUTIM" urlTypeRef="UTIM" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CJTS"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PJC"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="OIAEA" >
+      <OrgName>International Atomic Energy Agency</OrgName>
+      <Description>An international organization that seeks to promote the peaceful use of nuclear energy, and to inhibit its use for any military purpose, including nuclear weapons.</Description>
+    <OrgType orgTypeRef="OTHU"/>
+      <History>The IAEA was created in 1957 in response to the deep fears and expectations resulting from the discovery of nuclear energy.</History>
+      <Phone>431 2600 0</Phone>
+      <Email>official.mail@iaea.org</Email>
+    <Address cityRef="CIVI" countryRef="COAU">
+        <Street>PO Box 100</Street>
+        <Zip>1400</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="OIAEAUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CTMIA"/>
+          <CrisisReference crisisRef="CCD"/>
+          <CrisisReference crisisRef="CJTS"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PNK"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="OUN" >
+      <OrgName>United Nations (UN)</OrgName>
+      <Description>An International organization whose stated aims are facilitating cooperation in international law, international security, economic development, social progress, human rights, and achievement of world peace. </Description>
+    <OrgType orgTypeRef="OTGO"/>
+      <History>The name United Nations, coined by United States President Franklin D. Roosevelt, was first used in the Declaration by United Nations of 1 January 1942, during the Second World War, when representatives of 26 nations pledged their Governments to continue fighting together against the Axis Powers.</History>
+      <Phone>202-887-9040</Phone>
+      <Email>inquiries@un.org</Email>
+    <Address cityRef="CIDC" countryRef="COUS">
+        <Street>1800 Massachusetts Avenue</Street>
+        <Zip>20036</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="OUNUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+        <CrisisReference crisisRef="CCD"/>
+          <CrisisReference crisisRef="CSE"/>
+          <CrisisReference crisisRef="CHE"/>
+          <CrisisReference crisisRef="CJTS"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PKA"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="OCDC" >
+      <OrgName>Center for Disease Control (CDC)</OrgName>
+      <Description> A United States federal agency under the Department of Health and Human Services headquartered in Druid Hills. It works to protect public health and safety by providing information to enhance health decisions, and it promotes health through partnerships with state health departments and other organizations.</Description>
+    <OrgType orgTypeRef="OTPU"/>
+      <History>The Communicable Diseases Center was founded July 1, 1946 as the successor to the World War II Malaria Control in War Areas program of Office of National Defense Malaria Control Activities.</History>
+      <Phone>1 800-232-4636</Phone>
+      <Email>info@cdc.gov</Email>
+    <Address cityRef="CIDH" regionRef="REGA" countryRef="COUS">
+        <Street>1600 Clifton Rd</Street>
+        <Zip>30333</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="OCDCUTEL" urlTypeRef="UTEL" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CHE"/>
+          <CrisisReference crisisRef="CSO"/>
+          <CrisisReference crisisRef="CSF"/>
+          <CrisisReference crisisRef="CHK"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PJG"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="ONYFD" >
+    <OrgName>New York Fire Department</OrgName>
+      <Description>Has the responsibility of protecting the citizens and property of New York Citys five boroughs from fires and fire hazards, providing emergency medical services, technical rescue as well as providing first response to biological, chemical and radioactive hazards.</Description>
+    <OrgType orgTypeRef="OTPS"/>
+      <History>The origins of the New York City Fire Department go back to 1648 when the first fire ordinance was adopted in what was then the Dutch settlement of New Amsterdam.</History>
+    <Phone>911</Phone>
+      <Email>fdny@nyc.gov</Email>
+    <Address cityRef="CINY" regionRef="RENY" countryRef="COUS">
+        <Street>750 Main St.</Street>
+        <Zip>11044</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="CSEUTIM" urlTypeRef="UTIM" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CSE"/>
+        <CrisisReference crisisRef="CHE"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PRG"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="OFEMA" >
+    <OrgName>Federal Emergency Management Agency (FEMA)</OrgName>
+      <Description> An agency of the United States Department of Homeland Security. The agencys primary purpose is to coordinate the response to a disaster that has occurred in the United States and that overwhelms the resources of local and state authorities.</Description>
+    <OrgType orgTypeRef="OTDR"/>
+      <History>Initially created by Presidential Reorganization Plan No. 3 of 1978 and implemented by two Executive Orders on April 1, 1979.</History>
+      <Phone>(202) 646-2500</Phone>
+    <Address cityRef="CIDC" countryRef="COUS">
+        <Street>500 C St SW</Street>
+        <Zip>20472</Zip>
+    </Address>
+    <Urls>
+        <Url urlRef="CHKUTVI" urlTypeRef="UTVI" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CJTS"/>
+          <CrisisReference crisisRef="CJTO"/>
+        <CrisisReference crisisRef="CHK"/>
+        <CrisisReference crisisRef="CHE"/>
+        <CrisisReference crisisRef="CTMIA"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PMB"/>
+          <PersonReference personRef="PGW"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+ 
+    <Organization orgKey="OWHO" >
+    <OrgName>World Health Organization (WHO)</OrgName>
+      <Description>Public-health agency of the UN. Its mandate is to promote the highest possible level of health in all people.s</Description>
+    <OrgType orgTypeRef="OTPU"/>
+      <History>Established in Geneva in 1948 to succeed two earlier agencies. Its greatest success to date has been the worldwide eradication of smallpox in 1980.</History>
+      <Phone>41 22 791 21 111</Phone>
+    <Address cityRef="CIGE" countryRef="COSW">
+        <Street>20 Avenue Appia</Street>
+    </Address>
+    <Urls>
+        <Url urlRef="CSFUTEL" urlTypeRef="UTEL" />
+        <Url urlRef="PMCUTCI" urlTypeRef="UTCI" />
+    </Urls>
+    <References>
+        <CrisisReferences>
+          <CrisisReference crisisRef="CSO"/>
+          <CrisisReference crisisRef="CSF"/>
+          <CrisisReference crisisRef="CHE"/>
+        </CrisisReferences>
+        <PersonReferences>
+          <PersonReference personRef="PMC"/>
+        </PersonReferences>
+    </References>
+    </Organization>
+    
+  </Organizations>
+ 
+   <UrlTable>
+    <UrlInstance urlKey="CIEUTCI">http://www.iitk.ac.in/nicee/wcee/article/14_01-1084.PDF</UrlInstance >
+    <UrlInstance urlKey="CIEUTCI2">http://www.iranicaonline.org/articles/bam-earthquake-2003</UrlInstance >
+    <UrlInstance urlKey="CCDUTIM"> http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg</UrlInstance>
+    <UrlInstance urlKey="CTMIAUTEL">http://www.pbs.org/wgbh/amex/three/peopleevents/pandeAMEX86.html</UrlInstance>
+    <UrlInstance urlKey="CSOUTEL">http://www.ifrc.org/en/news-and-media/news-stories/international/red-cross-continues-response-to-widening-sars-threat/</UrlInstance>
+    <UrlInstance urlKey="CHEUTIM">http://www.peacecorpsconnect.org/2011/01/a-year-ago-haiti/</UrlInstance>
+    <UrlInstance urlKey="CJTSUTEL">http://www.globalpost.com/dispatch/news/regions/asia-pacific/japan/110602/japan-tsunami-naoto-kan-reconstruction</UrlInstance>
+    <UrlInstance urlKey="CJTOUTEL">http://www.nationalservice.gov/about/newsroom/releases_detail.asp?tbl_pr_id=2099</UrlInstance>
+    <UrlInstance urlKey="CHKUTVI">http://www.nbcnews.com/id/9266986/#.UTkiThy0KSo</UrlInstance>
+    <UrlInstance urlKey="CSEUTIM">http://blogs.laweekly.com/informer/9-11_firefighters.jpg</UrlInstance>
+    <UrlInstance urlKey="CSFUTEL">http://www.who.int/csr/disease/swineflu/en/</UrlInstance>
+    <UrlInstance urlKey="PMKUTEL">http://en.wikipedia.org/wiki/Mohammad_Khatami</UrlInstance>
+    <UrlInstance urlKey="PKAUTCI">http://www.un.org/sg/formersg/annan.shtml</UrlInstance>    
+    <UrlInstance urlKey="PJGUTCI">http://en.wikipedia.org/wiki/Julie_Gerberding</UrlInstance>    
+    <UrlInstance urlKey="PRGUTVI">https://www.youtube.com/watch?v=dG_4RTvlnkg</UrlInstance>    
+    <UrlInstance urlKey="PRRUTEL">http://en.wikipedia.org/wiki/Mohhttp://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</UrlInstance>    
+    <UrlInstance urlKey="PMCUTCI">http://en.wikipedia.org/wiki/Margaret_Chan</UrlInstance>
+    <UrlInstance urlKey="OPHUTCI">http://www.pih.org/</UrlInstance> 
+    <UrlInstance urlKey="OIAEAUTCI">http://www.iaea.org/newscenter/focus/chernobyl/</UrlInstance>
+    <UrlInstance urlKey="OUNUTCI">http://www.un.org/en/</UrlInstance>
+    <UrlInstance urlKey="OCDCUTEL">http://www.cdc.gov/h1n1flu/</UrlInstance>
+  </UrlTable>
+  
+  <Locations>
+    <Countries>
+    <Country countryKey="COUS">United States of America</Country>
+    <Country countryKey="COCA">Canada</Country>
+    <Country countryKey="COHA">Haiti</Country>
+    <Country countryKey="CORI">Republic of Iran</Country>
+    <Country countryKey="COUK">Ukraine</Country>
+    <Country countryKey="COJA">Japan</Country>
+    <Country countryKey="COCH">China</Country>
+    <Country countryKey="COIR">Ireland</Country>
+    <Country countryKey="COGH">Ghana</Country>
+    <Country countryKey="COSW">Switzerland</Country>
+    <Country countryKey="COAU">Austria</Country>
+    </Countries>
+    <Regions>
+    <Region regionKey="REBA">Bam</Region>
+    <Region regionKey="RELA">Louisiana</Region>
+    <Region regionKey="REPN">Pennsylvania</Region>
+    <Region regionKey="REGD">Guangdong</Region>
+    <Region regionKey="REOD">Ouest Department</Region>
+    <Region regionKey="REMO">Missouri</Region>
+    <Region regionKey="RENY">New York</Region>
+    <Region regionKey="REMA">Massachussets</Region>
+    <Region regionKey="RENI">Northern Ireland</Region>
+    <Region regionKey="RECO">Colorado</Region>
+    <Region regionKey="RECA">California</Region>
+    <Region regionKey="REGA">Georgia</Region>
+    <Region regionKey="REYA">Yamaguchi</Region>
+    <Region regionKey="RETX">Texas</Region>
+    <Region regionKey="RENJ">New Jersey</Region>
+    </Regions>
+    <Cities>
+    <City cityKey="CITE">Tehran</City>
+    <City cityKey="CINO">New Orleans</City>
+    <City cityKey="CILA">Los Angeles</City>
+    <City cityKey="CIPR">Pripyat</City>
+    <City cityKey="CINY">New York City</City>
+    <City cityKey="CIHA">Harrisburg</City>
+    <City cityKey="CIFO">Foshan</City>
+    <City cityKey="CIPP">Port-au-Prince</City>
+    <City cityKey="CITO">Tohoku</City>
+    <City cityKey="CIJO">Joplin</City>
+    <City cityKey="CIKU">Kumasi</City>
+    <City cityKey="CIBO">Boulder</City>
+    <City cityKey="CISF">San Francisco</City>
+    <City cityKey="CIPL">Plains</City>
+    <City cityKey="CIUB">Ube</City>
+    <City cityKey="CIHK">Hong Kong</City>
+    <City cityKey="CIDA">Dallas</City>
+    <City cityKey="CIGE">Geneva</City>
+    <City cityKey="CIBS">Boston</City>
+    <City cityKey="CIVI">Vienna</City>
+    <City cityKey="CISH">South Hackensack</City>
+    <City cityKey="CIDC">Washington D.C.</City>
+    <City cityKey="CIDH">Druid Hills</City>
+
+    </Cities>
+  </Locations>
+
+ 
+  <Types>
+    <PersonsTypes>
+		<PersonType personTypeKey="PTHU">Humanitarian</PersonType>
+		<PersonType personTypeKey="PTHO">Head of Organization</PersonType>
+		<PersonType personTypeKey="PTRE">Researcher</PersonType>
+		<PersonType personTypeKey="PTBU">Businessman/woman</PersonType>
+		<PersonType personTypeKey="PTVO">Volunteer</PersonType>
+		<PersonType personTypeKey="PTPO">Politician</PersonType>
+		 <PersonType personTypeKey="PTVI">Victim</PersonType>
+    </PersonsTypes>
+    <OrgTypes>
+    <OrgType orgTypeKey="OTHU">Humanitarian</OrgType>
+    <OrgType orgTypeKey="OTPU">Health</OrgType>
+    <OrgType orgTypeKey="OTPS">Public Service</OrgType>
+      <OrgType orgTypeKey="OTEN">Energy</OrgType>
+    <OrgType orgTypeKey="OTDR">Disaster Relief</OrgType>
+    <OrgType orgTypeKey="OTGO">Governmental Organization</OrgType>
+    </OrgTypes>
+    <UrlTypes>
+    <UrlType urlTypeKey="UTVI">Video</UrlType>
+      <UrlType urlTypeKey="UTIM">Image</UrlType>
+    <UrlType urlTypeKey="UTEL">External Link</UrlType>
+    <UrlType urlTypeKey="UTCI">Citation</UrlType>
+    <UrlType urlTypeKey="UTSO">Social</UrlType>
+    <UrlType urlTypeKey="UTMA">Map</UrlType>
+    </UrlTypes>
+    <ResTypes>
+    <ResType resTypeKey="RTLA">Labor</ResType>
+    <ResType resTypeKey="RTTR">Transportation</ResType>
+    <ResType resTypeKey="RTMO">Money</ResType>
+    <ResType resTypeKey="RTFW">Food and Water</ResType>
+    <ResType resTypeKey="RTSH">Shelter</ResType>
+    <ResType resTypeKey="RTMS">Medical Supplies</ResType>
+    </ResTypes>
+  </Types> 
+ 
+</WCDB>
