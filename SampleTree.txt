@@ -1,0 +1,43 @@
+<WCDB>
+	<Crises>
+		<Crisis CrisisID="C101">
+			<CrisisName>Bam Earthquake</CrisisName>
+			<Date>2003-12-26</Date>
+			<Description>A devastating 6.6 Mg Earthquake in Iran's lower-east Quadrant</description>
+			<CrisisType>Natural</CrisisType>
+			<Location CountryRef="IR" RegionRef="SE" CityRef="BAM" />
+			<UrlID />
+			<HumanImpact casualties="26271" numAffected="130000" />
+			<EconomicImpact>850000000</EconomicImpact>
+			<WaysToHelp></WaysToHelp>
+		</Crisis>
+		<References>
+			<OrgReferences>
+				<OrgReference OrgRef="AmerCorps" />
+				<OrgReference OrgRef="FEMA" />
+				<OrgReference OrgRef="RedCrest" />
+			</OrgReferences>
+			<PersonReferences>
+				<PersonReference PersonRef="Khatami" />
+				<PersonReference PersonRef="Brown" />
+			</PersonReferences>
+		</References>
+
+	<People>
+		<Person PersonID="Khatami">
+			<FirstName>Mohammad</FirstName>
+			<LastName>Khatami</LastName>
+			<PersonType PersonTypeRef="Pres." />
+			<Birthdate>1943-9-24</Birthdate>
+			<Gender>Male</Gender>
+			<Location CountryRef="IR" CityRef="Teh" />
+		</Person>
+		<References>
+			<CrisisReferences>
+				<CrisisReference CrisisRef="C101" />
+			</CrisisReferences>
+		</References>
+	</People>
+	
+	<
+</WCDB>

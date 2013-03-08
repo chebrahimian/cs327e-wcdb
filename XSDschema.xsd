@@ -1,0 +1,549 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<!-- Root tag WCDB -->
+	<xsd:element name="WCDB">
+		<xsd:complexType>
+		
+			<!-- First row of children (tables in DB) -->
+			<xsd:sequence>
+				<xsd:element name="Crises" type="CrisesType"
+							minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="People" type="PeopleType"
+							minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="Organizations" type="OrganType"
+							minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="Urls" type="LinkType"
+							minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="Locations" type="LocationType"
+							minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element name="Types" type="TypesTable"
+							minOccurs="0" maxOccurs="unbounded" />					
+			</xsd:sequence>
+		</xsd:complexType>
+		
+		<!-- Key/keyref pairs linking an organization to a crisis or person -->
+		<xsd:key name="OrganizationKey">
+			<xsd:selector xpath="Organizations/Organization" />
+			<xsd:field xpath="@orgKey" />
+		</xsd:key>
+		<xsd:keyref name="OrganToCrisisKeyRef" refer="OrganizationKey">
+			<xsd:selector xpath="Crises/Crisis/References/OrgReferences/OrgReference" />
+			<xsd:field xpath="@orgRef" />
+		</xsd:keyref>
+		<xsd:keyref name="OrganToPersonKeyRef" refer="OrganizationKey">
+			<xsd:selector xpath="People/Person/References/OrgReferences/OrgReference" />
+			<xsd:field xpath="@orgRef" />
+		</xsd:keyref>
+		
+		<!-- Key/keyref pairs linking a crisis to a organization or person -->
+		<xsd:key name="CrisisKey">
+			<xsd:selector xpath="Crises/Crisis" />
+			<xsd:field xpath="@crisisKey" />
+		</xsd:key>
+		<xsd:keyref name="CrisisToOrgKeyRef" refer="CrisisKey">
+			<xsd:selector xpath="Organizations/Organization/References/CrisisReferences/CrisisReference" />
+			<xsd:field xpath="@crisisRef" />
+		</xsd:keyref>
+		<xsd:keyref name="CrisisToPersonKeyRef" refer="CrisisKey">
+			<xsd:selector xpath="People/Person/References/CrisisReferences/CrisisReference" />
+			<xsd:field xpath="@crisisRef" />
+		</xsd:keyref>
+		
+		<!-- Key/keyref pairs linking a person to a crisis or organization -->
+		<xsd:key name="PersonKey">
+			<xsd:selector xpath="People/Person" />
+			<xsd:field xpath="@personKey" />
+		</xsd:key>
+		<xsd:keyref name="PersonToCrisisKeyRef" refer="PersonKey">
+			<xsd:selector xpath="Crises/Crisis/References/PersonReferences/PersonReference" />
+			<xsd:field xpath="@personRef" />
+		</xsd:keyref>
+		<xsd:keyref name="PersonToOrgKeyRef" refer="PersonKey">
+			<xsd:selector xpath="Organizations/Organization/References/PersonReferences/PersonReference" />
+			<xsd:field xpath="@personRef" />
+		</xsd:keyref>
+
+		<!-- Key/keyref pairs linking a Country from Locations
+		to Crises, Organizations, or People table (sub-element "References") -->
+		<xsd:key name="CountryKey">
+			<xsd:selector xpath="Locations/Countries/Country" />
+			<xsd:field xpath="@countryKey" />
+		</xsd:key>
+		<xsd:keyref name="CrisisCountryKeyRef" refer="CountryKey">
+			<xsd:selector xpath="Crises/Crisis/Location" />
+			<xsd:field xpath="@countryRef" />
+		</xsd:keyref>
+		<xsd:keyref name="OrganizationCountryKeyRef" refer="CountryKey">
+			<xsd:selector xpath="Organizations/Organization/Address" />
+			<xsd:field xpath="@countryRef" />
+		</xsd:keyref>
+		<xsd:keyref name="PersonCountryKeyRef" refer="CountryKey">
+			<xsd:selector xpath="People/Person/Location" />
+			<xsd:field xpath="@countryRef" />
+		</xsd:keyref>
+	
+		<!-- Key/keyref pairs linking a Region from Locations
+		to Crises, or People table (sub-element "References") -->
+		<xsd:key name="RegionKey">
+			<xsd:selector xpath="Locations/Regions/Region" />
+			<xsd:field xpath="@regionKey" />
+		</xsd:key>
+		<xsd:keyref name="CrisisRegionKeyRef" refer="RegionKey">
+			<xsd:selector xpath="Crises/Crisis/Location" />
+			<xsd:field xpath="@regionRef" />
+		</xsd:keyref>
+		<xsd:keyref name="PersonRegionKeyRef" refer="RegionKey">
+			<xsd:selector xpath="People/Person/Location" />
+			<xsd:field xpath="@regionRef" />
+		</xsd:keyref>
+		<xsd:keyref name="OrganRegionKeyRef" refer="RegionKey">
+			<xsd:selector xpath="Organizations/Organization/Address" />
+			<xsd:field xpath="@regionRef" />
+		</xsd:keyref>
+		
+
+		<!-- Key/keyref pairs linking a City from Locations
+		to Crises, Organizations, or People table (sub-element "References") -->
+		<xsd:key name="CityKey">
+			<xsd:selector xpath="Locations/Cities/City" />
+			<xsd:field xpath="@cityKey" />
+		</xsd:key>
+		<xsd:keyref name="CrisisCityKeyRef" refer="CityKey">
+			<xsd:selector xpath="Crises/Crisis/Location" />
+			<xsd:field xpath="@cityRef" />
+		</xsd:keyref>
+		<xsd:keyref name="OrganizationCityKeyRef" refer="CityKey">
+			<xsd:selector xpath="Organizations/Organization/Address" />
+			<xsd:field xpath="@cityRef" />
+		</xsd:keyref>
+		<xsd:keyref name="PersonCityKeyRef" refer="CityKey">
+			<xsd:selector xpath="People/Person/Location" />
+			<xsd:field xpath="@cityRef" />
+		</xsd:keyref>
+		
+		
+		<xsd:key name="urlTypeKey">
+			<xsd:selector xpath="Types/UrlTypes/UrlType" />
+			<xsd:field xpath="@urlTypeKey" />
+		</xsd:key>	
+		<xsd:keyref name="urlTypeKeyRef" refer="urlTypeKey">
+			<xsd:selector xpath="Urls/Url" />
+			<xsd:field xpath="@urlTypeRef" />
+		</xsd:keyref>
+		
+		<xsd:key name="urlFullKey">
+			<xsd:selector xpath="Urls/Url" />
+			<xsd:field xpath="@urlKey" />
+		</xsd:key>
+		<xsd:keyref name="fullURLToCrisisRef" refer="urlFullKey">
+			<xsd:selector xpath="Crises/Crisis/Urls/Url" />
+			<xsd:field xpath="@urlRef" />
+		</xsd:keyref>
+		<xsd:keyref name="fullURLToOrgRef" refer="urlFullKey">
+			<xsd:selector xpath="Organizations/Organization/Urls/Url" />
+			<xsd:field xpath="@urlRef" />
+		</xsd:keyref>
+		<xsd:keyref name="fullURLToPersonRef" refer="urlFullKey">
+			<xsd:selector xpath="People/Person/Urls/Url" />
+			<xsd:field xpath="@urlRef" />
+		</xsd:keyref>
+	
+		<xsd:key name="pTypeKey">
+			<xsd:selector xpath="Types/PersonTypes/PersonType" />
+			<xsd:field xpath="@personTypeKey" />
+		</xsd:key>
+		<xsd:keyref name="pTypeKeyRef" refer="pTypeKey">
+			<xsd:selector xpath="People/Person/PersonType" />
+			<xsd:field xpath="@personTypeRef" />
+		</xsd:keyref>
+		
+		<xsd:key name="oTypeKey">
+			<xsd:selector xpath="Types/OrgTypes/OrgType" />
+			<xsd:field xpath="@orgTypeKey" />
+		</xsd:key>
+		<xsd:keyref name="oTypeKeyRef" refer="oTypeKey">
+			<xsd:selector xpath="Organizations/Organization/OrgType" />
+			<xsd:field xpath="@orgTypeRef" />
+		</xsd:keyref>
+	</xsd:element>
+	
+	<!-- Define tables "Crises", "Organizations", "People",
+	"Locations", "URLS", "Types", and "Resources" -->
+	
+	<!-- Crises table with two sub-elements: Crisis (defines the crisis),
+	References (links Orgs and People) -->
+	<xsd:complexType name="CrisesType">
+		<xsd:sequence>
+			<xsd:element name="Crisis">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CrisisName" type="xsd:string" />
+						<xsd:element name="Date" type="xsd:date" />
+						<xsd:element name="Description" type="xsd:string" />
+						<xsd:element name="CrisisType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="Natural" />
+									<xsd:enumeration value="Non-natural" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<!-- Location: Empty element with 4 attributes that are keyrefs -->
+						<xsd:element name="Location">
+							<xsd:complexType>
+								<xsd:attribute name="countryRef" type="xsd:string" />
+								<xsd:attribute name="regionRef" type="xsd:string" />
+								<xsd:attribute name="cityRef" type="xsd:string" />
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Urls">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Url" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:attribute name="urlRef" type="xsd:string" />
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="HumanImpact">
+							<xsd:complexType>
+								<xsd:attribute name="casualties" type="xsd:integer" use="optional" />
+								<xsd:attribute name="numAffected" type="xsd:integer" use="optional" />
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="EconomicImpact" type="xsd:integer" />
+						<xsd:element name="WaysToHelp" type="xsd:string" />
+						<xsd:element name="Resources">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Resource" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:attribute name="resRef" type="xsd:string"/>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>						
+						</xsd:element>
+						<xsd:element name="References">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="OrgReferences" minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:sequence>
+											<!-- OrgReference: Empty element with a keyref attribute to OrgKey -->
+											<xsd:element name="OrgReference" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="orgRef" type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="PersonReferences" minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:sequence>
+											<!-- PersonReference: Empty element with a keyref attribute to PersonKey -->
+											<xsd:element name="PersonReference" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="personRef"  type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					</xsd:sequence>
+					<!-- CrisisKey is a key that will be referenced by People and Organizations -->
+					<xsd:attribute name="crisisKey" type="xsd:string"
+								use="required" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="PeopleType">
+		<xsd:sequence>
+			<xsd:element name="Person" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="FirstName" type="xsd:string" />
+						<xsd:element name="LastName" type="xsd:string" />
+						<xsd:element name="PersonType">
+							<xsd:complexType>
+								<xsd:attribute name="personTypeRef" type="xsd:string" use="required" />
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Birthdate" type="xsd:date" />
+						<xsd:element name="Deathdate" type="xsd:date"
+									minOccurs="0" maxOccurs="1" />
+						<xsd:element name="Gender">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="Male" />
+									<xsd:enumeration value="Female" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Location">
+							<xsd:complexType>
+								<xsd:attribute name="countryRef" type="xsd:string" />
+								<xsd:attribute name="regionRef" type="xsd:string" use="optional" />
+								<xsd:attribute name="cityRef" type="xsd:string" />
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Urls">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Url" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:attribute name="urlRef" type="xsd:string" />
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="References">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="OrgReferences" minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="OrgReference" minOccurs="0" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="orgRef" type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="CrisisReferences" minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="CrisisReference" minOccurs="0" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="crisisRef"  type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="personKey" type="xsd:string" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="OrganType">
+		<xsd:sequence>
+			<xsd:element name="Organization" maxOccurs="unbounded">
+				<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="OrgName" type="xsd:string" />
+					<xsd:element name="Description" type="xsd:string" />
+					<xsd:element name="OrgType">
+						<xsd:complexType>
+							<xsd:attribute name="orgTypeRef" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="History" type="xsd:string" />
+					<xsd:element name="Phone" type="xsd:string" />
+					<xsd:element name="Email" type="xsd:anyURI" />
+					<xsd:element name="Address">
+						<xsd:complexType mixed="true">
+							<xsd:sequence>
+							<xsd:element name="Street" type="xsd:string" />
+							<xsd:element name="Zip" type="xsd:integer" minOccurs="0" maxOccurs="1" />
+							</xsd:sequence>
+							<xsd:attribute name="cityRef" type="xsd:string" />
+							<xsd:attribute name="regionRef" type="xsd:string" use="optional" />
+							<xsd:attribute name="countryRef" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Urls">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Url" maxOccurs="unbounded">
+									<xsd:complexType>
+										<xsd:attribute name="urlRef" type="xsd:string" />
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="References">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CrisisReferences" minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="CrisisReference" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="crisisRef" type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="PersonReferences" minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="PersonReference" maxOccurs="unbounded">
+												<xsd:complexType>
+													<xsd:attribute name="personRef"  type="xsd:string" />
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="orgKey" type="xsd:string" use="required" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="LinkType">
+		<xsd:sequence>
+			<xsd:element name="UrlInstance" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="urlKey" type="xsd:string" />
+							<xsd:attribute name="urlTypeRef" type="xsd:string" />
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="LocationType">
+		<xsd:sequence>
+			<xsd:element name="Countries">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="Country" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="countryKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>					
+							</xsd:complexType>
+					</xsd:element>	
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Regions">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="Region" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="regionKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>					
+							</xsd:complexType>
+					</xsd:element>	
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>		
+			<xsd:element name="Cities">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="City" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="cityKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>					
+							</xsd:complexType>
+						</xsd:element>	
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TypesTable">
+		<xsd:sequence>
+			<xsd:element name="PeopleTypes">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PersonType" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="personTypeKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="OrgTypes">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="OrgType" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="orgTypeKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="UrlTypes">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UrlType" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="urlTypeKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ResTypes">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ResType" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="resTypeKey" type="xsd:string" />
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>	
+
+		
