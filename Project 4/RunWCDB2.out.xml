@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorldCrises>
+	<Crisis crisisIdent="CCD">
+		<Name>Chernobyl Disaster</Name>
+		<Kind crisisKindIdent="Natural"/>
+		<Location>
+			<Locality>Pripyat</Locality>
+			<Region>Kiev</Region>
+			<Country>Ukraine</Country>
+		</Location>
+		<StartDateTime>
+			<Date>1986-04-26</Date>
+			<Time>01:23:00</Time>
+		</StartDateTime>
+		<EndDateTime>
+			<Date>1986-04-26</Date>
+			<Time>23:59:59</Time>
+		</EndDateTime>
+		<HumanImpact>
+			<Type>Casualties</Type>
+			<Number>31</Number>
+		</HumanImpact>
+		<HumanImpact>
+			<Type>Affected</Type>
+			<Number>500000</Number>
+		</HumanImpact>
+		<EconomicImpact>588M USD</EconomicImpact>
+		<ResourceNeeded>Labor</ResourceNeeded>
+		<ResourceNeeded>Transportation</ResourceNeeded>
+		<ResourceNeeded>Money</ResourceNeeded>
+		<ResourceNeeded>Shelter</ResourceNeeded>
+		<WaysToHelp>Providing room and board for refugees</WaysToHelp>
+		<WaysToHelp>Medical care for those affected</WaysToHelp>
+		<ExternalResources>
+			<ImageURL>http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg</ImageURL>
+			<ExternalLinkURL>http://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</ExternalLinkURL>
+			<ExternalLinkURL>http://www.iaea.org/newscenter/focus/chernobyl/</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedPersons>
+			<RelatedPerson personIdent="PRR"/>
+		</RelatedPersons>
+		<RelatedOrganizations>
+			<RelatedOrganization organizationIdent="OIAEA"/>
+			<RelatedOrganization organizationIdent="OUN"/>
+		</RelatedOrganizations>
+	</Crisis>
+	<Crisis crisisIdent="CTMIA">
+		<Name>Three Mile Island Accident</Name>
+		<Kind crisisKindIdent="NonNatural"/>
+		<Location>
+			<Locality>Harrisburg</Locality>
+			<Region>Pennsylvania</Region>
+			<Country>United States</Country>
+		</Location>
+		<StartDateTime>
+			<Date>1979-03-28</Date>
+			<Time>04:00:00</Time>
+		</StartDateTime>
+		<EndDateTime>
+			<Date>1979-03-28</Date>
+			<Time>23:59:59</Time>
+		</EndDateTime>
+		<HumanImpact>
+			<Type>Casualties</Type>
+			<Number>0</Number>
+		</HumanImpact>
+		<EconomicImpact>1B USD</EconomicImpact>
+		<ResourceNeeded>Labor</ResourceNeeded>
+		<ResourceNeeded>Transportation</ResourceNeeded>
+		<ResourceNeeded>Money</ResourceNeeded>
+		<ResourceNeeded>Shelter</ResourceNeeded>
+		<WaysToHelp>Room and board for refugees</WaysToHelp>
+		<WaysToHelp>Cleanup</WaysToHelp>
+		<ExternalResources>
+			<ExternalLinkURL>http://www.pbs.org/wgbh/amex/three/peopleevents/pandeAMEX86.html</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedPersons>
+			<RelatedPerson personIdent="PJC"/>
+		</RelatedPersons>
+		<RelatedOrganizations>
+			<RelatedOrganization organizationIdent="OIAEA"/>
+		</RelatedOrganizations>
+	</Crisis>
+	<Organization organizationIdent="ORC">
+		<Name>Red Crescent</Name>
+		<Kind organizationKindIdent="OTPU"/>
+		<Location>
+			<Locality>Geneva</Locality>
+			<Region>Western</Region>
+			<Country>Switzerland</Country>
+		</Location>
+		<History>The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention. </History>
+		<ContactInfo>
+			<Telephone>12123380161</Telephone>
+			<Fax>12123380161</Fax>
+			<Email>admin@redcrescentpenang.org.my</Email>
+			<PostalAddress>
+				<StreetAddress>P.O. Box 303</StreetAddress>
+				<Locality>Geneva</Locality>
+				<Region>Western</Region>
+				<PostalCode>1236</PostalCode>
+				<Country>Switzerland</Country>
+			</PostalAddress>
+		</ContactInfo>
+		<ExternalResources>
+			<Citation>IFRC, IranicaOnline, Wikipedia</Citation>
+			<ExternalLinkURL>http://www.ifrc.org/en/news-and-media/news-stories/international/red-cross-continues-response-to-widening-sars-threat/</ExternalLinkURL>
+			<ExternalLinkURL>http://www.iranicaonline.org/articles/bam-earthquake-2003</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises/>
+		<RelatedPersons/>
+	</Organization>
+	<Organization organizationIdent="OPH">
+		<Name>Partners in Health</Name>
+		<Kind organizationKindIdent="OTPU"/>
+		<Location>
+			<Locality>Boston</Locality>
+			<Region>Massachusetts</Region>
+			<Country>United States</Country>
+		</Location>
+		<History>PIH was founded in 1987 to deliver health care to the residents of Haitis mountainous Central Plateau region.</History>
+		<ContactInfo>
+			<Telephone>16179988922</Telephone>
+			<Fax>16179988922</Fax>
+			<Email>americorpsnational@cns.gov</Email>
+			<PostalAddress>
+				<StreetAddress>888 Commonwealth Ave</StreetAddress>
+				<Locality>Boston</Locality>
+				<Region>Massachusetts</Region>
+				<PostalCode>02215</PostalCode>
+				<Country>United States</Country>
+			</PostalAddress>
+		</ContactInfo>
+		<ExternalResources>
+			<ExternalLinkURL>http://www.pih.org/</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises/>
+		<RelatedPersons/>
+	</Organization>
+	<Organization organizationIdent="OAC">
+		<Name>Americorps</Name>
+		<Kind organizationKindIdent="OTGO"/>
+		<Location>
+			<Locality>New York City</Locality>
+			<Region>New York</Region>
+			<Country>United States</Country>
+		</Location>
+		<History>The reasoning behind AmeriCorps comes from a long historical tradition of community service through civic associations.</History>
+		<ContactInfo>
+			<Telephone>2026065000</Telephone>
+			<Fax>2026065000</Fax>
+			<Email>americorpsnational@cns.gov</Email>
+			<PostalAddress>
+				<StreetAddress>1201 New York Avenue</StreetAddress>
+				<Locality>New York City</Locality>
+				<Region>New York</Region>
+				<PostalCode>20525</PostalCode>
+				<Country>United States</Country>
+			</PostalAddress>
+		</ContactInfo>
+		<ExternalResources>
+			<Citation>nationalservice.gov</Citation>
+			<ExternalLinkURL>http://www.nationalservice.gov/about/newsroom/releases_detail.asp?tbl_pr_id=2099</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises/>
+		<RelatedPersons/>
+	</Organization>
+	<Person personIdent="PMK">
+		<Name>
+			<FirstName>Mohammad</FirstName>
+			<MiddleName/>
+			<LastName>Khatami</LastName>
+			<Suffix/>
+		</Name>
+		<Kind personKindIdent="PTPO"/>
+		<Location>
+			<Locality>Tehran</Locality>
+			<Region>Bam</Region>
+			<Country>Iran</Country>
+		</Location>
+		<ExternalResources>
+			<Citation>Wikipedia</Citation>
+			<ExternalLinkURL>http://en.wikipedia.org/wiki/Mohammad_Khatami</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises/>
+		<RelatedOrganizations/>
+	</Person>
+	<Person personIdent="PKA">
+		<Name>
+			<FirstName>Kofi</FirstName>
+			<MiddleName>Atta</MiddleName>
+			<LastName>Annan</LastName>
+			<Suffix/>
+		</Name>
+		<Kind personKindIdent="PTHO"/>
+		<Location>
+			<Locality>Kumasi</Locality>
+			<Region>Ashanti</Region>
+			<Country>Ghana</Country>
+		</Location>
+		<ExternalResources>
+			<Citation>UN.org</Citation>
+			<ExternalLinkURL>http://www.un.org/sg/formersg/annan.shtml</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises/>
+		<RelatedOrganizations>
+			<RelatedOrganization organizationIdent="OUN"/>
+		</RelatedOrganizations>
+	</Person>
+	<CrisisKind crisisKindIdent="Natural">
+		<Name>Natural</Name>
+		<Description>A natural disaster that was not brought on by humankind: earthquake, tsunami, flooding, etc.</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="NonNatural">
+		<Name>Non-Natural Disaster</Name>
+		<Description>Disaster brought on by humans: attacks, war, biological, etc.</Description>
+	</CrisisKind>
+	<OrganizationKind organizationKindIdent="OTHU">
+		<Name>Humanitarian</Name>
+		<Description>Concerned with or seeking to promote human welfare</Description>
+	</OrganizationKind>
+	<OrganizationKind organizationKindIdent="OTPU">
+		<Name>Health</Name>
+		<Description>Designed to promote health relief and education</Description>
+	</OrganizationKind>
+	<OrganizationKind organizationKindIdent="OTPS">
+		<Name>Public Service</Name>
+		<Description>Groups dedicated to helping the public and its instutions</Description>
+	</OrganizationKind>
+	<OrganizationKind organizationKindIdent="OTDR">
+		<Name>Disaster Relief</Name>
+		<Description>Providing relief to areas of recent/ongoing disaster whether natural or non-natural.</Description>
+	</OrganizationKind>
+	<OrganizationKind organizationKindIdent="OTGO">
+		<Name>Governmental Organization</Name>
+		<Description>Administrative unit of the government designed to improve a specific area.</Description>
+	</OrganizationKind>
+	<PersonKind personKindIdent="PTHU">
+		<Name>Humanitarian</Name>
+		<Description>Having the interests of mankind at heart</Description>
+	</PersonKind>
+	<PersonKind personKindIdent="PTHO">
+		<Name>Head of Organization</Name>
+		<Description>Leader/CEO/Owner of an organization. The person in charge</Description>
+	</PersonKind>
+	<PersonKind personKindIdent="PTRE">
+		<Name>Researcher</Name>
+		<Description>A person designated to study and gather information.</Description>
+	</PersonKind>
+	<PersonKind personKindIdent="PTBU">
+		<Name>Businessman/woman</Name>
+		<Description>A person in the business of selling/trading goods</Description>
+	</PersonKind>
+	<PersonKind personKindIdent="PTPO">
+		<Name>Politician</Name>
+		<Description>A person who is professionally involved in politics (The activities associated with the governance of a country or area)</Description>
+	</PersonKind>
+	<PersonKind personKindIdent="PTVI">
+		<Name>Victim</Name>
+		<Description>A person harmed, injured, or killed as a result of a crime, accident, or other event or action.</Description>
+	</PersonKind>
+</WorldCrises>
