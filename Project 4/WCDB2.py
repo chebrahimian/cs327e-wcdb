@@ -4,6 +4,11 @@ import re
 import _mysql
 
 def sqlLogin ( loginInfo ) :
+    """
+    logs in to a sql database using the given login info
+    loginInfo is a list of [ hostname, username, password, database ]
+    returns the mysql connection
+    """
     c = _mysql.connect(
         host = loginInfo [ 0 ],
         user = loginInfo [ 1 ],
@@ -12,15 +17,13 @@ def sqlLogin ( loginInfo ) :
     assert str(type(c)) == "<type '_mysql.connection'>"
     return c
 
-def sqlClose () :
-    c = _mysql.connect(
-        host = loginInfo [ 0 ],
-        user = loginInfo [ 1 ],
-        passwd = loginInfo [ 2 ] )
-    assert str(type(c)) == "<type '_mysql.connection'>"
-    return c
-
 def sqlQuery (c, s) :
+    """
+    queries the mysql database
+    c is the mysql connection
+    s is the query
+    returns the result of the query (a tuple)
+    """
     assert str(type(c)) == "<type '_mysql.connection'>"
     assert type(s)      is str
     c.query(s)
@@ -33,11 +36,14 @@ def sqlQuery (c, s) :
     return t
 
 def parseArgs ( args ) :
+    """
+    parses the command line arguments into [ hostname, user, password, database ]
+    args are the command line arguments
+    """
     loginInfo = []
     for s in args :
         loginInfo.append ( s )
-    for i in range ( 0 , 3 ) :
-        loginInfo.pop ( 0 )
+    loginInfo.pop ( 0 )
     return loginInfo
 
 def importXml ( r ):
@@ -59,7 +65,6 @@ def exportXml ( w, xml ):
     w is the writer
     xml is an ElementTree
     """
-    #rawText = ET.tostring ( xml )
     rawText = xml
     pattern = re.compile (r'[^\S ]+')
     text = re.sub ( pattern, "", rawText )
@@ -67,6 +72,10 @@ def exportXml ( w, xml ):
     w.write ( reparsed.toprettyxml ( indent = "\t", encoding = "UTF-8" ) )
 
 def createTables ( c ) :
+    """
+    clears the mysql database of previous tables if they exist, then inserts the new tables with their datatypes
+    c is the mysql connection
+    """
     sqlQuery ( c, "drop table if exists Crises;" )
     sqlQuery ( c, "drop table if exists Organizations;" )
     sqlQuery ( c, "drop table if exists People;" )
@@ -86,7 +95,7 @@ def createTables ( c ) :
     sqlQuery ( c, "drop table if exists PersonKind;" )
     sqlQuery ( c, "drop table if exists CrisisKind;" )
     
-    sqlQuery ( c, "create table Crises ( crisisID text, name text, crisisKindID text, startDate date, startTime time, economicImpact text );" )
+    sqlQuery ( c, "create table Crises ( crisisID text, name text, crisisKindID text, startDate date, startTime time, endDate date, endTime time, economicImpact text );" )
     sqlQuery ( c, "create table Organizations ( orgID text, name text, orgKindID text, history text, phone bigint, fax bigint, email text, address text, locality text, region text, postalCode text, country text );" )
     sqlQuery ( c, "create table People ( personID text, firstName text, middleName text, lastName text, suffix text, personKindID text );" )
     sqlQuery ( c, "create table CrisisLocations ( crisisID text, locality text, region text, country text );" )
@@ -106,61 +115,56 @@ def createTables ( c ) :
     sqlQuery ( c, "create table CrisisKind ( crisisKindID text, name text, description text );" )
     sqlQuery ( c, "show tables;" )
 
-def addTestData ( c ) :
-    sqlQuery ( c, "insert into Organizations values ( 'ORC', 'Red Crescent', 'OTPU', 'The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention.', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', '1236' );" )
-    sqlQuery ( c, "insert into OrganizationLocations values ( 'ORC', 'Geneva', 'Western', 'Switzerland' );" )
-    sqlQuery ( c, "insert into OrganizationExternalResources values ( 'ORC', 'Citation', 'IFRC, IranicaOnline, Wikipedia' );" )
-    sqlQuery ( c, "insert into OrganizationExternalResources values ( 'ORC', 'ExternalLinkURL', 'http://www.ifrc.org/en/news-and-media/news-stories/international/red-cross-continues-response-to-widening-sars-threat/' );" )
-    sqlQuery ( c, "insert into OrganizationExternalResources values ( 'ORC', 'ExternalLinkURL', 'http://www.iranicaonline.org/articles/bam-earthquake-2003' );" )
-    sqlQuery ( c, "insert into OrganizationsToCrises values ( 'ORC', 'CIE' );" )
-    sqlQuery ( c, "insert into OrganizationsToCrises values ( 'ORC', 'CSO' );" )
-
-    sqlQuery ( c, "insert into Crises values ( 'CCD', 'Chernobyl Disaster', 'Natural', '1986-04-26', '01:23:00', '588M USD' );" )
-    sqlQuery ( c, "insert into CrisisLocations values ( 'CCD', 'Pripyat', 'Kiev', 'Ukraine' );" )
-    sqlQuery ( c, "insert into HumanImpact values ( 'CCD', 'Casualties', 31 );" )
-    sqlQuery ( c, "insert into HumanImpact values ( 'CCD', 'Affected', 500000 );" )
-    sqlQuery ( c, "insert into ResourceNeeded values ( 'CCD', 'Labor' );" )
-    sqlQuery ( c, "insert into ResourceNeeded values ( 'CCD', 'Transportation' );" )
-    sqlQuery ( c, "insert into ResourceNeeded values ( 'CCD', 'Money' );" )
-    sqlQuery ( c, "insert into ResourceNeeded values ( 'CCD', 'Shelter' );" )
-    sqlQuery ( c, "insert into WaysToHelp values ( 'CCD', 'Providing room and board for refugees' );" )
-    sqlQuery ( c, "insert into WaysToHelp values ( 'CCD', 'Medical care for those affected' );" )
-    sqlQuery ( c, "insert into CrisisExternalResources values ( 'CCD', 'ImageURL', 'http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg' );" )
-    sqlQuery ( c, "insert into CrisisExternalResources values ( 'CCD', 'ExternalLinkURL', 'http://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union' );" )
-    sqlQuery ( c, "insert into CrisisExternalResources values ( 'CCD', 'ExternalLinkURL', 'http://www.iaea.org/newscenter/focus/chernobyl/' );" )
-    sqlQuery ( c, "insert into CrisesToPeople values ( 'CCD', 'PRR' );" )
-    sqlQuery ( c, "insert into OrganizationsToCrises values ( 'OIAEA', 'CCD' );" )
-    sqlQuery ( c, "insert into OrganizationsToCrises values ( 'OUN', 'CCD' );" )
-    
-    sqlQuery ( c, "insert into People values ( 'PKA', 'Kofi', 'Atta', 'Annan', '', 'PTHO' );" )
-    sqlQuery ( c, "insert into PeopleLocations values ( 'PKA', 'Kumasi', 'Ashanti', 'Ghana' );" )
-    sqlQuery ( c, "insert into PeopleToOrganizations values ( 'PKA', 'OUN' );" )
-    
-    sqlQuery ( c, "insert into OrganizationKind values ( 'OTGO', 'Governmental Organization', 'Administrative unit of the government designed to improve a specific area.' );" )
-    sqlQuery ( c, "insert into PersonKind values ( 'PTVI', 'Victim', 'A person harmed, injured, or killed as a result of a crime, accident, or other event or action.' );" )
-    sqlQuery ( c, "insert into CrisisKind values ( 'Natural', 'Natural', 'A natural disaster that was not brought on by humankind: earthquake, tsunami, flooding, etc.' );" )
-
 def openTagAtt ( x, attName, attVal ):
+    """
+    builds a string of an opening xml element with a chosen tag, attribute, and value
+    x is the tag
+    attName is the attribute name
+    attVal is the attribute value
+    """
     tag = "<" + str ( x ) + " " + str ( attName ) + "='" + str ( attVal ) +"'>"
     return tag
 
 def closeTagAtt ( x, attName, attVal ):
+    """
+    builds a string of an opening and closing xml element with a chosen tag, attribute, and value
+    x is the tag
+    attName is the attribute name
+    attVal is the attribute value
+    """
     tag = "<" + str ( x ) + " " + str ( attName ) + "='" + str ( attVal ) +"'/>"
     return tag
 
 def openTag ( x ):
+    """
+    builds a string of an opening xml element with a chosen tag
+    x is the tag
+    """
     tag = "<" + str ( x ) + ">"
     return tag
 
 def openCloseTag ( x, text ):
+    """
+    builds a string of an opening and closing xml element with a chosen tag and inner text
+    x is the tag
+    text is the text
+    """
     tag = "<" + str ( x ) + ">" + text + "</" + str ( x ) + ">"
     return tag
 
 def closeTag ( x ):
+    """
+    builds a string of a closing xml element with a chosen tag
+    x is the tag
+    """
     tag = "</" + str ( x ) + ">"
     return tag
 
 def exportCrises ( c ) :
+    """
+    exports the crises from the mysql database
+    c is the mysql database connection
+    """
     xml = ""
     cr = sqlQuery ( c, "select * from Crises;" )
     for i in cr :
@@ -184,12 +188,16 @@ def exportCrises ( c ) :
         xml += openCloseTag ( "Date", i [ 3 ] )
         xml += openCloseTag ( "Time", i [ 4 ] )
         xml += closeTag ( "StartDateTime" )
+        xml += openTag ( "EndDateTime" )
+        xml += openCloseTag ( "Date", i [ 5 ] )
+        xml += openCloseTag ( "Time", i [ 6 ] )
+        xml += closeTag ( "EndDateTime" )
         for j in hI :
             xml += openTag ( "HumanImpact" )
             xml += openCloseTag ( "Type", j [ 1 ] )
             xml += openCloseTag ( "Number", j [ 2 ] )
             xml += closeTag ( "HumanImpact" )
-        xml += openCloseTag ( "EconomicImpact", i [ 5 ] )
+        xml += openCloseTag ( "EconomicImpact", i [ 7 ] )
         for j in rN :
             xml += openCloseTag ( "ResourceNeeded", j [ 1 ] )
         for j in wTH :
@@ -210,13 +218,17 @@ def exportCrises ( c ) :
     return xml
 
 def exportOrgs ( c ) :
+    """
+    exports the organizations from the mysql database
+    c is the mysql database connection
+    """
     xml = ""
     o = sqlQuery ( c, "select * from Organizations;" )
     for i in o:
         oL = sqlQuery ( c, "select * from OrganizationLocations where orgID = '"+i[0]+"';" )
         oER = sqlQuery ( c, "select * from OrganizationExternalResources where orgID = '"+i[0]+"';" )
         oTC = sqlQuery ( c, "select * from OrganizationsToCrises where orgID = '"+i[0]+"';" )
-        oTP = sqlQuery ( c, "select * from PeopleToOrganizations where orgID = '"+i[0]+"';" )
+        pTO = sqlQuery ( c, "select * from PeopleToOrganizations where orgID = '"+i[0]+"';" )
         xml += openTagAtt ( "Organization", "organizationIdent", i[0])
         xml += openCloseTag ( "Name", i[1])
         xml += closeTagAtt ( "Kind", "organizationKindIdent", i[2])
@@ -227,6 +239,7 @@ def exportOrgs ( c ) :
             xml += openCloseTag ( "Country", j [ 3 ] )
             xml += closeTag ( "Location" )
         xml += openCloseTag ("History", i[3])
+        xml += openTag ( "ContactInfo" )
         xml += openCloseTag ("Telephone", i[4])
         xml += openCloseTag ("Fax", i[5])
         xml += openCloseTag ("Email", i[6])
@@ -236,6 +249,8 @@ def exportOrgs ( c ) :
         xml += openCloseTag ( "Region", i[9])
         xml += openCloseTag ( "PostalCode", i[10])
         xml += openCloseTag ( "Country", i[11])
+        xml += closeTag ( "PostalAddress" )
+        xml += closeTag ( "ContactInfo" )
         xml += openTag ("ExternalResources")
         for j in oER:
             xml += openCloseTag ( j[1], j[2])
@@ -245,14 +260,17 @@ def exportOrgs ( c ) :
             xml += closeTagAtt ("RelatedCrisis", "crisisIdent", j[1])
         xml += closeTag ("RelatedCrises")
         xml += openTag ("RelatedPersons")
-        for j in oTP:
-            xml += closeTagAtt ("RelatedPerson", "personIdent", j[1])
+        for j in pTO:
+            xml += closeTagAtt ("RelatedPerson", "personIdent", j[0])
         xml += closeTag ("RelatedPersons")
         xml += closeTag ("Organization")
-        test = ET.fromstring ( xml )
     return xml
 
 def exportPeople ( c ) :
+    """
+    exports the people from the mysql database
+    c is the mysql database connection
+    """
     xml = ""
     p = sqlQuery ( c, "select * from People;" )
     for i in p :
@@ -278,18 +296,22 @@ def exportPeople ( c ) :
         for j in pER :
             xml += openCloseTag ( j [ 1 ] , j [ 2 ] )
         xml += closeTag ( "ExternalResources" )
-        xml += openTag ( "RelatedOrganizations" )
-        for j in pTO :
-            xml += closeTagAtt ( "RelatedOrganization" , "personIdent", j [ 1 ] )
-        xml += closeTag ( "RelatedOrganizations" )
         xml += openTag ( "RelatedCrises" )
         for j in cTP :
             xml += closeTagAtt ( "RelatedCrisis" , "crisisIdent", j [ 0 ] )
         xml += closeTag ( "RelatedCrises" )
-        xml += closeTag ( "Crisis" )
+        xml += openTag ( "RelatedOrganizations" )
+        for j in pTO :
+            xml += closeTagAtt ( "RelatedOrganization" , "organizationIdent", j [ 1 ] )
+        xml += closeTag ( "RelatedOrganizations" )
+        xml += closeTag ( "Person" )
     return xml
 
 def exportTypes( c ) :
+    """
+    exports the crisis, organization, and person types from the mysql database
+    c is the mysql database connection
+    """
     xml = ""
     cT = sqlQuery ( c, "select * from CrisisKind;" )
     oT = sqlQuery ( c, "select * from OrganizationKind;" )
@@ -304,7 +326,7 @@ def exportTypes( c ) :
         xml += openCloseTag ("Name", i[1])
         xml += openCloseTag ("Description", i[2])
         xml += closeTag ("OrganizationKind")
-    for i in oT:
+    for i in pT:
         xml += openTagAtt ("PersonKind", "personKindIdent", i[0])
         xml += openCloseTag ("Name", i[1])
         xml += openCloseTag ("Description", i[2])
@@ -312,7 +334,11 @@ def exportTypes( c ) :
     return xml
 
 def importCrisis ( c, crisisInstance ):
-    
+    """
+    imports an Element of type Crisis into the mysql database
+    c is the mysql database connection
+    crisisInstance is the element
+    """    
     crisisID = crisisInstance.attrib["crisisIdent"]
     
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
@@ -371,17 +397,32 @@ def importCrisis ( c, crisisInstance ):
     #Finds values of remaining elements and inserts into Crises table
     name = crisisInstance.find("Name").text
     kind = crisisInstance.find("Kind").attrib["crisisKindIdent"]
-    dateTime = crisisInstance.find("StartDateTime")
-    startDate = dateTime[0].text
-    if len(dateTime) > 1:
-        startTime = dateTime[1].text
+    startDateTime = crisisInstance.find("StartDateTime")
+    startDate = startDateTime[0].text
+    if len(startDateTime) > 1:
+        startTime = startDateTime[1].text
     else:
         startTime = '00:00:00'
+    endDateTime = crisisInstance.find("EndDateTime")
+    if endDateTime != None :
+        endDate = endDateTime[0].text
+        if len(endDateTime) > 1:
+            endTime = endDateTime[1].text
+        else:
+            endTime = '00:00:00'
+    else :
+        endDate = startDate
+        endTime = '23:59:59'
     econImpact = crisisInstance.find("EconomicImpact").text
 
-    sqlQuery ( c, "insert into Crises values ( '"+crisisID+"', '"+name+"', '"+kind+"', '"+startDate+"', '"+startTime+"', '"+econImpact+"');")
+    sqlQuery ( c, "insert into Crises values ( '"+crisisID+"', '"+name+"', '"+kind+"', '"+startDate+"', '"+startTime+"', '"+endDate+"', '"+endTime+"', '"+econImpact+"');")
 
 def importOrg ( c, orgInstance ):
+    """
+    imports an Element of type Organization into the mysql database
+    c is the mysql database connection
+    orgInstance is the element
+    """
     orgID = orgInstance.attrib["organizationIdent"]
 
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
@@ -412,6 +453,11 @@ def importOrg ( c, orgInstance ):
     sqlQuery (c , "insert into Organizations values ( '"+orgID+"', '"+name+"', '"+kind+"', '"+history+"', "+phone+", "+fax+", '"+email+"', '"+address+"', '"+locality+"', '"+region+"', '"+postalCode+"', '"+country+"');")
 
 def importPerson ( c, peopleInstance ):
+    """
+    imports an Element of type Person into the mysql database
+    c is the mysql database connection
+    personInstance is the element
+    """
     personID = peopleInstance.attrib["personIdent"]
         
     #Gets location sub elements in list. Inserts into PeopleLocation table by indexing list
@@ -440,25 +486,45 @@ def importPerson ( c, peopleInstance ):
     kind = peopleInstance.find("Kind").attrib["personKindIdent"]
     sqlQuery ( c, "insert into People values ( '"+personID+"', '"+firstName+"', '"+middleName+"', '"+lastName+"', '"+suffix+"', '"+kind+"');")
 
-def importCrisisKind ( c, crisisKindInstance ):    
+def importCrisisKind ( c, crisisKindInstance ):
+    """
+    imports an Element of type CrisisKind into the mysql database
+    c is the mysql database connection
+    crisisKindInstance is the element
+    """
     crisisKindID = crisisKindInstance.attrib["crisisKindIdent"]
     name = crisisKindInstance.find("Name").text
     description = crisisKindInstance.find("Description").text
     sqlQuery ( c, "insert into CrisisKind values ( '"+crisisKindID+"', '"+name+"', '"+description+"');")
 
-def importOrgKind ( c, orgKindInstance ):  
+def importOrgKind ( c, orgKindInstance ) :
+    """
+    imports an Element of type OrganizationKing into the mysql database
+    c is the mysql database connection
+    orgKindInstance is the element
+    """
     orgKindID = orgKindInstance.attrib["organizationKindIdent"]
     name = orgKindInstance.find("Name").text
     description = orgKindInstance.find("Description").text  
     sqlQuery ( c, "insert into OrganizationKind values ( '"+orgKindID+"', '"+name+"', '"+description+"');")
 
-def importPersonKind ( c, personKindInstance ):  
+def importPersonKind ( c, personKindInstance ) :
+    """
+    imports an Element of type PersonKind into the mysql database
+    c is the mysql database connection
+    personKindInstance is the element
+    """
     personKindID = personKindInstance.attrib["personKindIdent"]
     name = personKindInstance.find("Name").text
     description = personKindInstance.find("Description").text  
     sqlQuery ( c, "insert into PersonKind values ( '"+personKindID+"', '"+name+"', '"+description+"');")
 
 def importDB ( c, xml ) :
+    """
+    imports an ElementTree into the mysql database
+    c is the mysql database connection
+    xml is the ElementTree
+    """
     for e in xml :
         if e.tag == "Crisis" :
             importCrisis ( c, e )
@@ -474,6 +540,10 @@ def importDB ( c, xml ) :
             importPersonKind ( c, e )
 
 def exportDB ( c ) :
+    """
+    exports the mysql database to an xml document
+    c is the mysql database connection
+    """
     xml = openTag ( "WorldCrises" )
     xml += exportCrises ( c )
     xml += exportOrgs ( c )
@@ -484,9 +554,11 @@ def exportDB ( c ) :
     
 def start ( r, w, args ):
     """
-    imports an xml document into an ElementTree, then outputs the ElementTree back to a file
+    imports an xml document into an ElementTree, imports that ElementTree into a mysql database,
+    then outputs the mysql database to a valid xml document, which is then written to the output file
     r is the reader
     w is the writer
+    args are the commandline arguments
     """
     sqlLoginInfo = parseArgs ( args )
     sql = sqlLogin ( sqlLoginInfo )
