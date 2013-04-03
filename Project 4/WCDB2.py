@@ -9,6 +9,7 @@ def sqlLogin ( loginInfo ) :
     loginInfo is a list of [ hostname, username, password, database ]
     returns the mysql connection
     """
+    assert len ( loginInfo ) == 4
     c = _mysql.connect(
         host = loginInfo [ 0 ],
         user = loginInfo [ 1 ],
@@ -40,10 +41,12 @@ def parseArgs ( args ) :
     parses the command line arguments into [ hostname, user, password, database ]
     args are the command line arguments
     """
+    assert len ( args ) == 5
     loginInfo = []
     for s in args :
         loginInfo.append ( s )
     loginInfo.pop ( 0 )
+    assert len ( loginInfo ) == 4
     return loginInfo
 
 def importXml ( r ):
@@ -52,11 +55,13 @@ def importXml ( r ):
     r is the reader
     returns an ElementTree
     """
+    assert str ( type ( r ) ) == "<type 'file'>"
     rawText = r.read ()
     rawText = rawText.strip ()
     pattern = re.compile (r'[^\S ]+')
     text = re.sub ( pattern, '', rawText )
     xml = ET.fromstring ( text )
+    assert str ( type ( xml ) ) == "<class 'xml.etree.ElementTree.Element'>"
     return xml
 
 def exportXml ( w, xml ):
@@ -65,6 +70,8 @@ def exportXml ( w, xml ):
     w is the writer
     xml is an ElementTree
     """
+    assert str ( type ( w ) ) == "<type 'file'>"
+    assert str ( type ( xml ) ) == "<type 'str'>"
     rawText = xml
     pattern = re.compile (r'[^\S ]+')
     text = re.sub ( pattern, "", rawText )
@@ -76,6 +83,7 @@ def createTables ( c ) :
     clears the mysql database of previous tables if they exist, then inserts the new tables with their datatypes
     c is the mysql connection
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     sqlQuery ( c, "drop table if exists Crises;" )
     sqlQuery ( c, "drop table if exists Organizations;" )
     sqlQuery ( c, "drop table if exists People;" )
@@ -122,7 +130,11 @@ def openTagAtt ( x, attName, attVal ):
     attName is the attribute name
     attVal is the attribute value
     """
+    assert str(type(x)) == "<type 'str'>"
+    assert str(type(attName)) == "<type 'str'>"
+    assert str(type(attVal)) == "<type 'str'>"
     tag = "<" + str ( x ) + " " + str ( attName ) + "='" + str ( attVal ) +"'>"
+    assert str ( type ( tag ) ) == "<type 'str'>"
     return tag
 
 def closeTagAtt ( x, attName, attVal ):
@@ -132,7 +144,11 @@ def closeTagAtt ( x, attName, attVal ):
     attName is the attribute name
     attVal is the attribute value
     """
+    assert str(type(x)) == "<type 'str'>"
+    assert str(type(attName)) == "<type 'str'>"
+    assert str(type(attVal)) == "<type 'str'>"
     tag = "<" + str ( x ) + " " + str ( attName ) + "='" + str ( attVal ) +"'/>"
+    assert str ( type ( tag ) ) == "<type 'str'>"
     return tag
 
 def openTag ( x ):
@@ -140,7 +156,9 @@ def openTag ( x ):
     builds a string of an opening xml element with a chosen tag
     x is the tag
     """
+    assert str(type(x)) == "<type 'str'>"
     tag = "<" + str ( x ) + ">"
+    assert str ( type ( tag ) ) == "<type 'str'>"
     return tag
 
 def openCloseTag ( x, text ):
@@ -149,7 +167,10 @@ def openCloseTag ( x, text ):
     x is the tag
     text is the text
     """
+    assert str(type(x)) == "<type 'str'>"
+    assert str(type(text)) == "<type 'str'>"
     tag = "<" + str ( x ) + ">" + text + "</" + str ( x ) + ">"
+    assert str ( type ( tag ) ) == "<type 'str'>"
     return tag
 
 def closeTag ( x ):
@@ -157,7 +178,9 @@ def closeTag ( x ):
     builds a string of a closing xml element with a chosen tag
     x is the tag
     """
+    assert str(type(x)) == "<type 'str'>"
     tag = "</" + str ( x ) + ">"
+    assert str ( type ( tag ) ) == "<type 'str'>"
     return tag
 
 def exportCrises ( c ) :
@@ -165,6 +188,7 @@ def exportCrises ( c ) :
     exports the crises from the mysql database
     c is the mysql database connection
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     xml = ""
     cr = sqlQuery ( c, "select * from Crises;" )
     for i in cr :
@@ -215,6 +239,7 @@ def exportCrises ( c ) :
             xml += closeTagAtt ( "RelatedOrganization" , "organizationIdent", j [ 0 ] )
         xml += closeTag ( "RelatedOrganizations" )
         xml += closeTag ( "Crisis" )
+    assert str ( type ( xml ) ) == "<type 'str'>"
     return xml
 
 def exportOrgs ( c ) :
@@ -222,6 +247,7 @@ def exportOrgs ( c ) :
     exports the organizations from the mysql database
     c is the mysql database connection
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     xml = ""
     o = sqlQuery ( c, "select * from Organizations;" )
     for i in o:
@@ -264,6 +290,7 @@ def exportOrgs ( c ) :
             xml += closeTagAtt ("RelatedPerson", "personIdent", j[0])
         xml += closeTag ("RelatedPersons")
         xml += closeTag ("Organization")
+    assert str ( type ( xml ) ) == "<type 'str'>"
     return xml
 
 def exportPeople ( c ) :
@@ -271,6 +298,7 @@ def exportPeople ( c ) :
     exports the people from the mysql database
     c is the mysql database connection
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     xml = ""
     p = sqlQuery ( c, "select * from People;" )
     for i in p :
@@ -305,6 +333,7 @@ def exportPeople ( c ) :
             xml += closeTagAtt ( "RelatedOrganization" , "organizationIdent", j [ 1 ] )
         xml += closeTag ( "RelatedOrganizations" )
         xml += closeTag ( "Person" )
+    assert str ( type ( xml ) ) == "<type 'str'>"
     return xml
 
 def exportTypes( c ) :
@@ -312,6 +341,7 @@ def exportTypes( c ) :
     exports the crisis, organization, and person types from the mysql database
     c is the mysql database connection
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     xml = ""
     cT = sqlQuery ( c, "select * from CrisisKind;" )
     oT = sqlQuery ( c, "select * from OrganizationKind;" )
@@ -331,6 +361,7 @@ def exportTypes( c ) :
         xml += openCloseTag ("Name", i[1])
         xml += openCloseTag ("Description", i[2])
         xml += closeTag ("PersonKind")
+    assert str ( type ( xml ) ) == "<type 'str'>"
     return xml
 
 def importCrisis ( c, crisisInstance ):
@@ -339,6 +370,8 @@ def importCrisis ( c, crisisInstance ):
     c is the mysql database connection
     crisisInstance is the element
     """    
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str(type(crisisInstance)) == "<class 'xml.etree.ElementTree.Element'>"
     crisisID = crisisInstance.attrib["crisisIdent"]
     
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
@@ -423,6 +456,8 @@ def importOrg ( c, orgInstance ):
     c is the mysql database connection
     orgInstance is the element
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str(type(orgInstance)) == "<class 'xml.etree.ElementTree.Element'>"
     orgID = orgInstance.attrib["organizationIdent"]
 
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
@@ -458,6 +493,8 @@ def importPerson ( c, peopleInstance ):
     c is the mysql database connection
     personInstance is the element
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str(type(peopleInstance)) == "<class 'xml.etree.ElementTree.Element'>"
     personID = peopleInstance.attrib["personIdent"]
         
     #Gets location sub elements in list. Inserts into PeopleLocation table by indexing list
@@ -492,6 +529,8 @@ def importCrisisKind ( c, crisisKindInstance ):
     c is the mysql database connection
     crisisKindInstance is the element
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str(type(crisisKindInstance)) == "<class 'xml.etree.ElementTree.Element'>"
     crisisKindID = crisisKindInstance.attrib["crisisKindIdent"]
     name = crisisKindInstance.find("Name").text
     description = crisisKindInstance.find("Description").text
@@ -503,6 +542,8 @@ def importOrgKind ( c, orgKindInstance ) :
     c is the mysql database connection
     orgKindInstance is the element
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str(type(orgKindInstance)) == "<class 'xml.etree.ElementTree.Element'>"
     orgKindID = orgKindInstance.attrib["organizationKindIdent"]
     name = orgKindInstance.find("Name").text
     description = orgKindInstance.find("Description").text  
@@ -510,10 +551,13 @@ def importOrgKind ( c, orgKindInstance ) :
 
 def importPersonKind ( c, personKindInstance ) :
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     imports an Element of type PersonKind into the mysql database
     c is the mysql database connection
     personKindInstance is the element
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str(type(personKindInstance)) == "<class 'xml.etree.ElementTree.Element'>"
     personKindID = personKindInstance.attrib["personKindIdent"]
     name = personKindInstance.find("Name").text
     description = personKindInstance.find("Description").text  
@@ -525,6 +569,8 @@ def importDB ( c, xml ) :
     c is the mysql database connection
     xml is the ElementTree
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
+    assert str ( type ( xml ) ) == "<class 'xml.etree.ElementTree.Element'>"
     for e in xml :
         if e.tag == "Crisis" :
             importCrisis ( c, e )
@@ -544,12 +590,14 @@ def exportDB ( c ) :
     exports the mysql database to an xml document
     c is the mysql database connection
     """
+    assert str(type(c)) == "<type '_mysql.connection'>"
     xml = openTag ( "WorldCrises" )
     xml += exportCrises ( c )
     xml += exportOrgs ( c )
     xml += exportPeople ( c )
     xml += exportTypes ( c )
     xml += closeTag ( "WorldCrises" )
+    assert str ( type ( xml ) ) == "<type 'str'>"
     return xml
     
 def start ( r, w, args ):
