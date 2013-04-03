@@ -51,6 +51,41 @@ class TestWCDB2 (unittest.TestCase) :
         c.query(s)
         r = c.use_result()
         self.assert_str(type(r)) == "<type '_mysql.result'>"
+
+    def test_sqlQuery2 (self) :
+        c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        s = "create table HumanImpact ( crisisID text, type text, number int );"
+        t = "insert into HumanImpact values ( '123', 'deaths', 12);"
+        u = "select number from HumanImpact;"
+        a = sqlLogin(c)
+        self.assert_str(type(c)) == "<type '_mysql.connection'>" 
+        c.query(s)
+        c.query(t)
+        c.query(u)
+        r = c.use_result()
+        self.assert_str(type(r)) == "<type '_mysql.result'>"
+
+    def test_sqlQuery3 (self) :
+        c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        s = "create table HumanImpact ( crisisID text, type text, number int );"
+        t = "insert into HumanImpact values ( '123', 'deaths', 12);"
+        u = "select * from HumanImpact;"
+        a = sqlLogin(c)
+        self.assert_str(type(c)) == "<type '_mysql.connection'>" 
+        c.query(s)
+        c.query(t)
+        c.query(u)
+        r = c.use_result()
+        self.assert_str(type(r)) == "<type '_mysql.result'>"
+
+    # ---------
+    # parseArgs
+    # ---------
+
+    def test_parseArgs (self) :
+        jj = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        c = parseArgs(jj)
+        self.assert_c == [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
              
     # ---------
     # importXml
