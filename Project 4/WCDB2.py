@@ -59,7 +59,8 @@ def exportXml ( w, xml ):
     w is the writer
     xml is an ElementTree
     """
-    rawText = ET.tostring ( xml )
+    #rawText = ET.tostring ( xml )
+    rawText = xml
     pattern = re.compile (r'[^\S ]+')
     text = re.sub ( pattern, "", rawText )
     reparsed = MD.parseString ( text )
@@ -86,7 +87,7 @@ def createTables ( c ) :
     sqlQuery ( c, "drop table if exists CrisisKind;" )
     
     sqlQuery ( c, "create table Crises ( crisisID text, name text, crisisKindID text, startDate date, startTime time, economicImpact text );" )
-    sqlQuery ( c, "create table Organizations ( orgID text, name text, orgKindID text, history text, phone bigint, fax bigint, email text, address text, postalCode text );" )
+    sqlQuery ( c, "create table Organizations ( orgID text, name text, orgKindID text, history text, phone bigint, fax bigint, email text, address text, locality text, region text, postalCode text, country text );" )
     sqlQuery ( c, "create table People ( personID text, firstName text, middleName text, lastName text, suffix text, personKindID text );" )
     sqlQuery ( c, "create table CrisisLocations ( crisisID text, locality text, region text, country text );" )
     sqlQuery ( c, "create table PeopleLocations ( personID text, locality text, region text, country text );" )
@@ -106,7 +107,6 @@ def createTables ( c ) :
     sqlQuery ( c, "show tables;" )
 
 def addTestData ( c ) :
-    """
     sqlQuery ( c, "insert into Organizations values ( 'ORC', 'Red Crescent', 'OTPU', 'The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention.', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', '1236' );" )
     sqlQuery ( c, "insert into OrganizationLocations values ( 'ORC', 'Geneva', 'Western', 'Switzerland' );" )
     sqlQuery ( c, "insert into OrganizationExternalResources values ( 'ORC', 'Citation', 'IFRC, IranicaOnline, Wikipedia' );" )
@@ -139,10 +139,13 @@ def addTestData ( c ) :
     sqlQuery ( c, "insert into OrganizationKind values ( 'OTGO', 'Governmental Organization', 'Administrative unit of the government designed to improve a specific area.' );" )
     sqlQuery ( c, "insert into PersonKind values ( 'PTVI', 'Victim', 'A person harmed, injured, or killed as a result of a crime, accident, or other event or action.' );" )
     sqlQuery ( c, "insert into CrisisKind values ( 'Natural', 'Natural', 'A natural disaster that was not brought on by humankind: earthquake, tsunami, flooding, etc.' );" )
-    """
 
 def openTagAtt ( x, attName, attVal ):
     tag = "<" + str ( x ) + " " + str ( attName ) + "='" + str ( attVal ) +"'>"
+    return tag
+
+def closeTagAtt ( x, attName, attVal ):
+    tag = "<" + str ( x ) + " " + str ( attName ) + "='" + str ( attVal ) +"'/>"
     return tag
 
 def openTag ( x ):
@@ -161,16 +164,16 @@ def exportCrises ( c ) :
     xml = ""
     cr = sqlQuery ( c, "select * from Crises;" )
     for i in cr :
-        cL = sqlQuery ( c, "select * from CrisisLocations where crisisId = '" + i [ 0 ] + "';" )
-        hI = sqlQuery ( c, "select * from HumanImpact where crisisId = '" + i [ 0 ] + "';" )
-        rN = sqlQuery ( c, "select * from ResourceNeeded where crisisId = '" + i [ 0 ] + "';" )
-        wTH = sqlQuery ( c, "select * from WaysToHelp where crisisId = '" + i [ 0 ] + "';" )
-        cER = sqlQuery ( c, "select * from CrisisExternalResources where crisisId = '" + i [ 0 ] + "';" )
-        cTP = sqlQuery ( c, "select * from CrisesToPeople where crisisId = '" + i [ 0 ] + "';" )
-        oTC = sqlQuery ( c, "select * from OrganizationsToCrises where crisisId = '" + i [ 0 ] + "';" )
+        cL = sqlQuery ( c, "select * from CrisisLocations where crisisID = '" + i [ 0 ] + "';" )
+        hI = sqlQuery ( c, "select * from HumanImpact where crisisID = '" + i [ 0 ] + "';" )
+        rN = sqlQuery ( c, "select * from ResourceNeeded where crisisID = '" + i [ 0 ] + "';" )
+        wTH = sqlQuery ( c, "select * from WaysToHelp where crisisID = '" + i [ 0 ] + "';" )
+        cER = sqlQuery ( c, "select * from CrisisExternalResources where crisisID = '" + i [ 0 ] + "';" )
+        cTP = sqlQuery ( c, "select * from CrisesToPeople where crisisID = '" + i [ 0 ] + "';" )
+        oTC = sqlQuery ( c, "select * from OrganizationsToCrises where crisisID = '" + i [ 0 ] + "';" )
         xml += openTagAtt ( "Crisis", "crisisIdent", i [ 0 ] )
         xml += openCloseTag ( "Name", i [ 1 ] )
-        xml += openTagAtt ( "Kind", "crisisKindIdent", i [ 2 ] )
+        xml += closeTagAtt ( "Kind", "crisisKindIdent", i [ 2 ] )
         for j in cL :
             xml += openTag ( "Location" )
             xml += openCloseTag ( "Locality", j [ 1 ] )
@@ -197,11 +200,11 @@ def exportCrises ( c ) :
         xml += closeTag ( "ExternalResources" )
         xml += openTag ( "RelatedPersons" )
         for j in cTP :
-            xml += openTagAtt ( "RelatedPerson" , "personIdent", j [ 1 ] )
+            xml += closeTagAtt ( "RelatedPerson" , "personIdent", j [ 1 ] )
         xml += closeTag ( "RelatedPersons" )
         xml += openTag ( "RelatedOrganizations" )
-        for j in cTP :
-            xml += openTagAtt ( "RelatedOrganization" , "organizationIdent", j [ 1 ] )
+        for j in oTC :
+            xml += closeTagAtt ( "RelatedOrganization" , "organizationIdent", j [ 0 ] )
         xml += closeTag ( "RelatedOrganizations" )
         xml += closeTag ( "Crisis" )
     return xml
@@ -209,24 +212,103 @@ def exportCrises ( c ) :
 def exportOrgs ( c ) :
     xml = ""
     o = sqlQuery ( c, "select * from Organizations;" )
-    oL = sqlQuery ( c, "select * from OrganizationLocations;" )
-    oER = sqlQuery ( c, "select * from OrganizationExternalResources;" )
-    oTC = sqlQuery ( c, "select * from OrganizationsToCrises;" )
-    organizations = sqlQuery ( c, "select * from Organizations;" )
+    for i in o:
+        oL = sqlQuery ( c, "select * from OrganizationLocations where orgID = '"+i[0]+"';" )
+        oER = sqlQuery ( c, "select * from OrganizationExternalResources where orgID = '"+i[0]+"';" )
+        oTC = sqlQuery ( c, "select * from OrganizationsToCrises where orgID = '"+i[0]+"';" )
+        oTP = sqlQuery ( c, "select * from PeopleToOrganizations where orgID = '"+i[0]+"';" )
+        xml += openTagAtt ( "Organization", "organizationIdent", i[0])
+        xml += openCloseTag ( "Name", i[1])
+        xml += closeTagAtt ( "Kind", "organizationKindIdent", i[2])
+        for j in oL :
+            xml += openTag ( "Location" )
+            xml += openCloseTag ( "Locality", j [ 1 ] )
+            xml += openCloseTag ( "Region", j [ 2 ] )
+            xml += openCloseTag ( "Country", j [ 3 ] )
+            xml += closeTag ( "Location" )
+        xml += openCloseTag ("History", i[3])
+        xml += openCloseTag ("Telephone", i[4])
+        xml += openCloseTag ("Fax", i[5])
+        xml += openCloseTag ("Email", i[6])
+        xml += openTag ("PostalAddress")
+        xml += openCloseTag ("StreetAddress", i[7])
+        xml += openCloseTag ( "Locality", i[8])
+        xml += openCloseTag ( "Region", i[9])
+        xml += openCloseTag ( "PostalCode", i[10])
+        xml += openCloseTag ( "Country", i[11])
+        xml += openTag ("ExternalResources")
+        for j in oER:
+            xml += openCloseTag ( j[1], j[2])
+        xml += closeTag ("ExternalResources")
+        xml += openTag ("RelatedCrises")
+        for j in oTC:
+            xml += closeTagAtt ("RelatedCrisis", "crisisIdent", j[1])
+        xml += closeTag ("RelatedCrises")
+        xml += openTag ("RelatedPersons")
+        for j in oTP:
+            xml += closeTagAtt ("RelatedPerson", "personIdent", j[1])
+        xml += closeTag ("RelatedPersons")
+        xml += closeTag ("Organization")
+        test = ET.fromstring ( xml )
     return xml
 
 def exportPeople ( c ) :
     xml = ""
     p = sqlQuery ( c, "select * from People;" )
-    pL = sqlQuery ( c, "select * from PeopleLocations;" )
-    pTO = sqlQuery ( c, "select * from PeopleToOrganizations;" )
+    for i in p :
+        pL = sqlQuery ( c, "select * from PeopleLocations where personID = '" + i [ 0 ] + "';" )
+        pER = sqlQuery ( c, "select * from PersonExternalResources where personID = '" + i [ 0 ] + "';" )
+        pTO = sqlQuery ( c, "select * from PeopleToOrganizations where personID = '" + i [ 0 ] + "';" )
+        cTP = sqlQuery ( c, "select * from CrisesToPeople where personID = '" + i [ 0 ] + "';" )
+        xml += openTagAtt ( "Person", "personIdent", i [ 0 ] )
+        xml += openTag ( "Name" )
+        xml += openCloseTag ( "FirstName", i [ 1 ] )
+        xml += openCloseTag ( "MiddleName", i [ 2 ] )
+        xml += openCloseTag ( "LastName", i [ 3 ] )
+        xml += openCloseTag ( "Suffix", i [ 4 ] )
+        xml += closeTag ( "Name" )
+        xml += closeTagAtt ( "Kind", "personKindIdent", i [ 5 ] )
+        for j in pL :
+            xml += openTag ( "Location" )
+            xml += openCloseTag ( "Locality", j [ 1 ] )
+            xml += openCloseTag ( "Region", j [ 2 ] )
+            xml += openCloseTag ( "Country", j [ 3 ] )
+            xml += closeTag ( "Location" )
+        xml += openTag ( "ExternalResources" )
+        for j in pER :
+            xml += openCloseTag ( j [ 1 ] , j [ 2 ] )
+        xml += closeTag ( "ExternalResources" )
+        xml += openTag ( "RelatedOrganizations" )
+        for j in pTO :
+            xml += closeTagAtt ( "RelatedOrganization" , "personIdent", j [ 1 ] )
+        xml += closeTag ( "RelatedOrganizations" )
+        xml += openTag ( "RelatedCrises" )
+        for j in cTP :
+            xml += closeTagAtt ( "RelatedCrisis" , "crisisIdent", j [ 0 ] )
+        xml += closeTag ( "RelatedCrises" )
+        xml += closeTag ( "Crisis" )
     return xml
 
 def exportTypes( c ) :
     xml = ""
     cT = sqlQuery ( c, "select * from CrisisKind;" )
     oT = sqlQuery ( c, "select * from OrganizationKind;" )
-    pT = sqlQuery ( c, "select * from PersonKind;" )
+    pT = sqlQuery ( c, "select * from PersonKind;" )    
+    for i in cT:
+        xml += openTagAtt ("CrisisKind", "crisisKindIdent", i[0])
+        xml += openCloseTag ("Name", i[1])
+        xml += openCloseTag ("Description", i[2])
+        xml += closeTag ("CrisisKind")    
+    for i in oT:
+        xml += openTagAtt ("OrganizationKind", "organizationKindIdent", i[0])
+        xml += openCloseTag ("Name", i[1])
+        xml += openCloseTag ("Description", i[2])
+        xml += closeTag ("OrganizationKind")
+    for i in oT:
+        xml += openTagAtt ("PersonKind", "personKindIdent", i[0])
+        xml += openCloseTag ("Name", i[1])
+        xml += openCloseTag ("Description", i[2])
+        xml += closeTag ("PersonKind")
     return xml
 
 def importCrisis ( c, crisisInstance ):
@@ -255,23 +337,18 @@ def importCrisis ( c, crisisInstance ):
 #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
     if len(externalResources) != 0:
         for instance in externalResources:
-            if instance.tag == "Citation":
-                sqlQuery ( c, "insert into CrisisExternalResources values ( '"+crisisID+"', '"+'Citation'+"', '"+instance.text+"');")
-            else:
-                splice = instance.tag.find('URL')
-                type = instance.tag[:splice]
-                sqlQuery ( c, "insert into CrisisExternalResources values ( '"+crisisID+"', '"+type+"', '"+instance.text+"');")
+            sqlQuery ( c, "insert into CrisisExternalResources values ( '"+crisisID+"', '"+instance.tag+"', '"+instance.text+"');")
                 
 
     #Gets list of all RelatedPeople and inserts into CrisesToPeople table
-    relatedPeople = crisisInstance.findall("RelatedPerson")
+    relatedPeople = crisisInstance.findall(".//" + "RelatedPerson")
 
     if len(relatedPeople) != 0:
         for instance in relatedPeople:
             sqlQuery ( c, "insert into CrisesToPeople values ( '"+crisisID+"', '"+instance.attrib["personIdent"]+"');")
 
      #Gets list of all RelatedOrganizations and inserts into OrganizationsToCrises table
-    relatedOrgs = crisisInstance.findall("RelatedOrganization")
+    relatedOrgs = crisisInstance.findall(".//" + "RelatedOrganization")
 
     if len(relatedOrgs) != 0:
         for instance in relatedOrgs:
@@ -289,7 +366,7 @@ def importCrisis ( c, crisisInstance ):
 
     if len(humanImpact) !=0:
         for instance in humanImpact:
-                sqlQuery ( c, "insert into HumanImpact values ( '"+crisisID+"', '"+instance[0].text+"', '"+instance[1].text+"');")
+            sqlQuery ( c, "insert into HumanImpact values ( '"+crisisID+"', '"+instance[0].text+"', '"+instance[1].text+"');")
 
     #Finds values of remaining elements and inserts into Crises table
     name = crisisInstance.find("Name").text
@@ -317,23 +394,22 @@ def importOrg ( c, orgInstance ):
     externalResources = orgInstance.find("ExternalResources")
     if len(externalResources) != 0:
         for instance in externalResources:
-            if instance.tag == "Citation":
-                sqlQuery ( c, "insert into CrisisExternalResources values ( '"+orgID+"', '"+'Citation'+"', '"+instance.text+"');")
-            else:
-                splice = instance.tag.find('URL')
-                type = instance.tag[:splice]
-                sqlQuery ( c, "insert into CrisisExternalResources values ( '"+orgID+"', '"+type+"', '"+instance.text+"');")
+            sqlQuery ( c, "insert into OrganizationExternalResources values ( '"+orgID+"', '"+instance.tag+"', '"+instance.text+"');")
 
     #Get all values for Organizations table and insert to DB
+    postalAddress = orgInstance.find(".//" + "PostalAddress")
     name = orgInstance.find("Name").text
     kind = orgInstance.find("Kind").attrib["organizationKindIdent"]
     history = orgInstance.find("History").text
     phone = str(orgInstance.find(".//" + "Telephone").text)
     fax = str(orgInstance.find(".//" + "Fax").text)
     email = orgInstance.find(".//" + "Email").text
-    address = orgInstance.find(".//" + "StreetAddress").text
-    postalCode = orgInstance.find(".//" + "PostalCode").text
-    sqlQuery (c , "insert into Organizations values ( '"+orgID+"', '"+name+"', '"+kind+"', '"+history+"', "+phone+", "+fax+", '"+email+"', '"+address+"', '"+postalCode+"');")
+    address = postalAddress[0].text
+    locality = postalAddress[1].text
+    region = postalAddress[2].text
+    postalCode = postalAddress[3].text
+    country = postalAddress[4].text
+    sqlQuery (c , "insert into Organizations values ( '"+orgID+"', '"+name+"', '"+kind+"', '"+history+"', "+phone+", "+fax+", '"+email+"', '"+address+"', '"+locality+"', '"+region+"', '"+postalCode+"', '"+country+"');")
 
 def importPerson ( c, peopleInstance ):
     personID = peopleInstance.attrib["personIdent"]
@@ -344,27 +420,23 @@ def importPerson ( c, peopleInstance ):
         sqlQuery ( c, "insert into PeopleLocations values ( '"+personID+"', '"+instance[0].text+"', '"+instance[1].text+"', '"+instance[2].text+"');")
     
     #Gets list of all RelatedOrganizations and inserts into PeopleToOrganizations table
-    relatedOrgs = peopleInstance.findall("RelatedOrganizations")    
-    for instance in relatedOrgs:
-        sqlQuery ( c, "insert into PeopleToOrganizations values ( '"+personID+"', '"+instance.attrib["organizationIdent"]+"');")
+    relatedOrgs = peopleInstance.find("RelatedOrganizations")
+    if relatedOrgs != None :
+        for instance in relatedOrgs:
+            sqlQuery ( c, "insert into PeopleToOrganizations values ( '"+personID+"', '"+instance.attrib["organizationIdent"]+"');")
 
     #Gets all URL's in a list. Indexes list, splices tag to get type, inserts data into table
     externalResources = peopleInstance.find("ExternalResources")
     
     #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
     for instance in externalResources:
-        if instance.tag == "Citation":
-            sqlQuery ( c, "insert into PersonExternalResources values ( '"+personID+"', 'Citation', '"+instance.text+"');")
-        else:
-            splice = instance.tag.find('URL')
-            type = instance.tag[:splice]
-            sqlQuery ( c, "insert into PersonExternalResources values ( '"+personID+"', '"+type+"', '"+instance.text+"');")
+        sqlQuery ( c, "insert into PersonExternalResources values ( '"+personID+"', '"+instance.tag+"', '"+instance.text+"');")
     
     #Finds values of remaining elements and inserts into People table
     firstName = peopleInstance.find(".//" + "FirstName").text
-    middleName = peopleInstance.findtext(".//" + "MiddleName", "Null")
+    middleName = peopleInstance.findtext(".//" + "MiddleName", "")
     lastName = peopleInstance.find(".//" + "LastName").text
-    suffix = peopleInstance.findtext("Suffix", "Null")
+    suffix = peopleInstance.findtext("Suffix", "")
     kind = peopleInstance.find("Kind").attrib["personKindIdent"]
     sqlQuery ( c, "insert into People values ( '"+personID+"', '"+firstName+"', '"+middleName+"', '"+lastName+"', '"+suffix+"', '"+kind+"');")
 
@@ -420,8 +492,7 @@ def start ( r, w, args ):
     sql = sqlLogin ( sqlLoginInfo )
     xml = importXml ( r )
     createTables ( sql )
-    #addTestData ( sql )
     importDB ( sql, xml )
     exportXML = exportDB ( sql )
     sql.close ()
-    exportXml ( w, xml )
+    exportXml ( w, exportXML )
