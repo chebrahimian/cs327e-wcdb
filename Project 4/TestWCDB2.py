@@ -26,7 +26,7 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_sqlLogin (self) : # assert that valid sql connection is made
-        c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         a = sqlLogin(c)
         self.assert_str(type(a)) == "<type '_mysql.connection'>"
             
@@ -35,7 +35,7 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_sqlQuery (self) : # assert that queries provide valid sql results
-        c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         a = sqlLogin(c)
         self.assert_str(type(a)) == "<type '_mysql.connection'>" 
@@ -44,11 +44,11 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_str(type(r)) == "<type '_mysql.result'>"
 
     def test_sqlQuery2 (self) :
-        c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        a = sqlLogin(c)
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         t = "insert into HumanImpact values ( '123', 'deaths', 12);"
         u = "select number from HumanImpact;"
-        a = sqlLogin(c)
         self.assert_str(type(a)) == "<type '_mysql.connection'>" 
         a.query(s)
         a.query(t)
@@ -57,7 +57,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_str(type(r)) == "<type '_mysql.result'>"
 
     def test_sqlQuery3 (self) :
-        c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         t = "insert into HumanImpact values ( '123', 'deaths', 12);"
         u = "select * from HumanImpact;"
@@ -74,23 +74,23 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_parseArgs (self) : # assert that items are taken from tuple and put into list
-        jj = (z, jtn395, Jz.~MPm1Cy, cs327e_jtn395)
+        jj = ("z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395")
         c = parseArgs(jj)
-        self.assert_c == [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        self.assert_c == ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
 
     # ------------
     # createTables
     # ------------
     
     def test_createTables (self): # check that tables are successfully entered (returns result)
-    	c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+    	c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
     	a = sqlLogin(c)
         createTables(a)
         r = "show tables"
     	self.assert_str(type(r)) == "<type '_mysql.result'>"
     
     def test_createTables2 (self): # check that query into tables returns result
-    	c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+    	c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
     	s = "select * from Crises;"
     	a = sqlLogin(c)
         createTables(a)
@@ -99,7 +99,7 @@ class TestWCDB2 (unittest.TestCase) :
     	self.assert_str(type(r)) == "<type '_mysql.result'>"
     
     def test_createTables3 (self): # check that correct elements are in database table
-    	c = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+    	c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
     	s = "select crisisID from Crises;"
     	a = sqlLogin(c)
         createTables(a)
@@ -112,7 +112,7 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_addTestData (self) : # check that data added is valid sql 
-        a = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         k = sqlLogin(a)
         createTables(k)
         addTestData(k)
@@ -122,7 +122,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_str(type(r)) == "<type '_mysql.result'>"
 
     def test_addTestData2 (self) : # check that individual rows can be selected and are valid sql
-        a = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         k = sqlLogin(a)
         createTables(k)
         addTestData(k)
@@ -133,7 +133,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_str(type(t)) == "<type '_mysql.result'>"
 
     def test_addTestData3 (self) : # check that data added matches desired
-        a = [z, jtn395, Jz.~MPm1Cy, cs327e_jtn395]
+        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         k = sqlLogin(a)
         createTables(k)
         addTestData(k)
@@ -252,6 +252,65 @@ class TestWCDB2 (unittest.TestCase) :
     	s = "" # start with empty string
     	r = openTag(s)
     	self.assert_(r == "</>")
+
+    # ---------
+    # exportCrises
+    # ---------
+
+    def test_exportCrises (self) :
+        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = sqlLogin(a)
+        createTables(c)
+        crisisInstance = """<Crisis crisisIdent='CCD'>
+        <Name>Chernobyl Disaster</Name>
+		<Kind crisisKindIdent='Natural'/>
+		<Location>
+			<Locality>Pripyat</Locality>
+			<Region>Kiev</Region>
+			<Country>Ukraine</Country>
+		</Location>
+		<StartDateTime>
+			<Date>1986-04-26</Date>
+			<Time>01:23:00</Time>
+		</StartDateTime>
+		<HumanImpact>
+			<Type>Casualties</Type>
+			<Number>31</Number>
+		</HumanImpact>
+		<HumanImpact>
+			<Type>Affected</Type>
+			<Number>500000</Number>
+		</HumanImpact>
+		<EconomicImpact>588M USD</EconomicImpact>
+		<ResourceNeeded>Labor</ResourceNeeded>
+		<ResourceNeeded>Transportation</ResourceNeeded>
+		<ResourceNeeded>Money</ResourceNeeded>
+		<ResourceNeeded>Shelter</ResourceNeeded>
+		<WaysToHelp>Providing room and board for refugees</WaysToHelp>
+		<WaysToHelp>Medical care for those affected</WaysToHelp>
+		<ExternalResources>
+			<ImageURL>http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg</ImageURL>
+			<ExternalLinkURL>http://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</ExternalLinkURL>
+			<ExternalLinkURL>http://www.iaea.org/newscenter/focus/chernobyl/</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedPersons>
+			<RelatedPerson personIdent='PRR'/>
+		</RelatedPersons>
+		<RelatedOrganizations>
+			<RelatedOrganization organizationIdent='OIAEA'/>
+			<RelatedOrganization organizationIdent='OUN'/>
+		</RelatedOrganizations>
+	</Crisis>"""
+    
+    crisisInstance = MD.parseString(crisisInstance)
+
+    importCrisis (c, crisisInstance)
+
+    query = sqlQuery (c ,"select * from Crises;")
+
+    self.assert_(query[0]=="CCD")
+
+
     # ---------
     # importXml
     # ---------
