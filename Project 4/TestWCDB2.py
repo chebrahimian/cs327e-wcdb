@@ -26,122 +26,99 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_sqlLogin (self) : # assert that valid sql connection is made
-        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
         a = sqlLogin(c)
-        self.assert_str(type(a)) == "<type '_mysql.connection'>"
+        self.assert_(str(type(a)) == "<type '_mysql.connection'>")
             
     # ---------
     # sqlQuery
     # ---------
 
     def test_sqlQuery (self) : # assert that queries provide valid sql results
-        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         a = sqlLogin(c)
-        self.assert_str(type(a)) == "<type '_mysql.connection'>" 
+        self.assert_(str(type(a)) == "<type '_mysql.connection'>")
+        a.query("drop table if exists HumanImpact;")
         a.query(s)
         r = a.store_result()
-        self.assert_str(type(r)) == "<type '_mysql.result'>"
+        self.assert_(str(type(r)) == "<type '_mysql.result'>")
 
     def test_sqlQuery2 (self) :
-        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
         a = sqlLogin(c)
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         t = "insert into HumanImpact values ( '123', 'deaths', 12);"
         u = "select number from HumanImpact;"
-        self.assert_str(type(a)) == "<type '_mysql.connection'>" 
+        self.assert_(str(type(a)) == "<type '_mysql.connection'>")
+        a.query("drop table if exists HumanImpact;")
         a.query(s)
         a.query(t)
         a.query(u)
         r = a.store_result()
-        self.assert_str(type(r)) == "<type '_mysql.result'>"
+        self.assert_(str(type(r)) == "<type '_mysql.result'>")
 
     def test_sqlQuery3 (self) :
-        c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         t = "insert into HumanImpact values ( '123', 'deaths', 12);"
         u = "select * from HumanImpact;"
         a = sqlLogin(c)
-        self.assert_str(type(a)) == "<type '_mysql.connection'>" 
+        self.assert_(str(type(a)) == "<type '_mysql.connection'>")
+        a.query("drop table if exists HumanImpact;")
         a.query(s)
         a.query(t)
         a.query(u)
         r = a.store_result()
-        self.assert_str(type(r)) == "<type '_mysql.result'>"
+        self.assert_(str(type(r)) == "<type '_mysql.result'>")
 
     # ---------
     # parseArgs
     # ---------
 
     def test_parseArgs (self) : # assert that items are taken from tuple and put into list
-        jj = ("z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395")
+        #jj = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        jj = ["localhost", "jordan", "password", "wcdb2"]
         c = parseArgs(jj)
-        self.assert_c == ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        self.assert_(c == ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"])
 
     # ------------
     # createTables
     # ------------
     
     def test_createTables (self): # check that tables are successfully entered (returns result)
-    	c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-    	a = sqlLogin(c)
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
+        a = sqlLogin(c)
         createTables(a)
-        r = "show tables"
-    	self.assert_str(type(r)) == "<type '_mysql.result'>"
+        s = "show tables"
+        a.query(s)
+        r = a.store_result()
+        self.assert_(str(type(r)) == "<type '_mysql.result'>")
     
     def test_createTables2 (self): # check that query into tables returns result
-    	c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-    	s = "select * from Crises;"
-    	a = sqlLogin(c)
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
+        s = "select * from Crises;"
+        a = sqlLogin(c)
         createTables(a)
-    	a.query(s)
-    	r = a.store_result()
-    	self.assert_str(type(r)) == "<type '_mysql.result'>"
+        a.query(s)
+        r = a.store_result()
+        self.assert_(str(type(r)) == "<type '_mysql.result'>")
     
     def test_createTables3 (self): # check that correct elements are in database table
-    	c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-    	s = "select crisisID from Crises;"
-    	a = sqlLogin(c)
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
+        s = "select crisisID from Crises;"
+        a = sqlLogin(c)
         createTables(a)
-    	a.query(s)
-    	r = a.store_result()
-    	self.assert_str(type(r)) == "<type '_mysql.result'>"
-
-    # ---------
-    # addTestData
-    # ---------
-
-    def test_addTestData (self) : # check that data added is valid sql 
-        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-        k = sqlLogin(a)
-        createTables(k)
-        addTestData(k)
-        u = "select crisisID from HumanImpact;"
-        k.query(u)
-        r = k.store_result()
-        self.assert_str(type(r)) == "<type '_mysql.result'>"
-
-    def test_addTestData2 (self) : # check that individual rows can be selected and are valid sql
-        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-        k = sqlLogin(a)
-        createTables(k)
-        addTestData(k)
-        u = "select crisisID from HumanImpact;"
-        k.query(u)
-        r = k.use_result()
-        t = r.fetch_row(maxrows = 1)
-        self.assert_str(type(t)) == "<type '_mysql.result'>"
-
-    def test_addTestData3 (self) : # check that data added matches desired
-        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-        k = sqlLogin(a)
-        createTables(k)
-        addTestData(k)
-        u = "select crisisID from HumanImpact;"
-        k.query(u)
-        r = k.use_result()
-        t = r.fetch_row(maxrows = 1)
-        self.assert_t[0] == 'CCD'
+        a.query(s)
+        r = a.store_result()
+        self.assert_(str(type(r)) == "<type '_mysql.result'>")
 
     # ---------
     # openTagAtt
@@ -152,21 +129,21 @@ class TestWCDB2 (unittest.TestCase) :
         l = "abc"
         m = "def"
         n = openTagAtt (k, l, m)
-        self.assert_n == "<xyz abc='def'>"
+        self.assert_(n == "<xyz abc='def'>")
 
     def test_openTagAtt2 (self) : # int inputs
         k = 123
         l = 456
         m = 789
         n = openTagAtt (k, l, m)
-        self.assert_n == "<123 456='789'>"
+        self.assert_(n == "<123 456='789'>")
 
     def test_openTagAtt3 (self) : # whitespace input
         k = ' '
         l = ' '
         m = ' '
         n = openTagAtt (k, l, m)
-        self.assert_n == "<   =' '>"
+        self.assert_(n == "<   =' '>")
 
     # ---------
     # closeTagAtt
@@ -177,138 +154,139 @@ class TestWCDB2 (unittest.TestCase) :
         l = "abc"
         m = "def"
         n = openTagAtt (k, l, m)
-        self.assert_n == "<xyz abc='def'/>"
+        self.assert_(n == "<xyz abc='def'/>")
 
     def test_openTagAtt2 (self) : # int
         k = 123
         l = 456
         m = 789
         n = openTagAtt (k, l, m)
-        self.assert_n == "<123 456='789'/>"
+        self.assert_(n == "<123 456='789'/>")
 
     def test_openTagAtt3 (self) : # whitespace
         k = ' '
         l = ' '
         m = ' '
         n = openTagAtt (k, l, m)
-        self.assert_n == "<   =' '/>"
+        self.assert_(n == "<   =' '/>")
 
     #--------
     # openTag
     #--------
     
     def test_openTag (self):
-    	s = "example" #start with string
-    	r = openTag(s)
-    	self.assert_(r == "<example>")
+        s = "example" #start with string
+        r = openTag(s)
+        self.assert_(r == "<example>")
     
     def test_openTag2 (self):
-    	s = 123 #start with int
-    	r = openTag(s)
-    	self.assert_(r == "<123>")
-    	
+        s = 123 #start with int
+        r = openTag(s)
+        self.assert_(r == "<123>")
+        
     def test_openTag3 (self):
-    	s = "" # start with empty string
-    	r = openTag(s)
-    	self.assert_(r == "<>")
-    	    	    	       
+        s = "" # start with empty string
+        r = openTag(s)
+        self.assert_(r == "<>")
+                               
     #-------------
     # openCloseTag
     #-------------
     
     def test_openCloseTag (self):
-    	s = "example" #start with strings
-    	v = "value"
-    	r = openCloseTag(s, v)
-    	self.assert_(r == "<example>value</example>")
+        s = "example" #start with strings
+        v = "value"
+        r = openCloseTag(s, v)
+        self.assert_(r == "<example>value</example>")
     
     def test_openCloseTag2 (self):
-    	s = 123 #start with ints
-    	v = 321
-    	r = openCloseTag(s, v)
-    	self.assert_(r == "<123>321</123>")
-    	
+        s = 123 #start with ints
+        v = 321
+        r = openCloseTag(s, v)
+        self.assert_(r == "<123>321</123>")
+        
     def test_openCloseTag3 (self):
-    	s = "" # start with empty string and whitespace
-    	v = " "
-    	r = openCloseTag(s, v)
-    	self.assert_(r == "<> </>")
+        s = "" # start with empty string and whitespace
+        v = " "
+        r = openCloseTag(s, v)
+        self.assert_(r == "<> </>")
 
     #--------
     # closeTag
     #--------
     
     def test_openTag (self):
-    	s = "example" #start with string
-    	r = openTag(s)
-    	self.assert_(r == "</example>")
+        s = "example" #start with string
+        r = openTag(s)
+        self.assert_(r == "</example>")
     
     def test_openTag2 (self):
-    	s = 123 #start with int
-    	r = openTag(s)
-    	self.assert_(r == "</123>")
-    	
+        s = 123 #start with int
+        r = openTag(s)
+        self.assert_(r == "</123>")
+        
     def test_openTag3 (self):
-    	s = "" # start with empty string
-    	r = openTag(s)
-    	self.assert_(r == "</>")
+        s = "" # start with empty string
+        r = openTag(s)
+        self.assert_(r == "</>")
 
     # ---------
     # exportCrises
     # ---------
 
     def test_exportCrises (self) :
-        a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        #a = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        a = ["localhost", "jordan", "password", "wcdb2"]
         c = sqlLogin(a)
         createTables(c)
-        crisisInstance = """<Crisis crisisIdent='CCD'>
-        <Name>Chernobyl Disaster</Name>
-		<Kind crisisKindIdent='Natural'/>
-		<Location>
-			<Locality>Pripyat</Locality>
-			<Region>Kiev</Region>
-			<Country>Ukraine</Country>
-		</Location>
-		<StartDateTime>
-			<Date>1986-04-26</Date>
-			<Time>01:23:00</Time>
-		</StartDateTime>
-		<HumanImpact>
-			<Type>Casualties</Type>
-			<Number>31</Number>
-		</HumanImpact>
-		<HumanImpact>
-			<Type>Affected</Type>
-			<Number>500000</Number>
-		</HumanImpact>
-		<EconomicImpact>588M USD</EconomicImpact>
-		<ResourceNeeded>Labor</ResourceNeeded>
-		<ResourceNeeded>Transportation</ResourceNeeded>
-		<ResourceNeeded>Money</ResourceNeeded>
-		<ResourceNeeded>Shelter</ResourceNeeded>
-		<WaysToHelp>Providing room and board for refugees</WaysToHelp>
-		<WaysToHelp>Medical care for those affected</WaysToHelp>
-		<ExternalResources>
-			<ImageURL>http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg</ImageURL>
-			<ExternalLinkURL>http://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</ExternalLinkURL>
-			<ExternalLinkURL>http://www.iaea.org/newscenter/focus/chernobyl/</ExternalLinkURL>
-		</ExternalResources>
-		<RelatedPersons>
-			<RelatedPerson personIdent='PRR'/>
-		</RelatedPersons>
-		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent='OIAEA'/>
-			<RelatedOrganization organizationIdent='OUN'/>
-		</RelatedOrganizations>
-	</Crisis>"""
-    
-    crisisInstance = MD.parseString(crisisInstance)
+        crisisInstance = "\
+        <Crisis crisisIdent='CCD'>\
+            <Name>Chernobyl Disaster</Name>\
+            <Kind crisisKindIdent='Natural'/>\
+            <Location>\
+                <Locality>Pripyat</Locality>\
+                <Region>Kiev</Region>\
+                <Country>Ukraine</Country>\
+            </Location>\
+            <StartDateTime>\
+                <Date>1986-04-26</Date>\
+                <Time>01:23:00</Time>\
+            </StartDateTime>\
+            <HumanImpact>\
+                <Type>Casualties</Type>\
+                <Number>31</Number>\
+            </HumanImpact>\
+            <HumanImpact>\
+                <Type>Affected</Type>\
+                <Number>500000</Number>\
+            </HumanImpact>\
+            <EconomicImpact>588M USD</EconomicImpact>\
+            <ResourceNeeded>Labor</ResourceNeeded>\
+            <ResourceNeeded>Transportation</ResourceNeeded>\
+            <ResourceNeeded>Money</ResourceNeeded>\
+            <ResourceNeeded>Shelter</ResourceNeeded>\
+            <WaysToHelp>Providing room and board for refugees</WaysToHelp>\
+            <WaysToHelp>Medical care for those affected</WaysToHelp>\
+            <ExternalResources>\
+                <ImageURL>http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg</ImageURL>\
+                <ExternalLinkURL>http://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</ExternalLinkURL>\
+                <ExternalLinkURL>http://www.iaea.org/newscenter/focus/chernobyl/</ExternalLinkURL>\
+            </ExternalResources>\
+            <RelatedPersons>\
+                <RelatedPerson personIdent='PRR'/>\
+            </RelatedPersons>\
+            <RelatedOrganizations>\
+                <RelatedOrganization organizationIdent='OIAEA'/>\
+                <RelatedOrganization organizationIdent='OUN'/>\
+            </RelatedOrganizations>\
+        </Crisis>"
+        crisisInstance = ET.fromstring(crisisInstance)
 
-    importCrisis (c, crisisInstance)
+        importCrisis (c, crisisInstance)
 
-    query = sqlQuery (c ,"select * from Crises;")
+        query = sqlQuery (c ,"select * from Crises;")
 
-    self.assert_(query[0]=="CCD")
+        self.assert_(query[0][0]=="CCD")
 
 
     # ---------
@@ -368,19 +346,22 @@ class TestWCDB2 (unittest.TestCase) :
     def test_start (self): # Empty root element
         r = StringIO.StringIO("<Root/>")
         w = StringIO.StringIO()
-        start(r , w)
+        a = ["localhost", "jordan", "password", "wcdb2"]
+        start(r, w, a)
         self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root/>\n")
 
     def test_start2 (self): # Multiple elements in one line
         r = StringIO.StringIO("<Root><E1><E2></E2></E1></Root>")
         w = StringIO.StringIO()
-        start(r , w)
+        a = ["localhost", "jordan", "password", "wcdb2"]
+        start(r, w, a)
         self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root>\n\t<E1>\n\t\t<E2/>\n\t</E1>\n</Root>\n")
 
     def test_start3 (self): # Pretty xml, with one empty element written <E1/> and one empty element as <E2></E2>
         r = StringIO.StringIO("<Root>\n\t<E1/>\n\t<E2></E2>\n</Root>")
         w = StringIO.StringIO()
-        start(r , w)
+        a = ["localhost", "jordan", "password", "wcdb2"]
+        start(r, w, a)
         self.assert_(w.getvalue() == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Root>\n\t<E1/>\n\t<E2/>\n</Root>\n")
       
 print "TestXML.py"
