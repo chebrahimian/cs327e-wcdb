@@ -31,7 +31,7 @@ turnin-verify:
 zip:
 	zip -r WCDB2.zip makefile                                       \
 	RunWCDB2.in.xml RunWCDB2.py RunWCDB2.out.xml                    \
-	TestWCDB2.py TestWCDB2.out                                      \
+	TestWCDB2.py TestWCDB2.out WCDB2.pdf                            \
 	WCDB2.html WCDB2.log WCDB2.pdf WCDB2.py WCDB2.xml WCDB2.xsd.xml
 
 clean:
