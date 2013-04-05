@@ -60,7 +60,7 @@ def importXml ( r ):
     pattern = re.compile (r'[^\S ]+')
     text = re.sub ( pattern, '', rawText )
     xml = ET.fromstring ( text )
-    assert str ( type ( xml ) ) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str ( type ( xml ) ) == "<type 'instance'>"
     return xml
 
 def exportXml ( w, xml ):
@@ -369,7 +369,7 @@ def importCrisis ( c, crisisInstance ):
     crisisInstance is the element
     """    
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str(type(crisisInstance)) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str(type(crisisInstance)) == "<type 'instance'>"
     crisisID = crisisInstance.attrib["crisisIdent"]
     
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
@@ -455,7 +455,7 @@ def importOrg ( c, orgInstance ):
     orgInstance is the element
     """
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str(type(orgInstance)) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str(type(orgInstance)) == "<type 'instance'>"
     orgID = orgInstance.attrib["organizationIdent"]
 
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
@@ -492,7 +492,7 @@ def importPerson ( c, peopleInstance ):
     personInstance is the element
     """
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str(type(peopleInstance)) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str(type(peopleInstance)) == "<type 'instance'>"
     personID = peopleInstance.attrib["personIdent"]
         
     #Gets location sub elements in list. Inserts into PeopleLocation table by indexing list
@@ -528,7 +528,7 @@ def importCrisisKind ( c, crisisKindInstance ):
     crisisKindInstance is the element
     """
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str(type(crisisKindInstance)) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str(type(crisisKindInstance)) == "<type 'instance'>"
     crisisKindID = crisisKindInstance.attrib["crisisKindIdent"]
     name = crisisKindInstance.find("Name").text
     description = crisisKindInstance.find("Description").text
@@ -541,7 +541,7 @@ def importOrgKind ( c, orgKindInstance ) :
     orgKindInstance is the element
     """
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str(type(orgKindInstance)) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str(type(orgKindInstance)) == "<type 'instance'>"
     orgKindID = orgKindInstance.attrib["organizationKindIdent"]
     name = orgKindInstance.find("Name").text
     description = orgKindInstance.find("Description").text  
@@ -555,7 +555,7 @@ def importPersonKind ( c, personKindInstance ) :
     personKindInstance is the element
     """
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str(type(personKindInstance)) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str(type(personKindInstance)) == "<type 'instance'>"
     personKindID = personKindInstance.attrib["personKindIdent"]
     name = personKindInstance.find("Name").text
     description = personKindInstance.find("Description").text  
@@ -568,7 +568,7 @@ def importDB ( c, xml ) :
     xml is the ElementTree
     """
     assert str(type(c)) == "<type '_mysql.connection'>"
-    assert str ( type ( xml ) ) == "<class 'xml.etree.ElementTree.Element'>"
+    assert str ( type ( xml ) ) == "<type 'instance'>"
     for e in xml :
         if e.tag == "Crisis" :
             importCrisis ( c, e )
