@@ -55,7 +55,6 @@ def importXml ( r ):
     r is the reader
     returns an ElementTree
     """
-    assert str ( type ( r ) ) == "<type 'file'>"
     rawText = r.read ()
     rawText = rawText.strip ()
     pattern = re.compile (r'[^\S ]+')
@@ -70,7 +69,6 @@ def exportXml ( w, xml ):
     w is the writer
     xml is an ElementTree
     """
-    assert str ( type ( w ) ) == "<type 'file'>"
     assert str ( type ( xml ) ) == "<type 'str'>"
     rawText = xml
     pattern = re.compile (r'[^\S ]+')

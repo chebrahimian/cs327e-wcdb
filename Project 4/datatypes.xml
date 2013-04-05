@@ -1,0 +1,125 @@
+                                                                     
+                                                                     
+                                                                     
+                                             
+<WorldCrises>
+
+	<Crisis crisisIdent="string">
+		<Name>string</Name>
+		<Kind crisisKindIdent="string" />
+		<Location>
+			<Locality>string</Locality>
+			<Region>string</Region>
+			<Country>string</Country>
+		</Location>
+		<StartDateTime>
+			<Date>YYYY-MM-DD</Date>
+			<Time>HH:MM:SS</Time>
+		</StartDateTime>
+		<EndDateTime>
+			<Date>YYYY-MM-DD</Date>
+			<Time>HH:MM:SS</Time>
+		</EndDateTime>	
+		<HumanImpact>
+			<Type>string</Type>
+			<Number>int</Number>
+		</HumanImpact>
+		<EconomicImpact>string</EconomicImpact>
+		<ResourceNeeded>string</ResourceNeeded>
+		<WaysToHelp>string</WaysToHelp>
+		<ExternalResources>
+			<ImageURL>url</ImageURL>
+			<VideoURL>url</VideoURL>
+			<MapURL>url</MapURL>
+			<SocialNetworkURL>url</SocialNetworkURL>
+			<Citation>string</Citation>
+			<ExternalLinkURL>url</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedPersons>
+			<RelatedPerson personIdent="string" />
+		</RelatedPersons>
+		<RelatedOrganizations>
+			<RelatedOrganization organizationIdent="string" />
+		</RelatedOrganizations>
+	</Crisis>
+	
+	<Organization organizationIdent="string">
+		<Name>string</Name>
+		<Kind organizationKindIdent="string" />
+		<Location>
+			<Locality>string</Locality>
+			<Region>string</Region>
+			<Country>string</Country>
+		</Location>
+		<History>string</History>
+		<Telephone>int w/ regex ([0-9x+ ])?</Telephone>
+		<Fax>int w/ regex ([0-9x+ ])?</Fax>
+		<Email>string w/ regex ([^@]+@[^@]+)?</Email>
+		<PostalAddress>
+			<StreetAddress>string</StreetAddress>
+			<Locality>string</Locality>
+			<Region>string</Region>
+			<PostalCode>string</PostalCode>
+			<Country>string</Country>
+		</PostalAddress>
+		<ExternalResources>
+			<ImageURL>url</ImageURL>
+			<VideoURL>url</VideoURL>
+			<MapURL>url</MapURL>
+			<SocialNetworkURL>url</SocialNetworkURL>
+			<Citation>string</Citation>
+			<ExternalLinkURL>url</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises>
+			<RelatedCrisis crisisIdent="string" />
+		</RelatedCrises>
+		<RelatedPersons>
+			<RelatedPerson personIdent="string" />
+		</RelatedPersons>
+		
+	</Organization>
+	
+	<Person personIdent="string">
+		<Name>
+			<FirstName>string</FirstName>
+			<MiddleName>string</MiddleName>
+			<LasrName>string</LastName>
+			<Suffix>string</Suffix>
+		</Name>
+		<Kind personKindIndent="string" />
+		<Location>
+			<Locality>string</Locality>
+			<Region>string</Region>
+			<Country>string</Country>
+		</Location>
+		<ExternalResources>
+			<ImageURL>url</ImageURL>
+			<VideoURL>url</VideoURL>
+			<MapURL>url</MapURL>
+			<SocialNetworkURL>url</SocialNetworkURL>
+			<Citation>string</Citation>
+			<ExternalLinkURL>url</ExternalLinkURL>
+		</ExternalResources>
+		<RelatedCrises>
+			<RelatedCrisis crisisIdent="string" />
+		</RelatedCrises>
+		<RelatedOrganizations>
+			<RelatedOrganization organizationIdent="string" />
+		</RelatedOrganizations>
+	</Person>
+	
+	<CrisisKind crisisKindIdent="string">
+		<Name>string</Name>
+		<Description>string</Description>
+	</CrisisKind>
+	
+	<OrganizationKind organizationKindIdent="string">
+		<Name>string</Name>
+		<Description>string</Description>
+	</OrganizationKind>
+	
+	<PersonKind personKindIdent="string">
+		<Name>string</Name>
+		<Description>string</Description>
+	</PersonKind>
+</WorldCrises>
