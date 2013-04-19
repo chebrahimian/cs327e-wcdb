@@ -1004,7 +1004,7 @@
 	</CrisisKind>
 	<CrisisKind crisisKindIdent="TA">
 		<Name>Terrorist Attack</Name>
-		<Description>Surprise atack from a group with political or religious aim</Description>
+		<Description>Surprise attack from a group with political or religious aim</Description>
 	</CrisisKind>
 	<CrisisKind crisisKindIdent="TO">
 		<Name>Tornada</Name>
@@ -1051,7 +1051,7 @@
 		<Description>Administrative unit of the government designed to improve a specific area.</Description>
 	</OrganizationKind>
 
-	<PersonKind personKindIdent="PTHU">
+	<PersonKind personKindIdent="HM">
 		<Name>Humanitarian</Name>
 		<Description>Having the interests of mankind at heart</Description>
 	</PersonKind>
@@ -1059,20 +1059,16 @@
 		<Name>Head of Organization</Name>
 		<Description>Leader/CEO/Owner of an organization. The person in charge</Description>
 	</PersonKind>
-	<PersonKind personKindIdent="PTRE">
+	<PersonKind personKindIdent="RE">
 		<Name>Researcher</Name>
 		<Description>A person designated to study and gather information.</Description>
 	</PersonKind>
-	<PersonKind personKindIdent="PTBU">
+	<PersonKind personKindIdent="BU">
 		<Name>Businessman/woman</Name>
 		<Description>A person in the business of selling/trading goods</Description>
 	</PersonKind>
 	<PersonKind personKindIdent="PO">
 		<Name>Politician</Name>
 		<Description>A person who is professionally involved in politics (The activities associated with the governance of a country or area)</Description>
-	</PersonKind>
-	<PersonKind personKindIdent="PTVI">
-		<Name>Victim</Name>
-		<Description>A person harmed, injured, or killed as a result of a crime, accident, or other event or action.</Description>
 	</PersonKind>
 </WorldCrises>
