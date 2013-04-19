@@ -1,0 +1,22 @@
+Which people are associated with more than one crisis?
+
+drop table if exists temp1;
+
+
+
+create temporary table temp1 as
+	select *
+
+from person as A inner join personcrisis as B
+	
+on A.id = B.id_person;
+
+
+
+select id, first_name, last_name
+
+from temp1
+
+group by id
+
+having count(*) >1;
