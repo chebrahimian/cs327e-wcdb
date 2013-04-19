@@ -1,7 +1,7 @@
 <WorldCrises>
-	<Crisis crisisIdent="CCD">
+	<Crisis crisisIdent="Chernobyl_ACC_1986">
 		<Name>Chernobyl Disaster</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="ACC"/>
 		<Location>
 			<Locality>Pripyat</Locality>
 			<Region>Kiev</Region>
@@ -32,7 +32,7 @@
 			<ExternalLinkURL>http://www.iaea.org/newscenter/focus/chernobyl/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PRR"/>
+			<RelatedPerson personIdent="RWReagan"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="IAEA"/>
@@ -40,9 +40,9 @@
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CTMIA">
+	<Crisis crisisIdent="TMI_ACC_1979">
 		<Name>Three Mile Island Accident</Name>
-		<Kind crisisKindIdent="NonNatural"/>
+		<Kind crisisKindIdent="ACC"/>
 		<Location>
 			<Locality>Harrisburg</Locality>
 			<Region>Pennsylvania</Region>
@@ -67,14 +67,14 @@
 			<ExternalLinkURL>http://www.pbs.org/wgbh/amex/three/peopleevents/pandeAMEX86.html</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PJC"/>
+			<RelatedPerson personIdent="JECarter"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="IAEA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CSO">
+	<Crisis crisisIdent="SARS_DS_2003">
 		<Name>Sars Outbreak</Name>
 		<Kind crisisKindIdent="Natural"/>
 		<Location>
@@ -103,8 +103,8 @@
 			<ExternalLinkURL>http://www.ifrc.org/en/news-and-media/news-stories/international/red-cross-continues-response-to-widening-sars-threat/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PMC"/>
-			<RelatedPerson personIdent="PJG"/>
+			<RelatedPerson personIdent="MChan"/>
+			<RelatedPerson personIdent="JLGerberding"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="WHO"/>
@@ -112,9 +112,9 @@
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CHE">
+	<Crisis crisisIdent="Haiti_EQ_2010">
 		<Name>2010 Haiti Earthquake</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="EQ"/>
 		<Location>
 			<Locality>Port-au-Prince</Locality>
 			<Region>Ouest Department</Region>
@@ -152,9 +152,9 @@
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CJTS">
+	<Crisis crisisIdent="Japan_EQ_2011">
 		<Name>2011 Japanese Tsunami</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="EQ"/>
 		<Location>
 			<Locality>Tohoku</Locality>
 			<Country>Japan</Country>
@@ -184,16 +184,16 @@
 			<ExternalLinkURL>http://www.globalpost.com/dispatch/news/regions/asia-pacific/japan/110602/japan-tsunami-naoto-kan-reconstruction</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PNK"/>
+			<RelatedPerson personIdent="NKan"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CJTO">
+	<Crisis crisisIdent="Joplin_TO_2011">
 		<Name>Joplin Tornado</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="TO"/>
 		<Location>
 			<Locality>Joplin</Locality>
 			<Region>Missouri</Region>
@@ -228,16 +228,16 @@
 			<ExternalLinkURL>http://www.nationalservice.gov/about/newsroom/releases_detail.asp?tbl_pr_id=2099</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PMB"/>
+			<RelatedPerson personIdent="MDBrown"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CIE">
+	<Crisis crisisIdent="Iran_EQ_2003">
 		<Name>Iran Earthquake</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="EQ"/>
 		<Location>
 			<Locality>Bam</Locality>
 			<Region>Kerman</Region>
@@ -270,7 +270,7 @@
 			<ExternalLinkURL>http://en.wikipedia.org/wiki/Mohammad_Khatami</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PMK"/>
+			<RelatedPerson personIdent="MKhatami"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="RC"/>
@@ -278,9 +278,9 @@
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CHK">
+	<Crisis crisisIdent="HU_Katrina_2005">
 		<Name>Hurricane Katrina</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="HU"/>
 		<Location>
 			<Locality>New Orleans</Locality>
 			<Region>Louisiana</Region>
@@ -313,17 +313,17 @@
 			<VideoURL>http://www.nbcnews.com/id/9266986/#.UTkiThy0KSo</VideoURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PGW"/>
-			<RelatedPerson personIdent="PMB"/>
+			<RelatedPerson personIdent="GWBush"/>
+			<RelatedPerson personIdent="MDBrown"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CSE">
+	<Crisis crisisIdent="WTC_TA_2001">
 		<Name>September 11th</Name>
-		<Kind crisisKindIdent="NonNatural"/>
+		<Kind crisisKindIdent="TA"/>
 		<Location>
 			<Locality>New York City</Locality>
 			<Region>New York</Region>
@@ -348,17 +348,17 @@
 			<VideoURL>https://www.youtube.com/watch?v=dG_4RTvlnkg</VideoURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PGW"/>
-			<RelatedPerson personIdent="PRG"/>
+			<RelatedPerson personIdent="GWBush"/>
+			<RelatedPerson personIdent="RWGiuliani"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="NYFD"/>
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="CSF">
+	<Crisis crisisIdent="H1N1_DI_2009">
 		<Name>Swine Flu</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="DI"/>
 		<Location>
 			<Region>Northern Ireland</Region>
 			<Country>Ireland</Country>
@@ -378,7 +378,7 @@
 			<ExternalLinkURL>http://www.who.int/csr/disease/swineflu/en/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PJG"/>
+			<RelatedPerson personIdent="JLGerberding"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="WHO"/>
@@ -472,7 +472,7 @@
 			<ExternalLinkURL>http://www.nationalservice.gov/about/newsroom/releases_detail.asp?tbl_pr_id=2099</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CJTO"/>
+			<RelatedCrisis crisisIdent="Joplin_TO_2011"/>
 		</RelatedCrises>
 	</Organization>
 
@@ -568,7 +568,7 @@
 		</ExternalResources>
 		<RelatedCrises>
 			<RelatedCrisis crisisIdent="CCD"/>
-			<RelatedCrisis crisisIdent="CSE"/>
+			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
 			<RelatedCrisis crisisIdent="CHE"/>
 			<RelatedCrisis crisisIdent="CJTS"/>
 		</RelatedCrises>
@@ -605,7 +605,7 @@
 			<RelatedCrisis crisisIdent="CHE"/>
 			<RelatedCrisis crisisIdent="CSO"/>
 			<RelatedCrisis crisisIdent="CSF"/>
-			<RelatedCrisis crisisIdent="CHK"/>
+			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
 		</RelatedCrises>
 		<RelatedPersons>
 			<RelatedPerson personIdent="PJG"/>
@@ -638,7 +638,7 @@
 			<Citation>LA Weekly</Citation>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CSE"/>
+			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
 			<RelatedCrisis crisisIdent="CHE"/>
 		</RelatedCrises>
 		<RelatedPersons>
@@ -673,8 +673,8 @@
 		</ExternalResources>
 		<RelatedCrises>
 			<RelatedCrisis crisisIdent="CJTS"/>
-			<RelatedCrisis crisisIdent="CJTO"/>
-			<RelatedCrisis crisisIdent="CHK"/>
+			<RelatedCrisis crisisIdent="Joplin_TO_2011"/>
+			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
 			<RelatedCrisis crisisIdent="CHE"/>
 			<RelatedCrisis crisisIdent="CTMIA"/>
 		</RelatedCrises>
@@ -718,13 +718,13 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Person personIdent="PMK">
+	<Person personIdent="MKhatami">
 		<Name>
 			<FirstName>Mohammad</FirstName>
 			<MiddleName/>
 			<LastName>Khatami</LastName>
 		</Name>
-		<Kind personKindIdent="PTPO"/>
+		<Kind personKindIdent="PO"/>
 		<Location>
 			<Locality>Tehran</Locality>
 			<Region>Bam</Region>
@@ -735,17 +735,17 @@
 			<ExternalLinkURL>http://en.wikipedia.org/wiki/Mohammad_Khatami</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CIE"/>
+			<RelatedCrisis crisisIdent="Iran_EQ_2003"/>
 		</RelatedCrises>
 	</Person>
 
-	<Person personIdent="PKA">
+	<Person personIdent="KAAnnan">
 		<Name>
 			<FirstName>Kofi</FirstName>
 			<MiddleName>Atta</MiddleName>
 			<LastName>Annan</LastName>
 		</Name>
-		<Kind personKindIdent="PTHO"/>
+		<Kind personKindIdent="HO"/>
 		<Location>
 			<Locality>Kumasi</Locality>
 			<Region>Ashanti</Region>
@@ -756,20 +756,20 @@
 			<ExternalLinkURL>http://www.un.org/sg/formersg/annan.shtml</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CSE"/>
+			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="UN"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PMB">
+	<Person personIdent="MDBrown">
 		<Name>
 			<FirstName>Michael</FirstName>
 			<MiddleName>DeWayne</MiddleName>
 			<LastName>Brown</LastName>
 		</Name>
-		<Kind personKindIdent="PTHO"/>
+		<Kind personKindIdent="HO"/>
 		<Location>
 			<Locality>Boulder</Locality>
 			<Region>Colorado</Region>
@@ -780,21 +780,21 @@
 			<Citation>NBC, WIkipedia</Citation>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CJTO"/>
-			<RelatedCrisis crisisIdent="CHK"/>
+			<RelatedCrisis crisisIdent="Joplin_TO_2011"/>
+			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PJG">
+	<Person personIdent="JLGerberding">
 		<Name>
 			<FirstName>Julie</FirstName>
 			<MiddleName>Louise</MiddleName>
 			<LastName>Gerberding</LastName>
 		</Name>
-		<Kind personKindIdent="PTHO"/>
+		<Kind personKindIdent="HO"/>
 		<Location>
 			<Locality>San Francisco</Locality>
 			<Region>California</Region>
@@ -805,22 +805,22 @@
 			<ExternalLinkURL>http://en.wikipedia.org/wiki/Julie_Gerberding</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CSF"/>
-			<RelatedCrisis crisisIdent="CSO"/>
-			<RelatedCrisis crisisIdent="CHK"/>
+			<RelatedCrisis crisisIdent="H1N1_DI_2009"/>
+			<RelatedCrisis crisisIdent="SARS_DI_2003"/>
+			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="CDC"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PJC">
+	<Person personIdent="JECarter">
 		<Name>
 			<FirstName>Jimmy</FirstName>
 			<MiddleName>Earl</MiddleName>
 			<LastName>Carter</LastName>
 		</Name>
-		<Kind personKindIdent="PTPO"/>
+		<Kind personKindIdent="PO"/>
 		<Location>
 			<Locality>Plains</Locality>
 			<Region>Georgia</Region>
@@ -831,20 +831,20 @@
 			<ExternalLinkURL>http://www.pbs.org/wgbh/amex/three/peopleevents/pandeAMEX86.html</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CTMIA"/>
+			<RelatedCrisis crisisIdent="TMI_ACC_1979"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="PC"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PRG">
+	<Person personIdent="RWGiuliani">
 		<Name>
 			<FirstName>Rudy</FirstName>
 			<MiddleName>William Louis</MiddleName>
 			<LastName>Giuliani</LastName>
 		</Name>
-		<Kind personKindIdent="PTPO"/>
+		<Kind personKindIdent="PO"/>
 		<Location>
 			<Locality>New York City</Locality>
 			<Region>New York</Region>
@@ -855,20 +855,20 @@
 			<Citation>YouTube, Wikipedia</Citation>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CSE"/>
+			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="NYFD"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PNK">
+	<Person personIdent="NKan">
 		<Name>
 			<FirstName>Naoto</FirstName>
 			<MiddleName/>
 			<LastName>Kan</LastName>
 		</Name>
-		<Kind personKindIdent="PTPO"/>
+		<Kind personKindIdent="PO"/>
 		<Location>
 			<Locality>Ube</Locality>
 			<Region>Yamaguchi</Region>
@@ -879,20 +879,20 @@
 			<ExternalLinkURL>http://www.globalpost.com/dispatch/news/regions/asia-pacific/japan/110602/japan-tsunami-naoto-kan-reconstruction</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CJTS"/>
+			<RelatedCrisis crisisIdent="Japan_EQ_2011"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="IAEA"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PRR">
+	<Person personIdent="RWReagan">
 		<Name>
 			<FirstName>Ronald</FirstName>
 			<MiddleName>Wilson</MiddleName>
 			<LastName>Reagan</LastName>
 		</Name>
-		<Kind personKindIdent="PTPO"/>
+		<Kind personKindIdent="PO"/>
 		<Location>
 			<Locality>Los Angeles</Locality>
 			<Region>California</Region>
@@ -903,17 +903,17 @@
 			<ExternalLinkURL>http://en.wikipedia.org/wiki/Mohhttp://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CCD"/>
+			<RelatedCrisis crisisIdent="Chernobyl_ACC_1986"/>
 		</RelatedCrises>
 	</Person>
 
-	<Person personIdent="PMC">
+	<Person personIdent="MChan">
 		<Name>
 			<FirstName>Margaret</FirstName>
 			<MiddleName/>
 			<LastName>Chan</LastName>
 		</Name>
-		<Kind personKindIdent="PTHO"/>
+		<Kind personKindIdent="HO"/>
 		<Location>
 			<Locality>Hong Kong</Locality>
 			<Region>Nanhai</Region>
@@ -924,22 +924,22 @@
 			<ExternalLinkURL>http://en.wikipedia.org/wiki/Margaret_Chan</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CSO"/>
-			<RelatedCrisis crisisIdent="CSF"/>
-			<RelatedCrisis crisisIdent="CHE"/>
+			<RelatedCrisis crisisIdent="SARS_DI_2003"/>
+			<RelatedCrisis crisisIdent="H1N1_DI_2009"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="WHO"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<Person personIdent="PGW">
+	<Person personIdent="GWBush">
 		<Name>
 			<FirstName>George</FirstName>
 			<MiddleName>Walker</MiddleName>
 			<LastName>Bush</LastName>
 		</Name>
-		<Kind personKindIdent="PTPO"/>
+		<Kind personKindIdent="PO"/>
 		<Location>
 			<Locality>Dallas</Locality>
 			<Region>Texas</Region>
@@ -950,21 +950,85 @@
 			<Citation>NBC, Wikipedia</Citation>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CHK"/>
-			<RelatedCrisis crisisIdent="CSE"/>
+			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
+			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
 			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Person>
 
-	<CrisisKind crisisKindIdent="Natural">
-		<Name>Natural</Name>
-		<Description>A natural disaster that was not brought on by humankind: earthquake, tsunami, flooding, etc.</Description>
+	<CrisisKind crisisKindIdent="ACC">
+		<Name>Accident</Name>
+		<Description>A result of human error</Description>
 	</CrisisKind>
-	<CrisisKind crisisKindIdent="NonNatural">
-		<Name>Non-Natural Disaster</Name>
-		<Description>Disaster brought on by humans: attacks, war, biological, etc.</Description>
+	<CrisisKind crisisKindIdent="CO">
+		<Name>Conflic</Name>
+		<Description>Two forces in disagreement</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="DI">
+		<Name>Disease</Name>
+		<Description>Compromised health through biological threats</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="EQ">
+		<Name>Earthquake</Name>
+		<Description>Shifting of tectonic plates. Measured on Richter scale</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="EC">
+		<Name>Economic Crises</Name>
+		<Description>Financial instability</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="FR">
+		<Name>Fire</Name>
+		<Description>Massive damage due to fire</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="FL">
+		<Name>Flood</Name>
+		<Description>Massive amounts of water in a condensed area</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="FC">
+		<Name>Food Crisis</Name>
+		<Description>Lack of essential nutrients</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="GC">
+		<Name>Genocide</Name>
+		<Description>Murder of one race</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="HT">
+		<Name>Human Trafficking</Name>
+		<Description>Treating a person like a good to be sold, violating basic human rights</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="HU">
+		<Name>Hurricane</Name>
+		<Description>Storm with violent winds</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="TA">
+		<Name>Terrorist Attack</Name>
+		<Description>Surprise atack from a group with political or religious aim</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="TO">
+		<Name>Tornada</Name>
+		<Description>Funnel shaped vortex with extremely high winds</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="TS">
+		<Name>Tsunami</Name>
+		<Description>Massive wave. Sometimes resulting from earthquakes</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="VO">
+		<Name>Volcano</Name>
+		<Description>Mountain like object with capabilities of erupting with liquid hot magma</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="WAR">
+		<Name>War</Name>
+		<Description>Conflict between countries</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="WP">
+		<Name>Weapons</Name>
+		<Description>Violence involving an instrument for destruction</Description>
+	</CrisisKind>
+	<CrisisKind crisisKindIdent="MIS">
+		<Name>Other</Name>
+		<Description>Everything else</Description>
 	</CrisisKind>
 	<OrganizationKind organizationKindIdent="HO">
 		<Name>Humanitarian</Name>
@@ -986,11 +1050,12 @@
 		<Name>Governmental Organization</Name>
 		<Description>Administrative unit of the government designed to improve a specific area.</Description>
 	</OrganizationKind>
+
 	<PersonKind personKindIdent="PTHU">
 		<Name>Humanitarian</Name>
 		<Description>Having the interests of mankind at heart</Description>
 	</PersonKind>
-	<PersonKind personKindIdent="PTHO">
+	<PersonKind personKindIdent="HO">
 		<Name>Head of Organization</Name>
 		<Description>Leader/CEO/Owner of an organization. The person in charge</Description>
 	</PersonKind>
@@ -1002,7 +1067,7 @@
 		<Name>Businessman/woman</Name>
 		<Description>A person in the business of selling/trading goods</Description>
 	</PersonKind>
-	<PersonKind personKindIdent="PTPO">
+	<PersonKind personKindIdent="PO">
 		<Name>Politician</Name>
 		<Description>A person who is professionally involved in politics (The activities associated with the governance of a country or area)</Description>
 	</PersonKind>
