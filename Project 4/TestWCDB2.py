@@ -468,6 +468,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(xml == "")
 
     def test_exportOrgs2(self):
+<<<<<<< HEAD
         c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
         a = sqlLogin(c)
         createTables ( a )
@@ -483,6 +484,25 @@ class TestWCDB2 (unittest.TestCase) :
         sqlQuery( a, "insert into Organizations values ('ORD', 'Red Crescent', 'OTPU', 'History', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', 'Midland', 'TX', '1236', 'USA' );" )
         xml = exportOrgs ( a )
         self.assert_(xml.count("<Organization") == 2)
+=======
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
+        a = sqlLogin(c)
+        createTables ( a )
+        sqlQuery( a, "insert into Organizations values 'ORC', 'Red Crescent', 'OTPU', 'The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention.', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', '1236' );" )
+        xml = exportOrgs ( a )
+        self.assert_(xml.count("<Organization>" == 1)
+
+    def test_exportOrgs2(self):
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
+        a = sqlLogin(c)
+        createTables ( a )
+        sqlQuery( a, "insert into Organizations values 'ORC', 'Red Crescent', 'OTPU', 'The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention.', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', '1236' );" )
+        sqlQuery( a, "insert into Organizations values 'ORT', 'Red Crescent', 'OTPU', 'The Red Cross idea was born in 1859, when Henry Dunant, a young Swiss man, came upon the scene of a bloody battle in Solferino, Italy, between the armies of imperial Austria and the Franco-Sardinian alliance. Some 40,000 men lay dead or dying on the battlefield and the wounded were lacking medical attention.', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', '1236' );" )
+        xml = exportOrgs ( a )
+        self.assert_(xml.count("<Organization>" == 2)
+>>>>>>> mm
 
     #-------------
     # exportPeople
@@ -495,6 +515,7 @@ class TestWCDB2 (unittest.TestCase) :
         xml = exportPeople ( a )
         self.assert_(xml == "")
 
+<<<<<<< HEAD
 
     #-------------
     # exportTypes
@@ -523,6 +544,19 @@ class TestWCDB2 (unittest.TestCase) :
         sqlQuery ( a, "insert into PersonKind values ('PGO', 'Government Official', ' Stuff');")
         xml = exportTypes ( a )
         self.assert_(xml[-13:-1]=="</PersonKind")
+=======
+    def test_exportPeople2(self):
+        #c = ["z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
+        c = ["localhost", "jordan", "password", "wcdb2"]
+        a = sqlLogin(c)
+        createTables ( a )
+        sqlQuery( a, "insert into Organizations values 'PKA', 'Kofi', 'Atta', 'Annan', '', 'PTHO' );" )
+        sqlQuery( a, "insert into Organizations values 'PKA', 'Kofi', 'Atta', 'Annan', '', 'PTHO' );" )
+        xml = exportOrgs ( a )
+        self.assert_(xml.count("<Organization>" == 2)
+
+    
+>>>>>>> mm
 
     # ---------
     # importXml
