@@ -412,8 +412,8 @@
 			<ExternalLinkURL>http://www.iranicaonline.org/articles/bam-earthquake-2003</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CIE"/>
-			<RelatedCrisis crisisIdent="CSO"/>
+			<RelatedCrisis crisisIdent="Iran_EQ_2003"/>
+			<RelatedCrisis crisisIdent="SARS_DI_2003"/>
 		</RelatedCrises>
 	</Organization>
 
@@ -442,7 +442,7 @@
 			<ExternalLinkURL>http://www.pih.org/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CHE"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
 		</RelatedCrises>
 	</Organization>
 
@@ -501,10 +501,10 @@
 			<ExternalLinkURL>http://www.peacecorpsconnect.org/2011/01/a-year-ago-haiti/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CJTS"/>
+			<RelatedCrisis crisisIdent="Japan_EQ_2011"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PJC"/>
+			<RelatedPerson personIdent="JECarter"/>
 		</RelatedPersons>
 	</Organization>
 
@@ -533,12 +533,12 @@
 			<ExternalLinkURL>http://www.iaea.org/newscenter/focus/chernobyl/ </ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CTMIA"/>
-			<RelatedCrisis crisisIdent="CCD"/>
-			<RelatedCrisis crisisIdent="CJTS"/>
+			<RelatedCrisis crisisIdent="TMI_ACC_1979"/>
+			<RelatedCrisis crisisIdent="Chernobyl_ACC_1986"/>
+			<RelatedCrisis crisisIdent="Japan_EQ_2011"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PNK"/>
+			<RelatedPerson personIdent="NKan"/>
 		</RelatedPersons>
 	</Organization>
 
@@ -567,13 +567,13 @@
 			<ExternalLinkURL>http://www.un.org/en/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CCD"/>
+			<RelatedCrisis crisisIdent="Chernobyl_ACC_1986"/>
 			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
-			<RelatedCrisis crisisIdent="CHE"/>
-			<RelatedCrisis crisisIdent="CJTS"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
+			<RelatedCrisis crisisIdent="Japan_EQ_2011"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PKA"/>
+			<RelatedPerson personIdent="KAAnnan"/>
 		</RelatedPersons>
 	</Organization>
 
@@ -602,13 +602,13 @@
 			<ExternalLinkURL>http://www.cdc.gov/h1n1flu/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CHE"/>
-			<RelatedCrisis crisisIdent="CSO"/>
-			<RelatedCrisis crisisIdent="CSF"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
+			<RelatedCrisis crisisIdent="SARS_DI_2003"/>
+			<RelatedCrisis crisisIdent="H1N1_DI_2009"/>
 			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PJG"/>
+			<RelatedPerson personIdent="JLGerberding"/>
 		</RelatedPersons>
 	</Organization>
 
@@ -639,10 +639,10 @@
 		</ExternalResources>
 		<RelatedCrises>
 			<RelatedCrisis crisisIdent="WTC_TA_2001"/>
-			<RelatedCrisis crisisIdent="CHE"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PRG"/>
+			<RelatedPerson personIdent="RWGiuliani"/>
 		</RelatedPersons>
 	</Organization>
 
@@ -672,15 +672,15 @@
 			<Citation>NBC</Citation>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CJTS"/>
+			<RelatedCrisis crisisIdent="Japan_EQ_2011"/>
 			<RelatedCrisis crisisIdent="Joplin_TO_2011"/>
 			<RelatedCrisis crisisIdent="HU_Katrina_2005"/>
-			<RelatedCrisis crisisIdent="CHE"/>
-			<RelatedCrisis crisisIdent="CTMIA"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
+			<RelatedCrisis crisisIdent="TMI_ACC_1979"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PMB"/>
-			<RelatedPerson personIdent="PGW"/>
+			<RelatedPerson personIdent="MDBrown"/>
+			<RelatedPerson personIdent="GWBush"/>
 		</RelatedPersons>
 	</Organization>
 
@@ -709,12 +709,12 @@
 			<ExternalLinkURL>http://www.who.int/csr/disease/swineflu/en/</ExternalLinkURL>
 		</ExternalResources>
 		<RelatedCrises>
-			<RelatedCrisis crisisIdent="CSO"/>
-			<RelatedCrisis crisisIdent="CSF"/>
-			<RelatedCrisis crisisIdent="CHE"/>
+			<RelatedCrisis crisisIdent="SARS_DI_2003"/>
+			<RelatedCrisis crisisIdent="H1N1_DI_2009"/>
+			<RelatedCrisis crisisIdent="Haiti_EQ_2010"/>
 		</RelatedCrises>
 		<RelatedPersons>
-			<RelatedPerson personIdent="PMC"/>
+			<RelatedPerson personIdent="MChan"/>
 		</RelatedPersons>
 	</Organization>
 
