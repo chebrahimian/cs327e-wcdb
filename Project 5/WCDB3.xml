@@ -35,8 +35,8 @@
 			<RelatedPerson personIdent="PRR"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OIAEA"/>
-			<RelatedOrganization organizationIdent="OUN"/>
+			<RelatedOrganization organizationIdent="IAEA"/>
+			<RelatedOrganization organizationIdent="UN"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -70,7 +70,7 @@
 			<RelatedPerson personIdent="PJC"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OIAEA"/>
+			<RelatedOrganization organizationIdent="IAEA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -107,8 +107,8 @@
 			<RelatedPerson personIdent="PJG"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OWHO"/>
-			<RelatedOrganization organizationIdent="OCDC"/>
+			<RelatedOrganization organizationIdent="WHO"/>
+			<RelatedOrganization organizationIdent="CDC"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -148,7 +148,7 @@
 			<ImageURL>http://www.peacecorpsconnect.org/2011/01/a-year-ago-haiti/</ImageURL>
 		</ExternalResources>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OPH"/>
+			<RelatedOrganization organizationIdent="PIH"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -187,7 +187,7 @@
 			<RelatedPerson personIdent="PNK"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OFEMA"/>
+			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -231,7 +231,7 @@
 			<RelatedPerson personIdent="PMB"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OFEMA"/>
+			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -273,8 +273,8 @@
 			<RelatedPerson personIdent="PMK"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="ORC"/>
-			<RelatedOrganization organizationIdent="OIAEA"/>
+			<RelatedOrganization organizationIdent="RC"/>
+			<RelatedOrganization organizationIdent="IAEA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -317,7 +317,7 @@
 			<RelatedPerson personIdent="PMB"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OFEMA"/>
+			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -352,7 +352,7 @@
 			<RelatedPerson personIdent="PRG"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="ONYFD"/>
+			<RelatedOrganization organizationIdent="NYFD"/>
 		</RelatedOrganizations>
 	</Crisis>
 
@@ -381,13 +381,13 @@
 			<RelatedPerson personIdent="PJG"/>
 		</RelatedPersons>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OWHO"/>
+			<RelatedOrganization organizationIdent="WHO"/>
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Organization organizationIdent="ORC">
+	<Organization organizationIdent="RC">
 		<Name>Red Crescent</Name>
-		<Kind organizationKindIdent="OTPU"/>
+		<Kind organizationKindIdent="HEA"/>
 		<Location>
 			<Locality>Geneva</Locality>
 			<Region>Western</Region>
@@ -417,9 +417,9 @@
 		</RelatedCrises>
 	</Organization>
 
-	<Organization organizationIdent="OPH">
+	<Organization organizationIdent="PIH">
 		<Name>Partners in Health</Name>
-		<Kind organizationKindIdent="OTPU"/>
+		<Kind organizationKindIdent="HEA"/>
 		<Location>
 			<Locality>Boston</Locality>
 			<Region>Massachusetts</Region>
@@ -446,9 +446,9 @@
 		</RelatedCrises>
 	</Organization>
 
-	<Organization organizationIdent="OAC">
+	<Organization organizationIdent="ACorps">
 		<Name>Americorps</Name>
-		<Kind organizationKindIdent="OTGO"/>
+		<Kind organizationKindIdent="GOV"/>
 		<Location>
 			<Locality>New York City</Locality>
 			<Region>New York</Region>
@@ -476,9 +476,9 @@
 		</RelatedCrises>
 	</Organization>
 
-	<Organization organizationIdent="OPC">
+	<Organization organizationIdent="PC">
 		<Name>Peace Corps</Name>
-		<Kind organizationKindIdent="OTHU"/>
+		<Kind organizationKindIdent="HO"/>
 		<Location>
 			<Locality>New York City</Locality>
 			<Region>New York</Region>
@@ -508,9 +508,9 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Organization organizationIdent="OIAEA">
+	<Organization organizationIdent="IAEA">
 		<Name>International Atomic Energy Agency</Name>
-		<Kind organizationKindIdent="OTHU"/>
+		<Kind organizationKindIdent="HO"/>
 		<Location>
 			<Locality>Vienna</Locality>
 			<Region>Wien</Region>
@@ -542,9 +542,9 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Organization organizationIdent="OUN">
+	<Organization organizationIdent="UN">
 		<Name>United Nations (UN)</Name>
-		<Kind organizationKindIdent="OTGO"/>
+		<Kind organizationKindIdent="GOV"/>
 		<Location>
 			<Locality>Washington D.C.</Locality>
 			<Region>District of Columbia</Region>
@@ -577,9 +577,9 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Organization organizationIdent="OCDC">
+	<Organization organizationIdent="CDC">
 		<Name>Center for Disease Control (CDC)</Name>
-		<Kind organizationKindIdent="OTPU"/>
+		<Kind organizationKindIdent="HEA"/>
 		<Location>
 			<Locality>Druid Hills</Locality>
 			<Region>Georgia</Region>
@@ -612,9 +612,9 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Organization organizationIdent="ONYFD">
+	<Organization organizationIdent="NYFD">
 		<Name>New York Fire Department</Name>
-		<Kind organizationKindIdent="OTPS"/>
+		<Kind organizationKindIdent="PUB"/>
 		<Location>
 			<Locality>New York City</Locality>
 			<Region>New York</Region>
@@ -646,9 +646,9 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Organization organizationIdent="OFEMA">
+	<Organization organizationIdent="FEMA">
 		<Name>Federal Emergency Management Agency (FEMA)</Name>
-		<Kind organizationKindIdent="OTDR"/>
+		<Kind organizationKindIdent="DRA"/>
 		<Location>
 			<Locality>Washington D.C.</Locality>
 			<Region>District of Columbia</Region>
@@ -684,9 +684,9 @@
 		</RelatedPersons>
 	</Organization>
 
-	<Organization organizationIdent="OWHO">
+	<Organization organizationIdent="WHO">
 		<Name>World Health Organization (WHO)</Name>
-		<Kind organizationKindIdent="OTPU"/>
+		<Kind organizationKindIdent="HEA"/>
 		<Location>
 			<Locality>Geneva</Locality>
 			<Region>Western</Region>
@@ -759,7 +759,7 @@
 			<RelatedCrisis crisisIdent="CSE"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OUN"/>
+			<RelatedOrganization organizationIdent="UN"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -784,7 +784,7 @@
 			<RelatedCrisis crisisIdent="CHK"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OFEMA"/>
+			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -810,7 +810,7 @@
 			<RelatedCrisis crisisIdent="CHK"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OCDC"/>
+			<RelatedOrganization organizationIdent="CDC"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -834,7 +834,7 @@
 			<RelatedCrisis crisisIdent="CTMIA"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OPC"/>
+			<RelatedOrganization organizationIdent="PC"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -858,7 +858,7 @@
 			<RelatedCrisis crisisIdent="CSE"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="ONYFD"/>
+			<RelatedOrganization organizationIdent="NYFD"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -882,7 +882,7 @@
 			<RelatedCrisis crisisIdent="CJTS"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OIAEA"/>
+			<RelatedOrganization organizationIdent="IAEA"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -929,7 +929,7 @@
 			<RelatedCrisis crisisIdent="CHE"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OWHO"/>
+			<RelatedOrganization organizationIdent="WHO"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -954,7 +954,7 @@
 			<RelatedCrisis crisisIdent="CSE"/>
 		</RelatedCrises>
 		<RelatedOrganizations>
-			<RelatedOrganization organizationIdent="OFEMA"/>
+			<RelatedOrganization organizationIdent="FEMA"/>
 		</RelatedOrganizations>
 	</Person>
 
@@ -966,23 +966,23 @@
 		<Name>Non-Natural Disaster</Name>
 		<Description>Disaster brought on by humans: attacks, war, biological, etc.</Description>
 	</CrisisKind>
-	<OrganizationKind organizationKindIdent="OTHU">
+	<OrganizationKind organizationKindIdent="HO">
 		<Name>Humanitarian</Name>
 		<Description>Concerned with or seeking to promote human welfare</Description>
 	</OrganizationKind>
-	<OrganizationKind organizationKindIdent="OTPU">
+	<OrganizationKind organizationKindIdent="HEA">
 		<Name>Health</Name>
 		<Description>Designed to promote health relief and education</Description>
 	</OrganizationKind>
-	<OrganizationKind organizationKindIdent="OTPS">
+	<OrganizationKind organizationKindIdent="PUB">
 		<Name>Public Service</Name>
 		<Description>Groups dedicated to helping the public and its instutions</Description>
 	</OrganizationKind>
-	<OrganizationKind organizationKindIdent="OTDR">
+	<OrganizationKind organizationKindIdent="DRA">
 		<Name>Disaster Relief</Name>
 		<Description>Providing relief to areas of recent/ongoing disaster whether natural or non-natural.</Description>
 	</OrganizationKind>
-	<OrganizationKind organizationKindIdent="OTGO">
+	<OrganizationKind organizationKindIdent="GOV">
 		<Name>Governmental Organization</Name>
 		<Description>Administrative unit of the government designed to improve a specific area.</Description>
 	</OrganizationKind>
