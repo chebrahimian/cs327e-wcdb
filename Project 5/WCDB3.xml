@@ -12,11 +12,11 @@
 			<Time>01:23:00</Time>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>31</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>500000</Number>
 		</HumanImpact>
 		<EconomicImpact>588M USD</EconomicImpact>
@@ -25,7 +25,7 @@
 		<ResourceNeeded>Money</ResourceNeeded>
 		<ResourceNeeded>Shelter</ResourceNeeded>
 		<WaysToHelp>Providing room and board for refugees</WaysToHelp>
-		<WaysToHelp>Medical care for those affected</WaysToHelp>
+		<WaysToHelp>Medical care for those Injured</WaysToHelp>
 		<ExternalResources>
 			<ImageURL>http://i.telegraph.co.uk/multimedia/archive/01755/chernobyl_1755717c.jpg</ImageURL>
 			<ExternalLinkURL>http://articles.latimes.com/1986-05-04/news/mn-3685_1_soviet-union</ExternalLinkURL>
@@ -53,7 +53,7 @@
 			<Time>04:00:00</Time>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>0</Number>
 		</HumanImpact>
 		<EconomicImpact>1B USD</EconomicImpact>
@@ -74,9 +74,9 @@
 		</RelatedOrganizations>
 	</Crisis>
 
-	<Crisis crisisIdent="SARS_DS_2003">
+	<Crisis crisisIdent="SARS_DI_2003">
 		<Name>Sars Outbreak</Name>
-		<Kind crisisKindIdent="Natural"/>
+		<Kind crisisKindIdent="DI"/>
 		<Location>
 			<Locality>Foshan</Locality>
 			<Region>Guangdong</Region>
@@ -86,11 +86,11 @@
 			<Date>2002-11-06</Date>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>775</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>8273</Number>
 		</HumanImpact>
 		<EconomicImpact>Unknown</EconomicImpact>
@@ -128,11 +128,11 @@
 			<Date>2010-01-12</Date>
 		</EndDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>316000</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>3000000</Number>
 		</HumanImpact>
 		<EconomicImpact>2.3B USD</EconomicImpact>
@@ -164,11 +164,11 @@
 			<Time>14:26:00</Time>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>16000</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>23000</Number>
 		</HumanImpact>
 		<EconomicImpact>35B</EconomicImpact>
@@ -208,11 +208,11 @@
 			<Time>18:12:00</Time>
 		</EndDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>158</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>17000</Number>
 		</HumanImpact>
 		<EconomicImpact>2.8B</EconomicImpact>
@@ -248,11 +248,11 @@
 			<Time>13:26:00</Time>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>26271</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>145500</Number>
 		</HumanImpact>
 		<EconomicImpact>1500M</EconomicImpact>
@@ -295,7 +295,7 @@
 			<Time>11:00:00</Time>
 		</EndDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>1833</Number>
 		</HumanImpact>
 		<EconomicImpact>81B USD</EconomicImpact>
@@ -334,11 +334,11 @@
 			<Time>09:03:02</Time>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>2996</Number>
 		</HumanImpact>
 		<HumanImpact>
-			<Type>Affected</Type>
+			<Type>Injured</Type>
 			<Number>6000</Number>
 		</HumanImpact>
 		<EconomicImpact>40B</EconomicImpact>
@@ -367,7 +367,7 @@
 			<Date>2009-04-01</Date>
 		</StartDateTime>
 		<HumanImpact>
-			<Type>Casualties</Type>
+			<Type>Death</Type>
 			<Number>14286</Number>
 		</HumanImpact>
 		<EconomicImpact>unknown</EconomicImpact>
