@@ -1,0 +1,11 @@
+Get the name and kind of all persons in the US (United States, USA, United States of America)
+
+select location.entity_id, person.first_name, person.last_name,
+
+locality, region, country
+
+from person inner join location
+
+on person.id = location.entity_id
+
+where country = 'United States';

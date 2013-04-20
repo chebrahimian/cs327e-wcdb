@@ -1,0 +1,9 @@
+Name all humanitarian orgs in the DB
+
+select name
+
+from organization
+
+where kind = 'HO'
+
+order by name asc;
