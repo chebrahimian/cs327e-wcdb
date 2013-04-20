@@ -1,0 +1,9 @@
+How many orgs are government based?
+
+select id, name
+
+from organization
+
+where kind = 'GOV'
+
+order by name asc;
