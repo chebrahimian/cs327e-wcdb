@@ -1,0 +1,6 @@
+Name and Postal Address of all orgs in California
+
+select name, street_address, locality, region, country, postal_code 
+from organization
+
+where region = 'California';

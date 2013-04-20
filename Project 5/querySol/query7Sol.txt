@@ -1,0 +1,7 @@
+How many crises occurred during the 1960s?
+
+select start_date
+
+from crisis
+
+where start_date between 1960-01-01 and 1969-12-31;

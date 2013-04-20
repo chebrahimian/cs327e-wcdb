@@ -1,0 +1,11 @@
+List all crises that happened in the same state/region
+
+select crisis.id, crisis.name, location.region
+
+from crisis inner join location
+
+on crisis.id = location.entity_id
+
+where location.country = 'United States'
+
+order by country;
