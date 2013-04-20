@@ -1,7 +1,9 @@
-List the crises in the order when they occurred (earliest to latest)
+Name all humanitarian orgs in the DB
 
-select name, start_date
+select name
 
-from crisis
+from organization
 
-order by start_date asc;
+where kind = 'HO'
+
+order by name asc;
