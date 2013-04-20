@@ -1,0 +1,7 @@
+How many people are singers?
+
+select count(*)
+
+from personkind
+
+where id = 'SNG';

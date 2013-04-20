@@ -1,0 +1,7 @@
+Number of natural disasters occurring from June 5th 2000 to June 5th 2012
+
+select id, name, start_date
+
+from crisis
+
+where start_date between '2000/6/5' and '2012/6/5';

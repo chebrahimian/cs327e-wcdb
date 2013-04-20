@@ -1,0 +1,6 @@
+Count the number of crises that each organization helped
+
+select id_organization, count(*) 
+from crisisorganization
+
+group by id_organization;

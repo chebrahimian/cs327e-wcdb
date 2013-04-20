@@ -1,0 +1,7 @@
+How many hurricane crises (CrisisKind=HU)?
+
+select count(*)
+
+from crisis
+where 
+kind = 'HU';

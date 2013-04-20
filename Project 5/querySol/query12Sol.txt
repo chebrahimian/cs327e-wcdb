@@ -1,6 +1,6 @@
-Count the number of crises that each organization helped
+Name and Postal Address of all orgs in California
 
-select id_organization, count(*) 
-from crisisorganization
+select name, street_address, locality, region, country, postal_code 
+from organization
 
-group by id_organization;
+where region = 'California';

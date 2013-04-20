@@ -1,6 +1,11 @@
-Name and Postal Address of all orgs in California
+List all crises that happened in the same state/region
 
-select name, street_address, locality, region, country, postal_code 
-from organization
+select crisis.id, crisis.name, location.region
 
-where region = 'California';
+from crisis inner join location
+
+on crisis.id = location.entity_id
+
+where location.country = 'United States'
+
+order by country;

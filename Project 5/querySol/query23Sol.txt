@@ -1,7 +1,9 @@
-How many hurricane crises (CrisisKind=HU)?
+Name all humanitarian orgs in the DB
 
-select count(*)
+select name
 
-from crisis
-where 
-kind = 'HU';
+from organization
+
+where kind = 'HO'
+
+order by name asc;
