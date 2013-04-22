@@ -1,7 +1,5 @@
 List the crises in the order when they occurred (earliest to latest)
 
 select name, start_date
-
-from crisis
-
+from crisis 
 order by start_date asc;

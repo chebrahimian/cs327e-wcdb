@@ -1,0 +1,11 @@
+What is the first (earliest) crisis in the first database?
+
+select id, name, start_date
+
+from crisis as c1
+
+where not exists
+  (select * 
+    from crisis as c2
+
+    where c1.start_date > c2.start_date);

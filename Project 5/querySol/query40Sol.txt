@@ -1,0 +1,9 @@
+Average number of deaths caused by hurricanes.
+
+select avg(number)
+
+from humanimpact inner join crisis
+
+on humanimpact.crisis_id = crisis.id
+
+where kind = 'HU' and type = 'Death';

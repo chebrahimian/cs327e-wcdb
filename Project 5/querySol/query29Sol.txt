@@ -6,4 +6,4 @@ from person
 
 where first_name REGEXP '^B'
 
-order by last_name asc;
+order by last_name;
