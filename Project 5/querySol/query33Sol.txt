@@ -1,0 +1,6 @@
+#What is the number of organizations in the US?
+
+select count(*) as number
+	from organization o
+	where
+		o.country = 'United States';

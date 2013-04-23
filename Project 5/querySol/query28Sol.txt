@@ -1,0 +1,6 @@
+#Which people don't have a middle name?
+
+select CONCAT(p.first_name,' ',p.last_name) as person
+	from person p
+	where
+		p.middle_name is null or p.middle_name is "";
