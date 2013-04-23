@@ -366,15 +366,47 @@ def importCrisis ( c, crisisInstance ):
     #assert str(type(c)) == "<type '_mysql.connection'>"
     #assert str(type(crisisInstance)) == "<type 'instance'>"
     crisisID = crisisInstance.attrib["crisisIdent"]
+    curC = sqlQuery ( c, "select * from Crisis where id = '" + crisisID + "';" )
+    curL = sqlQuery ( c, "select * from Location where entity_id = '" + crisisID + "';" )
+    curRN = sqlQuery ( c, "select * from ResourceNeeded where crisis_id = '" + crisisID + "';" )
+    curER = sqlQuery ( c, "select * from ExternalResource where entity_id = '" + crisisID + "';" )
+    curPC = sqlQuery ( c, "select * from PersonCrisis where id_crisis = '" + crisisID + "';" )
+    curCO = sqlQuery ( c, "select * from CrisisOrganization where id_crisis = '" + crisisID + "';" )
+    curWTH = sqlQuery ( c, "select * from WaysToHelp where crisis_id = '" + crisisID + "';" )
+    curHI = sqlQuery ( c, "select * from HumanImpact where crisis_id = '" + crisisID + "';" )
+
+    curC = sqlQuery ( c, "delete from Crisis where id = '" + crisisID + "';" )
+    #curL = sqlQuery ( c, "delete from Location where entity_id = '" + crisisID + "';" )
+    #curRN = sqlQuery ( c, "delete from ResourceNeeded where crisis_id = '" + crisisID + "';" )
+    #curER = sqlQuery ( c, "delete from ExternalResource where entity_id = '" + crisisID + "';" )
+    #curPC = sqlQuery ( c, "delete from PersonCrisis where id_crisis = '" + crisisID + "';" )
+    #curCO = sqlQuery ( c, "delete from CrisisOrganization where id_crisis = '" + crisisID + "';" )
+    #curWTH = sqlQuery ( c, "delete from WaysToHelp where crisis_id = '" + crisisID + "';" )
+    #curHI = sqlQuery ( c, "delete from HumanImpact where crisis_id = '" + crisisID + "';" )
     
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
     allLocations = crisisInstance.findall("Location")
     if len(allLocations) != 0:
         for instance in allLocations:
-            if len ( instance ) == 2 :
-                sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
+            tags = []
+            for elem in instance :
+                tags.append ( elem.tag )
+            if ( len ( instance ) == 1 ) :
+                if ( "Locality" in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '', '' );")
+                elif ( "Region" in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '"+instance[0].text+"', '' );")
+                elif ( "Country" in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '', '"+instance[0].text+"');")
+            elif ( len ( instance ) == 2 ) :
+                if ( "Locality" not in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '"+instance[0].text+"', '"+instance[1].text+"');")
+                elif ( "Region" not in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
+                elif ( "Country" not in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '"+instance[1].text+"', '',);")
             else :
-                sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '"+instance[1].text+"', '"+instance[2].text+"');")
+                sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+ (instance[0].text or "") +"', '"+ (instance[1].text or "") +"', '"+ (instance[2].text or "") +"');")
 
     #Gets list of all resources needed. Iterates through lists and inserts into ResourceNeeded table
     resourcesNeeded = crisisInstance.findall("ResourceNeeded")
@@ -398,6 +430,7 @@ def importCrisis ( c, crisisInstance ):
 
     if len(relatedPeople) != 0:
         for instance in relatedPeople:
+            sqlQuery ( c, "delete from PersonCrisis where id_person = '"+instance.attrib["personIdent"]+"' and id_crisis = '"+crisisID+"';")
             sqlQuery ( c, "insert into PersonCrisis values ( '"+instance.attrib["personIdent"]+"', '"+crisisID+"');")
 
      #Gets list of all RelatedOrganizations and inserts into OrganizationsToCrises table
@@ -405,6 +438,7 @@ def importCrisis ( c, crisisInstance ):
 
     if len(relatedOrgs) != 0:
         for instance in relatedOrgs:
+            sqlQuery ( c, "delete from CrisisOrganization where id_crisis = '"+crisisID+"' and id_organization = '"+instance.attrib["organizationIdent"]+"';")
             sqlQuery ( c, "insert into CrisisOrganization values ( '"+crisisID+"', '"+instance.attrib["organizationIdent"]+"');")
 
     #Gets all tags titled WaysToHelp, and inserts into corresponding table by indexing the list they're stored in
@@ -453,12 +487,32 @@ def importOrg ( c, orgInstance ):
     #assert str(type(c)) == "<type '_mysql.connection'>"
     #assert str(type(orgInstance)) == "<type 'instance'>"
     orgID = orgInstance.attrib["organizationIdent"]
+    
+    curO = sqlQuery ( c, "delete from Organization where id = '" + orgID + "';" )
 
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
     allLocations = orgInstance.findall("Location")
     if len(allLocations) != 0:
         for instance in allLocations:
-            sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '"+instance[1].text+"', '"+instance[2].text+"');")
+            tags = []
+            for elem in instance :
+                tags.append ( elem.tag )
+            if ( len ( instance ) == 1 ) :
+                if ( "Locality" in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '', '' );")
+                elif ( "Region" in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '"+instance[0].text+"', '' );")
+                elif ( "Country" in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '', '"+instance[0].text+"');")
+            elif ( len ( instance ) == 2 ) :
+                if ( "Locality" not in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '"+instance[0].text+"', '"+instance[1].text+"');")
+                elif ( "Region" not in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
+                elif ( "Country" not in tags ) :
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '"+instance[1].text+"', '');")
+            else :
+                sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+ (instance[0].text or "") +"', '"+ (instance[1].text or "") +"', '"+ (instance[2].text or "") +"');")
 
     #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
     externalResources = orgInstance.find("ExternalResources")
@@ -469,17 +523,17 @@ def importOrg ( c, orgInstance ):
 
     #Get all values for Organizations table and insert to DB
     postalAddress = orgInstance.find(".//" + "PostalAddress")
-    name = orgInstance.find("Name").text
+    name = orgInstance.find("Name").text.replace ( "'", "" )
     kind = orgInstance.find("Kind").attrib["organizationKindIdent"]
-    history = orgInstance.find("History").text
-    phone = str(orgInstance.find(".//" + "Telephone").text)
-    fax = str(orgInstance.find(".//" + "Fax").text)
-    email = orgInstance.find(".//" + "Email").text
-    address = postalAddress[0].text
-    locality = postalAddress[1].text
-    region = postalAddress[2].text
-    postalCode = postalAddress[3].text
-    country = postalAddress[4].text
+    history = orgInstance.find("History").text or ""
+    phone = orgInstance.find(".//" + "Telephone").text or "0000000000"
+    fax = orgInstance.find(".//" + "Fax").text or "0000000000"
+    email = orgInstance.find(".//" + "Email").text or ""
+    address = postalAddress[0].text or ""
+    locality = postalAddress[1].text or ""
+    region = postalAddress[2].text or ""
+    postalCode = postalAddress[3].text or ""
+    country = postalAddress[4].text or ""
     sqlQuery (c , "insert into Organization values ( '"+orgID+"', '"+name+"', '"+kind+"', '"+history+"', "+phone+", "+fax+", '"+email+"', '"+address+"', '"+locality+"', '"+region+"', '"+postalCode+"', '"+country+"');")
 
 def importPerson ( c, peopleInstance ):
@@ -491,16 +545,37 @@ def importPerson ( c, peopleInstance ):
     #assert str(type(c)) == "<type '_mysql.connection'>"
     #assert str(type(peopleInstance)) == "<type 'instance'>"
     personID = peopleInstance.attrib["personIdent"]
+
+    curP = sqlQuery ( c, "delete from Person where id = '" + personID + "';" )
         
     #Gets location sub elements in list. Inserts into PeopleLocation table by indexing list
     locationElements = list(peopleInstance.findall("Location"))
     for instance in locationElements:
-        sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '"+instance[1].text+"', '"+instance[2].text+"');")
+        tags = []
+        for elem in instance :
+            tags.append ( elem.tag )
+        if ( len ( instance ) == 1 ) :
+            if ( "Locality" in tags ) :
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '', '' );")
+            elif ( "Region" in tags ) :
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '"+instance[0].text+"', '' );")
+            elif ( "Country" in tags ) :
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '', '"+instance[0].text+"');")
+        elif ( len ( instance ) == 2 ) :
+            if ( "Locality" not in tags ) :
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '"+instance[0].text+"', '"+instance[1].text+"');")
+            elif ( "Region" not in tags ) :
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
+            elif ( "Country" not in tags ) :
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '"+instance[1].text+"', '');")
+        else :
+            sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+ (instance[0].text or "") +"', '"+ (instance[1].text or "") +"', '"+ (instance[2].text or "") +"');")
     
     #Gets list of all RelatedOrganizations and inserts into PeopleToOrganizations table
     relatedOrgs = peopleInstance.find("RelatedOrganizations")
     if relatedOrgs != None :
         for instance in relatedOrgs:
+            sqlQuery ( c, "delete from OrganizationPerson where id_organization = '"+instance.attrib["organizationIdent"]+"' and id_person = '"+personID+"';")
             sqlQuery ( c, "insert into OrganizationPerson values ( '"+instance.attrib["organizationIdent"]+"', '"+personID+"');")
 
     #Gets all URL's in a list. Indexes list, splices tag to get type, inserts data into table
@@ -561,7 +636,7 @@ def importCrisisKind ( c, crisisKindInstance ):
     #assert str(type(crisisKindInstance)) == "<type 'instance'>"
     crisisKindID = crisisKindInstance.attrib["crisisKindIdent"]
     name = crisisKindInstance.find("Name").text
-    description = crisisKindInstance.find("Description").text
+    description = crisisKindInstance.find("Description").text or ""
     sqlQuery ( c, "insert into CrisisKind values ( '"+crisisKindID+"', '"+name+"', '"+description+"');")
 
 def importOrgKind ( c, orgKindInstance ) :
@@ -574,7 +649,7 @@ def importOrgKind ( c, orgKindInstance ) :
     #assert str(type(orgKindInstance)) == "<type 'instance'>"
     orgKindID = orgKindInstance.attrib["organizationKindIdent"]
     name = orgKindInstance.find("Name").text
-    description = orgKindInstance.find("Description").text  
+    description = orgKindInstance.find("Description").text or ""
     sqlQuery ( c, "insert into OrganizationKind values ( '"+orgKindID+"', '"+name+"', '"+description+"');")
 
 def importPersonKind ( c, personKindInstance ) :
@@ -588,7 +663,7 @@ def importPersonKind ( c, personKindInstance ) :
     #assert str(type(personKindInstance)) == "<type 'instance'>"
     personKindID = personKindInstance.attrib["personKindIdent"]
     name = personKindInstance.find("Name").text
-    description = personKindInstance.find("Description").text  
+    description = personKindInstance.find("Description").text or ""
     sqlQuery ( c, "insert into PersonKind values ( '"+personKindID+"', '"+name+"', '"+description+"');")
 
 def importDB ( c, xml ) :
@@ -627,20 +702,33 @@ def exportDB ( c ) :
     xml += closeTag ( "WorldCrises" )
     #assert str ( type ( xml ) ) == "<type 'str'>"
     return xml
+
+def importAllXml ( n, f, c ) :
+    """
+    imports all xml files in the specified folder into the database
+    n is the name of the folder containing the input files
+    f is the folder containg the input xml files
+    c is the mysql database connection
+    """
+    for file in f:
+        if file.endswith(".xml"):
+            with open ( n + "\\" + file, "r" ) as input:
+                xml = importXml ( input )
+                importDB ( c, xml )
     
-def start ( r, w, args ):
+def start ( n, f, w, args ):
     """
     imports an xml document into an ElementTree, imports that ElementTree into a mysql database,
     then outputs the mysql database to a valid xml document, which is then written to the output file
-    r is the reader
+    n is the name of the folder containg the input files
+    f is the list of input files
     w is the writer
     args are the commandline arguments
     """
     sqlLoginInfo = parseArgs ( args )
     sql = sqlLogin ( sqlLoginInfo )
-    xml = importXml ( r )
     createTables ( sql )
-    importDB ( sql, xml )
+    importAllXml ( n, f, sql )
     exportXML = exportDB ( sql )
     sql.close ()
     exportXml ( w, exportXML )
