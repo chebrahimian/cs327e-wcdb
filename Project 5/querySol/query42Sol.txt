@@ -1,0 +1,9 @@
+List of Hurricanes in the US that Wallace Stickney (WStickney) helped out with.
+
+select count(*)
+
+from personcrisis inner join crisis
+
+on personcrisis.id_crisis = crisis.id
+
+where id_person = 'WStickney' and kind = 'HU';
