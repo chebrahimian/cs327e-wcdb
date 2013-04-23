@@ -1,0 +1,11 @@
+How many more orgs does America have than Britain. 
+
+select A.x - B.y as "'MURRICA!"
+
+from
+ (
+(select count(country) as x from organization where country = 'United States') as A,
+ 
+(select count(country) as y from organization where country = 'Britain') as B
+)
+;
