@@ -1,0 +1,10 @@
+What is the longest-lasting crisis? (If no end date, then ignore)
+
+
+select name 
+
+from (select name, datediff(end_date, start_date) as J 	from Crisis) as A
+
+where A.J >= all
+
+(select datediff(end_date, start_date) as J from Crisis);
