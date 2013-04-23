@@ -1,0 +1,12 @@
+Which crisis has the minimum human impact?
+
+select name from 
+	(select name, sum(number) as number
+	from Crisis as A, HumanImpact as B
+	where A.id = B.crisis_id 
+	group by name) as R
+where R.number <= all
+	(select sum(number) as number
+	from Crisis as A, HumanImpact as B
+	where A.id = B.crisis_id 
+	group by name);
