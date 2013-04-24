@@ -219,7 +219,7 @@ def exportCrises ( c ) :
         xml += openTag ( "ExternalResources" )
         for j in cER :
             resourceTag = createResourceTypeTag ( j [ 3 ] )
-            xml += openCloseTag ( resourceTag , j [ 4 ] )
+            xml += openCloseTag ( resourceTag , j [ 4 ].replace ( "&", "&amp;" ) )
         xml += closeTag ( "ExternalResources" )
         xml += openTag ( "RelatedPersons" )
         for j in cTP :
@@ -239,8 +239,8 @@ def exportOrgs ( c ) :
     c is the mysql database connection
     """
     #assert str(type(c)) == "<type '_mysql.connection'>"
-    xml = ""
     o = sqlQuery ( c, "select * from Organization;" )
+    xml = ""
     for i in o:
         oL = sqlQuery ( c, "select * from Location where entity_id = '"+i[0]+"';" )
         oER = sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"';" )
@@ -271,7 +271,7 @@ def exportOrgs ( c ) :
         xml += openTag ("ExternalResources")
         for j in oER:
             resourceTag = createResourceTypeTag ( j [ 3 ] )
-            xml += openCloseTag ( resourceTag , j [ 4 ] )
+            xml += openCloseTag ( resourceTag , j [ 4 ].replace ( "&", "&apos;" ) )
         xml += closeTag ("ExternalResources")
         xml += openTag ("RelatedCrises")
         for j in oTC:
@@ -315,7 +315,7 @@ def exportPeople ( c ) :
         xml += openTag ( "ExternalResources" )
         for j in pER :
             resourceTag = createResourceTypeTag ( j [ 3 ] )
-            xml += openCloseTag ( resourceTag , j [ 4 ] )
+            xml += openCloseTag ( resourceTag , j [ 4 ].replace ( "&", "&amp;" ) )
         xml += closeTag ( "ExternalResources" )
         xml += openTag ( "RelatedCrises" )
         for j in cTP :
@@ -422,7 +422,7 @@ def importCrisis ( c, crisisInstance ):
     if len(externalResources) != 0:
         for instance in externalResources:
             resourceType = parseResourceType ( instance.tag )
-            sqlQuery ( c, "insert into ExternalResource values ( null, 'C', '"+crisisID+"', '"+resourceType+"', '"+instance.text+"');")
+            sqlQuery ( c, "insert into ExternalResource values ( null, 'C', '"+crisisID+"', '"+resourceType+"', '"+instance.text.replace( "'", "" )+"');")
                 
 
     #Gets list of all RelatedPeople and inserts into CrisesToPeople table
@@ -474,7 +474,7 @@ def importCrisis ( c, crisisInstance ):
     else :
         endDate = startDate
         endTime = '23:59:59'
-    econImpact = crisisInstance.find("EconomicImpact").text
+    econImpact = crisisInstance.find("EconomicImpact").text or ""
 
     sqlQuery ( c, "insert into Crisis values ( '"+crisisID+"', '"+name+"', '"+kind+"', '"+startDate+"', '"+startTime+"', '"+endDate+"', '"+endTime+"', '"+econImpact+"');")
 
@@ -525,7 +525,7 @@ def importOrg ( c, orgInstance ):
     postalAddress = orgInstance.find(".//" + "PostalAddress")
     name = orgInstance.find("Name").text.replace ( "'", "" )
     kind = orgInstance.find("Kind").attrib["organizationKindIdent"]
-    history = orgInstance.find("History").text or ""
+    history = orgInstance.find("History").text.replace ( "'", "" ) or ""
     phone = orgInstance.find(".//" + "Telephone").text or "0000000000"
     fax = orgInstance.find(".//" + "Fax").text or "0000000000"
     email = orgInstance.find(".//" + "Email").text or ""
@@ -534,7 +534,7 @@ def importOrg ( c, orgInstance ):
     region = postalAddress[2].text or ""
     postalCode = postalAddress[3].text or ""
     country = postalAddress[4].text or ""
-    sqlQuery (c , "insert into Organization values ( '"+orgID+"', '"+name+"', '"+kind+"', '"+history+"', "+phone+", "+fax+", '"+email+"', '"+address+"', '"+locality+"', '"+region+"', '"+postalCode+"', '"+country+"');")
+    sqlQuery (c , "insert into Organization values ( '"+orgID+"', '"+name+"', '"+kind+"', '"+history+"', '"+phone+"', '"+fax+"', '"+email+"', '"+address+"', '"+locality+"', '"+region+"', '"+postalCode+"', '"+country+"');")
 
 def importPerson ( c, peopleInstance ):
     """
@@ -637,7 +637,8 @@ def importCrisisKind ( c, crisisKindInstance ):
     crisisKindID = crisisKindInstance.attrib["crisisKindIdent"]
     name = crisisKindInstance.find("Name").text
     description = crisisKindInstance.find("Description").text or ""
-    sqlQuery ( c, "insert into CrisisKind values ( '"+crisisKindID+"', '"+name+"', '"+description+"');")
+    sqlQuery ( c, "delete from CrisisKind where id = '"+crisisKindID+"';")
+    sqlQuery ( c, "insert into CrisisKind values ( '"+crisisKindID+"', '"+name+"', '"+description.replace ( "'", "" )+"');")
 
 def importOrgKind ( c, orgKindInstance ) :
     """
@@ -650,7 +651,8 @@ def importOrgKind ( c, orgKindInstance ) :
     orgKindID = orgKindInstance.attrib["organizationKindIdent"]
     name = orgKindInstance.find("Name").text
     description = orgKindInstance.find("Description").text or ""
-    sqlQuery ( c, "insert into OrganizationKind values ( '"+orgKindID+"', '"+name+"', '"+description+"');")
+    sqlQuery ( c, "delete from OrganizationKind where id = '"+orgKindID+"';")
+    sqlQuery ( c, "insert into OrganizationKind values ( '"+orgKindID+"', '"+name+"', '"+description.replace ( "'", "" )+"');")
 
 def importPersonKind ( c, personKindInstance ) :
     """
@@ -664,7 +666,8 @@ def importPersonKind ( c, personKindInstance ) :
     personKindID = personKindInstance.attrib["personKindIdent"]
     name = personKindInstance.find("Name").text
     description = personKindInstance.find("Description").text or ""
-    sqlQuery ( c, "insert into PersonKind values ( '"+personKindID+"', '"+name+"', '"+description+"');")
+    sqlQuery ( c, "delete from PersonKind where id = '"+personKindID+"';")
+    sqlQuery ( c, "insert into PersonKind values ( '"+personKindID+"', '"+name+"', '"+description.replace ( "'", "" )+"');")
 
 def importDB ( c, xml ) :
     """
