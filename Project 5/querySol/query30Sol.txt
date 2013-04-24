@@ -1,9 +1,0 @@
-What are the names that start with 'B'?
-
-select id, first_name, last_name
-
-from person
-
-where first_name REGEXP '^B'
-
-order by last_name asc;

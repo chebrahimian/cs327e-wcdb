@@ -1,0 +1,9 @@
+Number of crises that intelligence agencies were involved in.
+
+select count(*) from
+
+organization as org inner join crisisorganization
+
+on org.id = crisisorganization.id_organization
+
+where kind = 'IA';

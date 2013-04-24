@@ -1,0 +1,7 @@
+total number of deaths caused by terrorist attacks
+
+select sum(number) as deaths
+
+from Crisis as A, HumanImpact as B
+
+where A.id = B.crisis_id and A.kind = 'TA';

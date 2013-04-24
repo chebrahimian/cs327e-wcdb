@@ -1,0 +1,11 @@
+Find the total number of human casualties caused by crises in the 1990s
+
+select sum(number)
+
+from crisis inner join humanimpact
+
+on crisis.id = humanimpact.crisis_id
+
+where start_date between '1990/01/01' and '1999/12/31'
+
+and type = 'Death';

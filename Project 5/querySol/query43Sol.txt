@@ -1,0 +1,9 @@
+#List of hurricanes in the US where FEMA was NOT involved.
+
+select c.name
+	from
+		crisis c
+		inner join crisisorganization co on (c.id = co.id_crisis)
+	where 
+		c.kind = 'HU' and
+		co.id_organization != 'FEMA'
