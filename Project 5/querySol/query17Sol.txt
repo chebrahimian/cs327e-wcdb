@@ -1,4 +1,4 @@
-What is the total number of casualties across the DB?
+#What is the total number of casualties across the DB?
 
 select sum(number) 
 from humanimpact

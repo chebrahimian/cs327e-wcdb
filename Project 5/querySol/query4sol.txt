@@ -1,4 +1,4 @@
-What is the average death toll of world crises per country?
+#What is the average death toll of world crises per country?
 
 select country, avg(number)
 

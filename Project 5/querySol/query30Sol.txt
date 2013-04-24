@@ -1,0 +1,9 @@
+#List all the people associated with each country.
+
+select location.country, person.first_name, person.last_name
+from 
+location inner join person
+
+on location.entity_id = person.id
+
+order by country;

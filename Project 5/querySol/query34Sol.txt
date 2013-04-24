@@ -1,4 +1,4 @@
-How many people are singers?
+#How many people are singers?
 
 select count(*)
 

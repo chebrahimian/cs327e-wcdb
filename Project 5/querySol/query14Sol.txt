@@ -1,4 +1,4 @@
-Find the total number of human casualties caused by crises in the 1990s
+#Find the total number of human casualties caused by crises in the 1990s
 
 select sum(number)
 

@@ -1,4 +1,4 @@
-Find the start date of every hurricane that occurred in the US
+#Find the start date of every hurricane that occurred in the US
 
 select name, start_date
 

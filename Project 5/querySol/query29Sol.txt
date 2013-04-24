@@ -1,4 +1,4 @@
-What are the names that start with 'B'?
+#What are the names that start with 'B'?
 
 select id, first_name, last_name
 

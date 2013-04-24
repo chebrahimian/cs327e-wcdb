@@ -1,4 +1,4 @@
-Number of natural disasters occurring from June 5th 2000 to June 5th 2012
+#Number of natural disasters occurring from June 5th 2000 to June 5th 2012
 
 select id, name, start_date
 

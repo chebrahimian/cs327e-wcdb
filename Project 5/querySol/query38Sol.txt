@@ -1,4 +1,4 @@
-Number of political figures grouped by country.
+#Number of political figures grouped by country.
 
 select max(country)
 from location
