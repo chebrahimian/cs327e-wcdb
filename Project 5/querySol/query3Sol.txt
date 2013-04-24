@@ -1,0 +1,7 @@
+#What is the average death toll of accident crises?
+
+select Round(AVG(hi.number), 2) as avg_death
+	from humanimpact hi
+		inner join crisis c on (c.id = hi.crisis_id)
+	where hi.type = 'Death'
+		and c.kind = 'ACC'
