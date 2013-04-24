@@ -1,0 +1,12 @@
+#Which Orgs, Crises, and Persons have the same location?
+
+select o.locality, o.region, o.country, cl.name as crisis, o.name as organization, pl.name as person
+	from organization o
+		inner join (
+				select c.name, l1.locality, l1.region, l1.country
+				from crisis c inner join location l1 on (l1.entity_type = 'C' and l1.entity_id = c.id)) as cl
+			on (o.locality = cl.locality and o.region = cl.region and o.country = cl.country)
+		inner join (
+				select concat(p.first_name,' ',p.last_name) as name, l2.locality, l2.region, l2.country 
+				from person p inner join location l2 on (l2.entity_type = 'P' and l2.entity_id = p.id)) as pl
+			on (cl.locality = pl.locality and cl.region = pl.region and cl.country = pl.country)

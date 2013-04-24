@@ -1,0 +1,15 @@
+#What is the most common resource(s) needed?
+
+drop table if exists t1;
+
+create temporary table t1
+	select description, count(*) as num
+		from resourceneeded
+		group by description;
+
+select description
+	from t1
+	where num >= ALL
+		(select count(*)
+			from resourceneeded
+			group by description);
