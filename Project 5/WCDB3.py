@@ -412,13 +412,6 @@ def importCrisis ( c, crisisInstance ):
     curHI = sqlQuery ( c, "select * from HumanImpact where crisis_id = '" + crisisID + "';" )
 
     curC = sqlQuery ( c, "delete from Crisis where id = '" + crisisID + "';" )
-    #curL = sqlQuery ( c, "delete from Location where entity_id = '" + crisisID + "';" )
-    #curRN = sqlQuery ( c, "delete from ResourceNeeded where crisis_id = '" + crisisID + "';" )
-    #curER = sqlQuery ( c, "delete from ExternalResource where entity_id = '" + crisisID + "';" )
-    #curPC = sqlQuery ( c, "delete from PersonCrisis where id_crisis = '" + crisisID + "';" )
-    #curCO = sqlQuery ( c, "delete from CrisisOrganization where id_crisis = '" + crisisID + "';" )
-    #curWTH = sqlQuery ( c, "delete from WaysToHelp where crisis_id = '" + crisisID + "';" )
-    #curHI = sqlQuery ( c, "delete from HumanImpact where crisis_id = '" + crisisID + "';" )
     
     #Gets location sub elements in list. Inserts into CrisisLocation table by indexing list
     allLocations = crisisInstance.findall("Location")
@@ -429,19 +422,26 @@ def importCrisis ( c, crisisInstance ):
                 tags.append ( elem.tag )
             if ( len ( instance ) == 1 ) :
                 if ( "Locality" in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and locality = '"+instance[0].text+"';")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '', '' );")
                 elif ( "Region" in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and region = '"+instance[0].text+"';")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '"+instance[0].text+"', '' );")
                 elif ( "Country" in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and country = '"+instance[0].text+"';")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '', '"+instance[0].text+"');")
             elif ( len ( instance ) == 2 ) :
                 if ( "Locality" not in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and region = '"+instance[0].text+"' or ( region = '' and country = '"+instance[1].text+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '"+instance[0].text+"', '"+instance[1].text+"');")
                 elif ( "Region" not in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and locality = '"+instance[0].text+"' or ( locality = '' and country = '"+instance[1].text+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
                 elif ( "Country" not in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and locality = '"+instance[0].text+"' or (locality = '' and region = '"+instance[1].text+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+instance[0].text+"', '"+instance[1].text+"', '',);")
             else :
+                sqlQuery ( c, "delete from Location where entity_id = '"+crisisID+"' and locality = '"+(instance[0].text or "")+"' or (locality = '' and region = '"+(instance[1].text or "")+"') or (locality = '' and region = '"+(instance[1].text or "")+"' and country = '"+(instance[2].text or "")+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+ (instance[0].text or "") +"', '"+ (instance[1].text or "") +"', '"+ (instance[2].text or "") +"');")
 
     #Gets list of all resources needed. Iterates through lists and inserts into ResourceNeeded table
@@ -449,6 +449,7 @@ def importCrisis ( c, crisisInstance ):
 
     if len(resourcesNeeded) != 0:
         for instance in resourcesNeeded:
+            sqlQuery ( c, "delete from ResourceNeeded where crisis_id = '"+crisisID+"' and description = '"+instance.text+"';")
             sqlQuery ( c, "insert into ResourceNeeded values ( null, '"+crisisID+"', '"+instance.text+"');")
     
     #Gets all URL's in a list. Indexes list, splices tag to get type, inserts data into table
@@ -458,6 +459,7 @@ def importCrisis ( c, crisisInstance ):
     if len(externalResources) != 0:
         for instance in externalResources:
             resourceType = parseResourceType ( instance.tag )
+            sqlQuery ( c, "delete from ExternalResource where entity_id = '"+crisisID+"' and type = '"+resourceType+"' and link = '"+instance.text.replace( "'", "" )+"';")
             sqlQuery ( c, "insert into ExternalResource values ( null, 'C', '"+crisisID+"', '"+resourceType+"', '"+instance.text.replace( "'", "" )+"');")
                 
 
@@ -482,6 +484,7 @@ def importCrisis ( c, crisisInstance ):
     
     if len(waysToHelp) != 0:
         for instance in waysToHelp:
+            sqlQuery ( c, "delete from WaysToHelp where crisis_id = '"+crisisID+"' and description = '"+instance.text+"';")
             sqlQuery ( c, "insert into WaysToHelp values ( null, '"+crisisID+"', '"+instance.text+"');")
 
     #Gets list of HumanImpact elements. Iterates through list and inserts into HumanImpact table
@@ -489,7 +492,8 @@ def importCrisis ( c, crisisInstance ):
 
     if len(humanImpact) !=0:
         for instance in humanImpact:
-            sqlQuery ( c, "insert into HumanImpact values ( null, '"+crisisID+"', '"+instance[0].text+"', '"+instance[1].text+"');")
+            sqlQuery ( c, "delete from HumanImpact where crisis_id = '"+crisisID+"' and type = '"+instance[0].text[ :100 ]+"';")
+            sqlQuery ( c, "insert into HumanImpact values ( null, '"+crisisID+"', '"+instance[0].text[ :100 ]+"', '"+instance[1].text+"');")
 
     #Finds values of remaining elements and inserts into Crises table
     name = crisisInstance.find("Name").text
@@ -512,7 +516,7 @@ def importCrisis ( c, crisisInstance ):
         endTime = '23:59:59'
     econImpact = crisisInstance.find("EconomicImpact").text or ""
 
-    sqlQuery ( c, "insert into Crisis values ( '"+crisisID+"', '"+name+"', '"+kind+"', '"+startDate+"', '"+startTime+"', '"+endDate+"', '"+endTime+"', '"+econImpact+"');")
+    sqlQuery ( c, "insert into Crisis values ( '"+crisisID+"', '"+name+"', '"+kind+"', '"+startDate+"', '"+startTime+"', '"+endDate+"', '"+endTime+"', '"+econImpact.replace ( "'", "" )[ :100 ]+"');")
 
 def importOrg ( c, orgInstance ):
     """
@@ -535,19 +539,26 @@ def importOrg ( c, orgInstance ):
                 tags.append ( elem.tag )
             if ( len ( instance ) == 1 ) :
                 if ( "Locality" in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and locality = '"+instance[0].text+"';")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '', '' );")
                 elif ( "Region" in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and region = '"+instance[0].text+"';")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '"+instance[0].text+"', '' );")
                 elif ( "Country" in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and country = '"+instance[0].text+"';")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '', '"+instance[0].text+"');")
             elif ( len ( instance ) == 2 ) :
                 if ( "Locality" not in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and region = '"+instance[0].text+"' or ( region = '' and country = '"+instance[1].text+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '"+instance[0].text+"', '"+instance[1].text+"');")
                 elif ( "Region" not in tags ) :
+                    sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and locality = '"+instance[0].text+"' or ( locality = '' and country = '"+instance[1].text+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
                 elif ( "Country" not in tags ) :
-                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '"+instance[1].text+"', '');")
+                    sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and locality = '"+instance[0].text+"' or (locality = '' and region = '"+instance[1].text+"');")
+                    sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+instance[0].text+"', '"+instance[1].text+"', '',);")
             else :
+                sqlQuery ( c, "delete from Location where entity_id = '"+orgID+"' and locality = '"+(instance[0].text or "")+"' or (locality = '' and region = '"+(instance[1].text or "")+"') or (locality = '' and region = '"+(instance[1].text or "")+"' and country = '"+(instance[2].text or "")+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+ (instance[0].text or "") +"', '"+ (instance[1].text or "") +"', '"+ (instance[2].text or "") +"');")
 
     #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
@@ -555,6 +566,7 @@ def importOrg ( c, orgInstance ):
     if len(externalResources) != 0:
         for instance in externalResources:
             resourceType = parseResourceType ( instance.tag )
+            sqlQuery ( c, "delete from ExternalResource where entity_id = '"+orgID+"' and type = '"+resourceType+"' and link = '"+instance.text+"';")
             sqlQuery ( c, "insert into ExternalResource values ( null, 'O', '"+orgID+"', '"+resourceType+"', '"+instance.text+"');")
 
     #Get all values for Organizations table and insert to DB
@@ -592,19 +604,26 @@ def importPerson ( c, peopleInstance ):
             tags.append ( elem.tag )
         if ( len ( instance ) == 1 ) :
             if ( "Locality" in tags ) :
+                sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and locality = '"+instance[0].text+"';")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '', '' );")
             elif ( "Region" in tags ) :
+                sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and region = '"+instance[0].text+"';")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '"+instance[0].text+"', '' );")
             elif ( "Country" in tags ) :
+                sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and country = '"+instance[0].text+"';")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '', '"+instance[0].text+"');")
         elif ( len ( instance ) == 2 ) :
             if ( "Locality" not in tags ) :
+                sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and region = '"+instance[0].text+"' or ( region = '' and country = '"+instance[1].text+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '"+instance[0].text+"', '"+instance[1].text+"');")
             elif ( "Region" not in tags ) :
+                sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and locality = '"+instance[0].text+"' or ( locality = '' and country = '"+instance[1].text+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '', '"+instance[1].text+"');")
             elif ( "Country" not in tags ) :
-                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '"+instance[1].text+"', '');")
+                sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and locality = '"+instance[0].text+"' or (locality = '' and region = '"+instance[1].text+"');")
+                sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+instance[0].text+"', '"+instance[1].text+"', '',);")
         else :
+            sqlQuery ( c, "delete from Location where entity_id = '"+personID+"' and locality = '"+(instance[0].text or "")+"' or (locality = '' and region = '"+(instance[1].text or "")+"') or (locality = '' and region = '"+(instance[1].text or "")+"' and country = '"+(instance[2].text or "")+"');")
             sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+ (instance[0].text or "") +"', '"+ (instance[1].text or "") +"', '"+ (instance[2].text or "") +"');")
     
     #Gets list of all RelatedOrganizations and inserts into PeopleToOrganizations table
@@ -620,6 +639,7 @@ def importPerson ( c, peopleInstance ):
     #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
     for instance in externalResources:
         resourceType = parseResourceType ( instance.tag )
+        sqlQuery ( c, "delete from ExternalResource where entity_id = '"+personID+"' and type = '"+resourceType+"' and link = '"+instance.text+"';")
         sqlQuery ( c, "insert into ExternalResource values ( null, 'P', '"+personID+"', '"+resourceType+"', '"+instance.text+"');")
     
     #Finds values of remaining elements and inserts into People table
