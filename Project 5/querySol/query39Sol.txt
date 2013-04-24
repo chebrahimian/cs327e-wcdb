@@ -1,0 +1,37 @@
+#Location with the most number of natural disasters
+
+drop table if exists natural_disasters;
+drop table if exists t1;
+
+create temporary table natural_disasters
+	select * from crisiskind
+	where
+		id = 'DI' OR
+		id = 'EQ' OR
+		id = 'FL' OR
+		id = 'FR' OR
+		id = 'HU' OR
+		id = 'TO' OR
+		id = 'TS' OR
+		id = 'VO';
+
+create temporary table t1
+	select l.country, count(*) as num
+		from crisis c
+			inner join location l on (l.entity_type = 'C' and c.id = l.entity_id)
+		where
+			c.kind in
+				(select id from natural_disasters)
+		group by l.country;
+
+select country, num
+	from t1 as S
+	where num >= ALL
+		(select count(*)
+			from (select c.kind, l.country 
+				from crisis c
+				inner join location l on (l.entity_type = 'C' and c.id = l.entity_id)) as t2
+		where
+			t2.kind in
+				(select id from natural_disasters)
+		group by country);
