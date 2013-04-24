@@ -186,7 +186,19 @@ def exportCrises ( c ) :
         hI = sqlQuery ( c, "select * from HumanImpact where crisis_id = '" + i [ 0 ] + "';" )
         rN = sqlQuery ( c, "select * from ResourceNeeded where crisis_id = '" + i [ 0 ] + "';" )
         wTH = sqlQuery ( c, "select * from WaysToHelp where crisis_id = '" + i [ 0 ] + "';" )
-        cER = sqlQuery ( c, "select * from ExternalResource where entity_id = '" + i [ 0 ] + "';" )
+        cER = []
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'IMAGE';" ) :
+            cER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'VIDEO';" ) :
+            cER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'MAP';" ) :
+            cER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK';" ) :
+            cER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'CITATION';" ) :
+            cER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK';" ) :
+            cER.append ( r )
         cTP = sqlQuery ( c, "select * from PersonCrisis where id_crisis = '" + i [ 0 ] + "';" )
         oTC = sqlQuery ( c, "select * from CrisisOrganization where id_crisis = '" + i [ 0 ] + "';" )
         xml += openTagAtt ( "Crisis", "crisisIdent", i [ 0 ] )
@@ -243,7 +255,19 @@ def exportOrgs ( c ) :
     xml = ""
     for i in o:
         oL = sqlQuery ( c, "select * from Location where entity_id = '"+i[0]+"';" )
-        oER = sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"';" )
+        oER = []
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'IMAGE';" ) :
+            oER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'VIDEO';" ) :
+            oER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'MAP';" ) :
+            oER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK';" ) :
+            oER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'CITATION';" ) :
+            oER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK';" ) :
+            oER.append ( r )
         oTC = sqlQuery ( c, "select * from CrisisOrganization where id_organization = '"+i[0]+"';" )
         pTO = sqlQuery ( c, "select * from OrganizationPerson where id_organization = '"+i[0]+"';" )
         xml += openTagAtt ( "Organization", "organizationIdent", i[0])
@@ -295,7 +319,19 @@ def exportPeople ( c ) :
     p = sqlQuery ( c, "select * from Person;" )
     for i in p :
         pL = sqlQuery ( c, "select * from Location where entity_id = '" + i [ 0 ] + "';" )
-        pER = sqlQuery ( c, "select * from ExternalResource where entity_id = '" + i [ 0 ] + "';" )
+        pER = []
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'IMAGE';" ) :
+            pER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'VIDEO';" ) :
+            pER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'MAP';" ) :
+            pER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK';" ) :
+            pER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'CITATION';" ) :
+            pER.append ( r )
+        for r in sqlQuery ( c, "select * from ExternalResource where entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK';" ) :
+            pER.append ( r )
         pTO = sqlQuery ( c, "select * from OrganizationPerson where id_person = '" + i [ 0 ] + "';" )
         cTP = sqlQuery ( c, "select * from PersonCrisis where id_person = '" + i [ 0 ] + "';" )
         xml += openTagAtt ( "Person", "personIdent", i [ 0 ] )
