@@ -1,4 +1,4 @@
-Which people are associated with more than one crisis?
+#Which people are associated with more than one crisis?
 
 drop table if exists temp1;
 

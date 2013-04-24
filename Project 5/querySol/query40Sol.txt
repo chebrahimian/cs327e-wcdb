@@ -1,4 +1,4 @@
-Average number of deaths caused by hurricanes.
+#Average number of deaths caused by hurricanes.
 
 select avg(number)
 

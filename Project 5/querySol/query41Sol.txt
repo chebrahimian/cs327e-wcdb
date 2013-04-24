@@ -1,4 +1,4 @@
-total number of deaths caused by terrorist attacks
+#total number of deaths caused by terrorist attacks
 
 select sum(number) as deaths
 

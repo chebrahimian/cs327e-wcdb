@@ -1,4 +1,4 @@
-Name all humanitarian orgs in the DB
+#Name all humanitarian orgs in the DB
 
 select name
 

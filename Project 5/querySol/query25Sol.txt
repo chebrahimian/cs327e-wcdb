@@ -1,4 +1,4 @@
-Get the name and kind of all persons in the US (United States, USA, United States of America)
+#Get the name and kind of all persons in the US (United States, USA, United States of America)
 
 select location.entity_id, person.first_name, person.last_name,
 

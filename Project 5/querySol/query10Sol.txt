@@ -1,4 +1,4 @@
-Which crisis has the minimum human impact?
+#Which crisis has the minimum human impact?
 
 select name from 
 	(select name, sum(number) as number

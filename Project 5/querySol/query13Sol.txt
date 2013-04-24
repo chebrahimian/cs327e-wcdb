@@ -1,4 +1,4 @@
-List all crises that happened in the same state/region
+#List all crises that happened in the same state/region
 
 select crisis.id, crisis.name, location.region
 

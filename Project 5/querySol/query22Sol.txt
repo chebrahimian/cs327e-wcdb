@@ -1,4 +1,4 @@
-How many hurricane crises (CrisisKind=HU)?
+#How many hurricane crises (CrisisKind=HU)?
 
 select count(*)
 

@@ -1,4 +1,4 @@
-List of Hurricanes in the US that Wallace Stickney (WStickney) helped out with.
+#List of Hurricanes in the US that Wallace Stickney (WStickney) helped out with.
 
 select count(*)
 
