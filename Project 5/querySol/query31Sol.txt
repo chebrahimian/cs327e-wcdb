@@ -1,0 +1,18 @@
+#What crisis affected the most countries?
+
+drop table if exists t1;
+
+create temporary table t1
+	select c.name, count(*) as num
+		from location l
+			inner join crisis c on (l.entity_id = c.id)
+		group by c.name;
+
+select name
+	from t1
+	where
+		t1.num >= ALL
+		(select count(*)
+			from location l
+				inner join crisis c on (l.entity_id = c.id)
+		 group by c.name);

@@ -1,0 +1,14 @@
+#Which kinds of crisis only have one crisis example?
+
+drop table if exists t1;
+
+create temporary table t1 
+	select kind, count(*) as num
+		from crisis
+		group by kind;
+
+select ck.name
+	from t1
+		inner join crisiskind ck on (t1.kind = ck.id)
+	where
+		t1.num = 1;

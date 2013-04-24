@@ -1,9 +1,0 @@
-Find the start date of every hurricane that occurred in the US
-
-select name, start_date
-
-from crisis inner join location
-
-on crisis.id = location.entity_id
-
-where crisis.kind = 'HU' and location.country = 'United States';

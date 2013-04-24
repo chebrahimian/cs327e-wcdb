@@ -1,0 +1,6 @@
+#What is the number of leaders (current and former)? (PersonKind is "LD")\\
+
+select count(*) as number
+	from person p
+	where
+		p.kind = 'LD';
