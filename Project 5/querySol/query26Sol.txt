@@ -1,0 +1,11 @@
+Who has the longest name?
+
+
+select first_name, middle_name, last_name 
+
+	from (select first_name, middle_name, last_name, 
+	(length(first_name) + length(middle_name) + length(last_name)) as 	J from Person) as A 
+
+where A.J >= all 
+
+	(select (length(first_name) + length(middle_name) + 			length(last_name)) from Person);
