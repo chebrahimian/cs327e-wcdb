@@ -1,0 +1,8 @@
+Find the organization(s) that has provided support on the most Crises
+
+select name from Organization where id in
+(select id_organization as id from
+(select id_organization, count(*) as idCount from CrisisOrganization group by id_organization) as T
+where idCount >= ALL
+(select idCount from
+(select id_organization, count(*) as idCount from CrisisOrganization group by id_organization) as T));
