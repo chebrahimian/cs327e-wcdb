@@ -16,19 +16,19 @@ from WCDB3 import *
 import xml.dom.minidom as MD
 import xml.etree.ElementTree as ET
 # -----------
-# TestWCDB2
+# TestWCDB3
 # -----------
 
-credentials = ["localhost", "root", "database", "test"]
+credentials = ["localhost", "root", "1234", "test"]
 
-class TestWCDB2 (unittest.TestCase) :
+class TestWCDB3 (unittest.TestCase) :
 
     # ---------
     # sqlLogin
     # ---------
 
     def test_sqlLogin (self) : # assert that valid sql connection is made
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         self.assert_(str(type(a)) == "<type '_mysql.connection'>")
             
@@ -37,7 +37,7 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_sqlQuery (self) : # assert that queries provide valid sql results
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         a = sqlLogin(c)
         self.assert_(str(type(a)) == "<type '_mysql.connection'>")
@@ -47,7 +47,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(r == None)
 
     def test_sqlQuery2 (self) :
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         t = "insert into HumanImpact values ( '123', 'deaths', 12);"
@@ -61,7 +61,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(str(type(r)) == "<type '_mysql.result'>")
 
     def test_sqlQuery3 (self) :
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         s = "create table HumanImpact ( crisisID text, type text, number int );"
         t = "insert into HumanImpact values ( '123', 'deaths', 12);"
         u = "select * from HumanImpact;"
@@ -74,21 +74,12 @@ class TestWCDB2 (unittest.TestCase) :
         r = a.store_result()
         self.assert_(str(type(r)) == "<type '_mysql.result'>")
 
-    # ---------
-    # parseArgs
-    # ---------
-
-    def test_parseArgs (self) : # assert that items are taken from tuple and put into list
-        jj = ["c:/fileLocation.file", "localhost", "root", "databse", "test"]
-        c = parseArgs(jj)
-        self.assert_(c == ["localhost", "root", "database", "test"])
-
     # ------------
     # createTables
     # ------------
     
     def test_createTables (self): # check that tables are successfully entered (returns result)
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables(a)
         s = "show tables"
@@ -97,7 +88,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(str(type(r)) == "<type '_mysql.result'>")
     
     def test_createTables2 (self): # check that query into tables returns result
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         s = "select * from Crisis;"
         a = sqlLogin(c)
         createTables(a)
@@ -106,7 +97,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(str(type(r)) == "<type '_mysql.result'>")
     
     def test_createTables3 (self): # check that correct elements are in database table
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         s = "select id from Crisis;"
         a = sqlLogin(c)
         createTables(a)
@@ -229,7 +220,7 @@ class TestWCDB2 (unittest.TestCase) :
     # ---------
 
     def test_importCrises (self) :
-        a = ["localhost", "root", "database", "test"]
+        a = credentials
         c = sqlLogin(a)
         createTables(c)
         crisisInstance = "\
@@ -279,7 +270,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(query[0][0]=="CCD")
 
     def test_importCrises2 (self) :
-        a = ["localhost", "root", "database", "test"]
+        a = credentials
         c = sqlLogin(a)
         createTables(c)
         crisisInstance = "\
@@ -329,7 +320,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(query[0][1]=="Chernobyl Disaster")
 
     def test_importCrises3 (self) :
-        a = ["localhost", "root", "database", "test"]
+        a = credentials
         c = sqlLogin(a)
         createTables(c)
         crisisInstance = "\
@@ -383,14 +374,14 @@ class TestWCDB2 (unittest.TestCase) :
     #-------------
 
     def test_importGeneralKind(self): 
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         query = sqlQuery (a, "select * from OrganizationKind")
         self.assert_(query == ())
     
     def test_importOrgKind(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = "<OrganizationKind organizationKindIdent='OWHO'> \
@@ -403,7 +394,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(query[0][0]=="OWHO")
         
     def test_importCrisisKind(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = "<CrisisKind crisisKindIdent='Natural'> \
@@ -416,7 +407,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(query[0][0]=="Natural") 
                
     def test_importPersonKind(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = "<PersonKind personKindIdent='PTVI'> \
@@ -433,14 +424,14 @@ class TestWCDB2 (unittest.TestCase) :
     #-------------
     
     def test_exportCrises(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = exportCrises ( a )
         self.assert_(xml == "")
 
     def test_exportCrises1(self): 
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         sqlQuery ( a ,"insert into Crisis values ('CCD', 'Chernobly Disaster', 'Natural', '1986-04-26', '01:23:00', '1986-04-26', '01:23:00', '588M USD');")
@@ -448,7 +439,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(xml.count("CCD") != 0)
 
     def test_exportCrises2(self): 
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         sqlQuery ( a ,"insert into Crisis values ('CCD', 'Chernobly Disaster', 'Natural', '1986-04-26', '01:23:00', '1986-04-26', '01:23:00', '588M USD');")
@@ -461,14 +452,14 @@ class TestWCDB2 (unittest.TestCase) :
     #-------------
 
     def test_exportOrgs(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = exportOrgs ( a )
         self.assert_(xml == "")
 
     def test_exportOrgs2(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         sqlQuery( a, "insert into Organization values ('ORC', 'Red Crescent', 'OTPU', 'History', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', 'Midland', 'TX', '1236', 'USA' );" )
@@ -476,7 +467,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(xml.count("<Organization") == 1)
 
     def test_exportOrgs3(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         sqlQuery( a, "insert into Organization values ('ORC', 'Red Crescent', 'OTPU', 'History', 12123380161, 12123380161, 'admin@redcrescentpenang.org.my', 'P.O. Box 303', 'Midland', 'TX', '1236', 'USA' );" )
@@ -489,7 +480,7 @@ class TestWCDB2 (unittest.TestCase) :
     #-------------	
 
     def test_exportPeople(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = exportPeople ( a )
@@ -501,14 +492,14 @@ class TestWCDB2 (unittest.TestCase) :
     #-------------
     
     def test_exportTypes(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         xml = exportTypes ( a )        
         self.assert_(xml == "")
         
     def test_exportTypes1(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         sqlQuery ( a, "insert into CrisisKind values ('Natural', 'Natural', 'Natural Disaster');")
@@ -516,7 +507,7 @@ class TestWCDB2 (unittest.TestCase) :
         self.assert_(xml != "")
         
     def test_exportTypes2(self):
-        c = ["localhost", "root", "database", "test"]
+        c = credentials
         a = sqlLogin(c)
         createTables ( a )
         sqlQuery ( a, "insert into CrisisKind values ('Natural', 'Natural', 'Natural Disaster');")
@@ -609,8 +600,10 @@ class TestWCDB2 (unittest.TestCase) :
 		</RelatedOrganizations>\
 	</Crisis></WorldCrises>')
         w = StringIO.StringIO()
-        a = ["c:/filelocation.file", "local", "root", "database", "test"]
-        start(r, w, a)
+        a = ["c:/filelocation.file"]
+        for i in credentials:
+			a.append(i)
+        start("c:/filelocation.file", r, w, a)
         self.assert_(w.getvalue() != '<?xml version="1.0" encoding="UTF-8"?>\n<WorldCrises>\n\t<Crisis crisisIdent="CTMIA">\n\t\t<Name>Three Mile Island Accident</Name>\n\t\t<Kind crisisKindIdent="NonNatural"/>\n\t\t<Location>\n\t\t\t<Locality>Harrisburg</Locality>\n\t\t\t<Region>Pennsylvania</Region>\n\t\t\t<Country>United States</Country>\n\t\t</Location>\n\t\t<StartDateTime>\n\t\t\t<Date>1979-03-28</Date>\n\t\t\t<Time>04:00:00</Time>\n\t\t</StartDateTime>\n\t\t<EndDateTime>\n\t\t\t<Date>1979-03-28</Date>\n\t\t\t<Time>23:59:59</Time>\n\t\t</EndDateTime>\n\t\t<HumanImpact>\n\t\t\t<Type>Casualties</Type>\n\t\t\t<Number>0</Number>\n\t\t</HumanImpact>\n\t\t<EconomicImpact>1B USD</EconomicImpact>\n\t\t<ResourceNeeded>Labor</ResourceNeeded>\n\t\t<ResourceNeeded>Transportation</ResourceNeeded>\n\t\t<ResourceNeeded>Money</ResourceNeeded>\n\t\t<ResourceNeeded>Shelter</ResourceNeeded>\n\t\t<WaysToHelp>Room and board for refugees</WaysToHelp>\n\t\t<WaysToHelp>Cleanup</WaysToHelp>\n\t\t<ExternalResources>\n\t\t\t<ExternalLinkURL>http://www.pbs.org/wgbh/amex/three/peopleevents/pandeAMEX86.html</ExternalLinkURL>\n\t\t</ExternalResources>\n\t\t<RelatedPersons>\n\t\t\t<RelatedPerson personIdent="PJC"/>\n\t\t</RelatedPersons>\n\t\t<RelatedOrganizations>\n\t\t\t<RelatedOrganization organizationIdent="OIAEA"/>\n\t\t</RelatedOrganizations>\n\t</Crisis>\n</WorldCrises>\n')
 
     def test_start2 (self): # Multiple elements in one line
@@ -644,8 +637,10 @@ class TestWCDB2 (unittest.TestCase) :
 		</RelatedCrises>\
 	</Organization></WorldCrises>')
         w = StringIO.StringIO()
-        a = ["c:/filelocation.file", "localhost", "root", "database", "test"]
-        start(r, w, a)
+        a = ["c:/filelocation.file"]
+        for i in credentials:
+			a.append(i)
+        start("c:/filelocation.file", r, w, a)
         self.assert_(w.getvalue() != '<?xml version="1.0" encoding="UTF-8"?>\n<WorldCrises>\n\t<Organization organizationIdent="OAC">\n\t\t<Name>Americorps</Name>\n\t\t<Kind organizationKindIdent="OTGO"/>\n\t\t<Location>\n\t\t\t<Locality>New York City</Locality>\n\t\t\t<Region>New York</Region>\n\t\t\t<Country>United States</Country>\n\t\t</Location>\n\t\t<History>The reasoning behind AmeriCorps comes from a long historical tradition of community service through civic associations.</History>\n\t\t<ContactInfo>\n\t\t\t<Telephone>2026065000</Telephone>\n\t\t\t<Fax>2026065000</Fax>\n\t\t\t<Email>americorpsnational@cns.gov</Email>\n\t\t\t<PostalAddress>\n\t\t\t\t<StreetAddress>1201 New York Avenue</StreetAddress>\n\t\t\t\t<Locality>New York City</Locality>\n\t\t\t\t<Region>New York</Region>\n\t\t\t\t<PostalCode>20525</PostalCode>\n\t\t\t\t<Country>United States</Country>\n\t\t\t</PostalAddress>\n\t\t</ContactInfo>\n\t\t<ExternalResources>\n\t\t\t<Citation>nationalservice.gov</Citation>\n\t\t\t<ExternalLinkURL>http://www.nationalservice.gov/about/newsroom/releases_detail.asp?tbl_pr_id=2099</ExternalLinkURL>\n\t\t</ExternalResources>\n\t\t<RelatedCrises/>\n\t\t<RelatedPersons/>\n\t</Organization>\n</WorldCrises>\n')
 
     def test_start3 (self): # Pretty xml, with one empty element written <E1/> and one empty element as <E2></E2>
@@ -673,8 +668,10 @@ class TestWCDB2 (unittest.TestCase) :
 		</RelatedOrganizations>\
 	</Person></WorldCrises>')
         w = StringIO.StringIO()
-        a = ["c:/filelocation.file", "z", "jtn395", "Jz.~MPm1Cy", "cs327e_jtn395"]
-        start(r, w, a)
+        a = ["c:/filelocation.file"]
+        for i in credentials:
+			a.append(i)
+        start("c:/filelocation.file", r, w, a)
         self.assert_(w.getvalue() != '<?xml version="1.0" encoding="UTF-8"?>\n<WorldCrises>\n\t<Person personIdent="PKA">\n\t\t<Name>\n\t\t\t<FirstName>Kofi</FirstName>\n\t\t\t<MiddleName>Atta</MiddleName>\n\t\t\t<LastName>Annan</LastName>\n\t\t\t<Suffix/>\n\t\t</Name>\n\t\t<Kind personKindIdent="PTHO"/>\n\t\t<Location>\n\t\t\t<Locality>Kumasi</Locality>\n\t\t\t<Region>Ashanti</Region>\n\t\t\t<Country>Ghana</Country>\n\t\t</Location>\n\t\t<ExternalResources>\n\t\t\t<Citation>UN.org</Citation>\n\t\t\t<ExternalLinkURL>http://www.un.org/sg/formersg/annan.shtml</ExternalLinkURL>\n\t\t</ExternalResources>\n\t\t<RelatedCrises/>\n\t\t<RelatedOrganizations>\n\t\t\t<RelatedOrganization organizationIdent="OUN"/>\n\t\t</RelatedOrganizations>\n\t</Person>\n</WorldCrises>\n')
       
 print "TestXML.py"
