@@ -6,7 +6,7 @@ create temporary table temp1 as
 	select *
 
 from person as A inner join personcrisis as B
-	
+
 on A.id = B.id_person;
 
 
@@ -91,7 +91,7 @@ select decade, country, num
 				S.decade = R.decade
 			group by decade, country)
 	order by decade desc;
-		
+
 #What is the average death toll of accident crises?
 
 select Round(AVG(hi.number), 2) as avg_death
@@ -304,7 +304,7 @@ select CONCAT(p.first_name,' ',p.last_name) as person
 		(select count(*)
 			from organizationperson op
 			group by op.id_person);
-				
+
 
 #How many hurricane crises (CrisisKind=HU)?
 
