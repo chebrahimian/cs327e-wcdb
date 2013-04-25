@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-Which people are associated with more than one crisis?
-=======
+
 #Which people are associated with more than one crisis?
 
 drop table if exists temp1;
@@ -12,7 +10,6 @@ from person as A inner join personcrisis as B
 
 on A.id = B.id_person;
 
->>>>>>> 6c669c70227980598eff4ade5d1c38940e2f7d07
 
 select id, first_name, last_name
 
@@ -22,10 +19,9 @@ from
 
 	on A.id = B.id_person) as C
 
-<<<<<<< HEAD
+
 group by id
-having count(*) >1;
-=======
+
 having count(*) >1;
 
 
@@ -581,4 +577,3 @@ from
 (select count(country) as y from organization where country = 'Britain') as B
 )
 ;
->>>>>>> 6c669c70227980598eff4ade5d1c38940e2f7d07
