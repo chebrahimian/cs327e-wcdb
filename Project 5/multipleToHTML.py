@@ -36,7 +36,7 @@ for n,d,f in os.walk ( sys.argv [ 1 ] ) :
         for file in f:
             if (file.endswith(".txt")) :
                 with open(n + "\\" + file, "r") as input:
-                    w.write(file)
+                    w.write("<br>" + file)
                     writeToFile(input, w, conn)
         conn.close()
         w.write("\n</head>")

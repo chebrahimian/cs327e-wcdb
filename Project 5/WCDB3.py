@@ -189,22 +189,22 @@ def exportCrises ( c ) :
     xml = ""
     cr = sqlQuery ( c, "select * from Crisis;" )
     for i in cr :
-        cL = sqlQuery ( c, "select * from Location where ( entity_id = '" + i [ 0 ] + "' );" )
+        cL = sqlQuery ( c, "select * from Location where ( entity_type = 'C' and entity_id = '" + i [ 0 ] + "' );" )
         hI = sqlQuery ( c, "select * from HumanImpact where crisis_id = '" + i [ 0 ] + "';" )
         rN = sqlQuery ( c, "select * from ResourceNeeded where crisis_id = '" + i [ 0 ] + "';" )
         wTH = sqlQuery ( c, "select * from WaysToHelp where crisis_id = '" + i [ 0 ] + "';" )
         cER = []
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'IMAGE' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'C' and entity_id = '"+i[0]+"' and type = 'IMAGE' );" ) :
             cER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'VIDEO' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'C' and entity_id = '"+i[0]+"' and type = 'VIDEO' );" ) :
             cER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'MAP' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'C' and entity_id = '"+i[0]+"' and type = 'MAP' );" ) :
             cER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'C' and entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK' );" ) :
             cER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'CITATION' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'C' and entity_id = '"+i[0]+"' and type = 'CITATION' );" ) :
             cER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'C' and entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK' );" ) :
             cER.append ( r )
         cTP = sqlQuery ( c, "select * from PersonCrisis where id_crisis = '" + i [ 0 ] + "';" )
         oTC = sqlQuery ( c, "select * from CrisisOrganization where id_crisis = '" + i [ 0 ] + "';" )
@@ -261,19 +261,19 @@ def exportOrgs ( c ) :
     o = sqlQuery ( c, "select * from Organization;" )
     xml = ""
     for i in o:
-        oL = sqlQuery ( c, "select * from Location where ( entity_id = '"+i[0]+"' );" )
+        oL = sqlQuery ( c, "select * from Location where ( entity_type = 'O' and entity_id = '"+i[0]+"' );" )
         oER = []
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'IMAGE' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'O' and entity_id = '"+i[0]+"' and type = 'IMAGE' );" ) :
             oER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'VIDEO' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'O' and entity_id = '"+i[0]+"' and type = 'VIDEO' );" ) :
             oER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'MAP' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'O' and entity_id = '"+i[0]+"' and type = 'MAP' );" ) :
             oER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'O' and entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK' );" ) :
             oER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'CITATION' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'O' and entity_id = '"+i[0]+"' and type = 'CITATION' );" ) :
             oER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'O' and entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK' );" ) :
             oER.append ( r )
         oTC = sqlQuery ( c, "select * from CrisisOrganization where id_organization = '"+i[0]+"';" )
         pTO = sqlQuery ( c, "select * from OrganizationPerson where id_organization = '"+i[0]+"';" )
@@ -325,19 +325,19 @@ def exportPeople ( c ) :
     xml = ""
     p = sqlQuery ( c, "select * from Person;" )
     for i in p :
-        pL = sqlQuery ( c, "select * from Location where ( entity_id = '" + i [ 0 ] + "' );" )
+        pL = sqlQuery ( c, "select * from Location where ( entity_type = 'P' and entity_id = '" + i [ 0 ] + "' );" )
         pER = []
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'IMAGE' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'P' and entity_id = '"+i[0]+"' and type = 'IMAGE' );" ) :
             pER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'VIDEO' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'P' and entity_id = '"+i[0]+"' and type = 'VIDEO' );" ) :
             pER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'MAP' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'P' and entity_id = '"+i[0]+"' and type = 'MAP' );" ) :
             pER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'P' and entity_id = '"+i[0]+"' and type = 'SOCIAL_NETWORK' );" ) :
             pER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'CITATION' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'P' and entity_id = '"+i[0]+"' and type = 'CITATION' );" ) :
             pER.append ( r )
-        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK' );" ) :
+        for r in sqlQuery ( c, "select * from ExternalResource where ( entity_type = 'P' and entity_id = '"+i[0]+"' and type = 'EXTERNAL_LINK' );" ) :
             pER.append ( r )
         pTO = sqlQuery ( c, "select * from OrganizationPerson where id_person = '" + i [ 0 ] + "';" )
         cTP = sqlQuery ( c, "select * from PersonCrisis where id_person = '" + i [ 0 ] + "';" )
@@ -421,26 +421,26 @@ def importCrisis ( c, crisisInstance ):
                 tags.append ( elem.tag )
             if ( len ( instance ) == 1 ) :
                 if ( "Locality" in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and locality = '"+getText ( instance[0].text )+"' );")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '"+getText ( instance[0].text )+"' );")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+getText ( instance[0].text )+"', '', '' );")
                 elif ( "Region" in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and region = '"+getText ( instance[0].text )+"' );")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and region = '"+getText ( instance[0].text )+"' );")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '"+getText ( instance[0].text )+"', '' );")
                 elif ( "Country" in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and country = '"+getText ( instance[0].text )+"' );")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and country = '"+getText ( instance[0].text )+"' );")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '', '"+getText ( instance[0].text )+"');")
             elif ( len ( instance ) == 2 ) :
                 if ( "Locality" not in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and region = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+crisisID+"' and region = '' and country = '"+getText ( instance[1].text )+"');")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and region = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'C' and entity_id = '"+crisisID+"' and region = '' and country = '"+getText ( instance[1].text )+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '', '"+getText ( instance[0].text )+"', '"+getText ( instance[1].text )+"');")
                 elif ( "Region" not in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+crisisID+"' and locality = '' and country = '"+getText ( instance[1].text )+"');")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '' and country = '"+getText ( instance[1].text )+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+getText ( instance[0].text )+"', '', '"+getText ( instance[1].text )+"');")
                 elif ( "Country" not in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+crisisID+"' and locality = '' and region = '"+getText ( instance[1].text )+"');")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '' and region = '"+getText ( instance[1].text )+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+getText ( instance[0].text )+"', '"+getText ( instance[1].text )+"', '',);")
             else :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+crisisID+"' and locality = '"+(getText ( instance[0].text ))+"' ) or ( entity_id = '"+crisisID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"') or ( entity_id = '"+crisisID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"' and country = '"+(getText ( instance[2].text ))+"');")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '"+(getText ( instance[0].text ))+"' ) or ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"') or ( entity_type = 'C' and entity_id = '"+crisisID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"' and country = '"+(getText ( instance[2].text ))+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'C', '"+crisisID+"', '"+ (getText ( instance[0].text )) +"', '"+ (getText ( instance[1].text )) +"', '"+ (getText ( instance[2].text )) +"');")
 
     #Gets list of all resources needed. Iterates through lists and inserts into ResourceNeeded table
@@ -458,7 +458,7 @@ def importCrisis ( c, crisisInstance ):
     if len(externalResources) != 0:
         for instance in externalResources:
             resourceType = parseResourceType ( instance.tag )
-            sqlQuery ( c, "delete from ExternalResource where ( entity_id = '"+crisisID+"' and type = '"+resourceType+"' and link = '"+getText ( instance.text )+"' );")
+            sqlQuery ( c, "delete from ExternalResource where ( entity_type = 'C' and entity_id = '"+crisisID+"' and type = '"+resourceType+"' and link = '"+getText ( instance.text )+"' );")
             sqlQuery ( c, "insert into ExternalResource values ( null, 'C', '"+crisisID+"', '"+resourceType+"', '"+getText ( instance.text )+"');")
                 
 
@@ -492,7 +492,11 @@ def importCrisis ( c, crisisInstance ):
     if len(humanImpact) !=0:
         for instance in humanImpact:
             sqlQuery ( c, "delete from HumanImpact where ( crisis_id = '"+crisisID+"' and type = '"+getText ( instance[0].text )[ :100 ]+"' );")
-            sqlQuery ( c, "insert into HumanImpact values ( null, '"+crisisID+"', '"+getText ( instance[0].text )[ :100 ]+"', '"+getText ( instance[1].text )+"');")
+            numbertext = getText ( instance[1].text )
+            number = int (numberText)
+            if number > 2147483647 :
+                numbertext = "60 billion"
+            sqlQuery ( c, "insert into HumanImpact values ( null, '"+crisisID+"', '"+getText ( instance[0].text )[ :100 ]+"', '"+numbertext+"');")
 
     #Finds values of remaining elements and inserts into Crises table
     name = getText ( crisisInstance.find("Name").text )
@@ -538,26 +542,26 @@ def importOrg ( c, orgInstance ):
                 tags.append ( elem.tag )
             if ( len ( instance ) == 1 ) :
                 if ( "Locality" in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and locality = '"+getText ( instance[0].text )+"' );")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '"+getText ( instance[0].text )+"' );")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+getText ( instance[0].text )+"', '', '' );")
                 elif ( "Region" in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and region = '"+getText ( instance[0].text )+"' );")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and region = '"+getText ( instance[0].text )+"' );")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '"+getText ( instance[0].text )+"', '' );")
                 elif ( "Country" in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and country = '"+getText ( instance[0].text )+"' );")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and country = '"+getText ( instance[0].text )+"' );")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '', '"+getText ( instance[0].text )+"');")
             elif ( len ( instance ) == 2 ) :
                 if ( "Locality" not in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and region = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+orgID+"' and region = '' and country = '"+getText ( instance[1].text )+"');")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and region = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'O' and entity_id = '"+orgID+"' and region = '' and country = '"+getText ( instance[1].text )+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '', '"+getText ( instance[0].text )+"', '"+getText ( instance[1].text )+"');")
                 elif ( "Region" not in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+orgID+"' and locality = '' and country = '"+getText ( instance[1].text )+"');")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '' and country = '"+getText ( instance[1].text )+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+getText ( instance[0].text )+"', '', '"+getText ( instance[1].text )+"');")
                 elif ( "Country" not in tags ) :
-                    sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+orgID+"' and locality = '' and region = '"+getText ( instance[1].text )+"');")
+                    sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '' and region = '"+getText ( instance[1].text )+"');")
                     sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+getText ( instance[0].text )+"', '"+getText ( instance[1].text )+"', '',);")
             elif ( len ( instance ) == 3 ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+orgID+"' and locality = '"+(getText ( instance[0].text ))+"' ) or ( entity_id = '"+orgID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"') or ( entity_id = '"+orgID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"' and country = '"+(getText ( instance[2].text ))+"');")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '"+(getText ( instance[0].text ))+"' ) or ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"') or ( entity_type = 'O' and entity_id = '"+orgID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"' and country = '"+(getText ( instance[2].text ))+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'O', '"+orgID+"', '"+ (getText ( instance[0].text )) +"', '"+ (getText ( instance[1].text )) +"', '"+ (getText ( instance[2].text )) +"');")
 
     #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
@@ -565,7 +569,7 @@ def importOrg ( c, orgInstance ):
     if len(externalResources) != 0:
         for instance in externalResources:
             resourceType = parseResourceType ( instance.tag )
-            sqlQuery ( c, "delete from ExternalResource where ( entity_id = '"+orgID+"' and type = '"+resourceType+"' and link = '"+getText ( instance.text )+"' );")
+            sqlQuery ( c, "delete from ExternalResource where ( entity_type = 'O' and entity_id = '"+orgID+"' and type = '"+resourceType+"' and link = '"+getText ( instance.text )+"' );")
             sqlQuery ( c, "insert into ExternalResource values ( null, 'O', '"+orgID+"', '"+resourceType+"', '"+getText ( instance.text )+"');")
 
     #Get all values for Organizations table and insert to DB
@@ -603,26 +607,26 @@ def importPerson ( c, peopleInstance ):
             tags.append ( elem.tag )
         if ( len ( instance ) == 1 ) :
             if ( "Locality" in tags ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and locality = '"+getText ( instance[0].text )+"' );")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '"+getText ( instance[0].text )+"' );")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+getText ( instance[0].text )+"', '', '' );")
             elif ( "Region" in tags ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and region = '"+getText ( instance[0].text )+"' );")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and region = '"+getText ( instance[0].text )+"' );")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '"+getText ( instance[0].text )+"', '' );")
             elif ( "Country" in tags ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and country = '"+getText ( instance[0].text )+"' );")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and country = '"+getText ( instance[0].text )+"' );")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '', '"+getText ( instance[0].text )+"');")
         elif ( len ( instance ) == 2 ) :
             if ( "Locality" not in tags ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and region = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+personID+"' and region = '' and country = '"+getText ( instance[1].text )+"');")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and region = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'P' and entity_id = '"+personID+"' and region = '' and country = '"+getText ( instance[1].text )+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '', '"+getText ( instance[0].text )+"', '"+getText ( instance[1].text )+"');")
             elif ( "Region" not in tags ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+personID+"' and locality = '' and country = '"+getText ( instance[1].text )+"');")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '' and country = '"+getText ( instance[1].text )+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+getText ( instance[0].text )+"', '', '"+getText ( instance[1].text )+"');")
             elif ( "Country" not in tags ) :
-                sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_id = '"+personID+"' and locality = '' and region = '"+getText ( instance[1].text )+"');")
+                sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '"+getText ( instance[0].text )+"' ) or ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '' and region = '"+getText ( instance[1].text )+"');")
                 sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+getText ( instance[0].text )+"', '"+getText ( instance[1].text )+"', '',);")
         else :
-            sqlQuery ( c, "delete from Location where ( entity_id = '"+personID+"' and locality = '"+(getText ( instance[0].text ))+"' ) or ( entity_id = '"+personID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"') or ( entity_id = '"+personID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"' and country = '"+(getText ( instance[2].text ))+"');")
+            sqlQuery ( c, "delete from Location where ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '"+(getText ( instance[0].text ))+"' ) or ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"') or ( entity_type = 'P' and entity_id = '"+personID+"' and locality = '' and region = '"+(getText ( instance[1].text ))+"' and country = '"+(getText ( instance[2].text ))+"');")
             sqlQuery ( c, "insert into Location values ( null, 'P', '"+personID+"', '"+ (getText ( instance[0].text )) +"', '"+ (getText ( instance[1].text )) +"', '"+ (getText ( instance[2].text )) +"');")
     
     #Gets list of all RelatedOrganizations and inserts into PeopleToOrganizations table
@@ -638,7 +642,7 @@ def importPerson ( c, peopleInstance ):
     #Get all resources. Checks for Citation because it's the only one not ending in 'URL'. Get index of URL for others to splice off. Add to table
     for instance in externalResources:
         resourceType = parseResourceType ( instance.tag )
-        sqlQuery ( c, "delete from ExternalResource where ( entity_id = '"+personID+"' and type = '"+resourceType+"' and link = '"+getText ( instance.text )+"' );")
+        sqlQuery ( c, "delete from ExternalResource where ( entity_type = 'P' and entity_id = '"+personID+"' and type = '"+resourceType+"' and link = '"+getText ( instance.text )+"' );")
         sqlQuery ( c, "insert into ExternalResource values ( null, 'P', '"+personID+"', '"+resourceType+"', '"+getText ( instance.text )+"');")
     
     #Finds values of remaining elements and inserts into People table
