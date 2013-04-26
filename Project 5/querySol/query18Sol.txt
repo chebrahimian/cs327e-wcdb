@@ -2,7 +2,7 @@
 
 drop table if exists t1;
 
-create temporary table t1 
+create temporary table t1 as
 	select kind, count(*) as num
 		from crisis
 		group by kind;

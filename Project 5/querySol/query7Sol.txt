@@ -1,4 +1,4 @@
-#How many crises occurred during the 1960s?
+﻿#How many crises occurred during the 1960s?
 
 select start_date
 
