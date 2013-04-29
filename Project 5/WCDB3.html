@@ -1,0 +1,109 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module WCDB3</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>WCDB3</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///C:/users/jordan/documents/notes/github/temp/wcdb3/wcdb3/wcdb3.py">c:\users\jordan\documents\notes\github\temp\wcdb3\wcdb3\wcdb3.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="xml.etree.ElementTree.html">xml.etree.ElementTree</a><br>
+</td><td width="25%" valign=top><a href="xml.dom.minidom.html">xml.dom.minidom</a><br>
+</td><td width="25%" valign=top><a href="_mysql.html">_mysql</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-closeTag"><strong>closeTag</strong></a>(x)</dt><dd><tt>builds&nbsp;a&nbsp;string&nbsp;of&nbsp;a&nbsp;closing&nbsp;xml&nbsp;element&nbsp;with&nbsp;a&nbsp;chosen&nbsp;tag<br>
+x&nbsp;is&nbsp;the&nbsp;tag</tt></dd></dl>
+ <dl><dt><a name="-closeTagAtt"><strong>closeTagAtt</strong></a>(x, attName, attVal)</dt><dd><tt>builds&nbsp;a&nbsp;string&nbsp;of&nbsp;an&nbsp;opening&nbsp;and&nbsp;closing&nbsp;xml&nbsp;element&nbsp;with&nbsp;a&nbsp;chosen&nbsp;tag,&nbsp;attribute,&nbsp;and&nbsp;value<br>
+x&nbsp;is&nbsp;the&nbsp;tag<br>
+attName&nbsp;is&nbsp;the&nbsp;attribute&nbsp;name<br>
+attVal&nbsp;is&nbsp;the&nbsp;attribute&nbsp;value</tt></dd></dl>
+ <dl><dt><a name="-createResourceTypeTag"><strong>createResourceTypeTag</strong></a>(t)</dt></dl>
+ <dl><dt><a name="-createTables"><strong>createTables</strong></a>(c)</dt><dd><tt>clears&nbsp;the&nbsp;mysql&nbsp;database&nbsp;of&nbsp;previous&nbsp;tables&nbsp;if&nbsp;they&nbsp;exist,&nbsp;then&nbsp;inserts&nbsp;the&nbsp;new&nbsp;tables&nbsp;with&nbsp;their&nbsp;datatypes<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-exportCrises"><strong>exportCrises</strong></a>(c)</dt><dd><tt>exports&nbsp;the&nbsp;crises&nbsp;from&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-exportDB"><strong>exportDB</strong></a>(c)</dt><dd><tt>exports&nbsp;the&nbsp;mysql&nbsp;database&nbsp;to&nbsp;an&nbsp;xml&nbsp;document<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-exportOrgs"><strong>exportOrgs</strong></a>(c)</dt><dd><tt>exports&nbsp;the&nbsp;organizations&nbsp;from&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-exportPeople"><strong>exportPeople</strong></a>(c)</dt><dd><tt>exports&nbsp;the&nbsp;people&nbsp;from&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-exportTypes"><strong>exportTypes</strong></a>(c)</dt><dd><tt>exports&nbsp;the&nbsp;crisis,&nbsp;organization,&nbsp;and&nbsp;person&nbsp;types&nbsp;from&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-exportXml"><strong>exportXml</strong></a>(w, xml)</dt><dd><tt>converts&nbsp;an&nbsp;ElementTree&nbsp;to&nbsp;a&nbsp;string,&nbsp;then&nbsp;outputs&nbsp;a&nbsp;formatted&nbsp;xml&nbsp;document&nbsp;to&nbsp;stdout&nbsp;(&nbsp;a&nbsp;file&nbsp;)<br>
+w&nbsp;is&nbsp;the&nbsp;writer<br>
+xml&nbsp;is&nbsp;an&nbsp;ElementTree</tt></dd></dl>
+ <dl><dt><a name="-getText"><strong>getText</strong></a>(old)</dt></dl>
+ <dl><dt><a name="-importAllXml"><strong>importAllXml</strong></a>(n, f, c)</dt><dd><tt>imports&nbsp;all&nbsp;xml&nbsp;files&nbsp;in&nbsp;the&nbsp;specified&nbsp;folder&nbsp;into&nbsp;the&nbsp;database<br>
+n&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;folder&nbsp;containing&nbsp;the&nbsp;input&nbsp;files<br>
+f&nbsp;is&nbsp;the&nbsp;folder&nbsp;containg&nbsp;the&nbsp;input&nbsp;xml&nbsp;files<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-importCrisis"><strong>importCrisis</strong></a>(c, crisisInstance)</dt><dd><tt>imports&nbsp;an&nbsp;Element&nbsp;of&nbsp;type&nbsp;Crisis&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+crisisInstance&nbsp;is&nbsp;the&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-importCrisisKind"><strong>importCrisisKind</strong></a>(c, crisisKindInstance)</dt><dd><tt>imports&nbsp;an&nbsp;Element&nbsp;of&nbsp;type&nbsp;CrisisKind&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+crisisKindInstance&nbsp;is&nbsp;the&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-importDB"><strong>importDB</strong></a>(c, xml)</dt><dd><tt>imports&nbsp;an&nbsp;ElementTree&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+xml&nbsp;is&nbsp;the&nbsp;ElementTree</tt></dd></dl>
+ <dl><dt><a name="-importOrg"><strong>importOrg</strong></a>(c, orgInstance)</dt><dd><tt>imports&nbsp;an&nbsp;Element&nbsp;of&nbsp;type&nbsp;Organization&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+orgInstance&nbsp;is&nbsp;the&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-importOrgKind"><strong>importOrgKind</strong></a>(c, orgKindInstance)</dt><dd><tt>imports&nbsp;an&nbsp;Element&nbsp;of&nbsp;type&nbsp;OrganizationKing&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+orgKindInstance&nbsp;is&nbsp;the&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-importPerson"><strong>importPerson</strong></a>(c, peopleInstance)</dt><dd><tt>imports&nbsp;an&nbsp;Element&nbsp;of&nbsp;type&nbsp;Person&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+personInstance&nbsp;is&nbsp;the&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-importPersonKind"><strong>importPersonKind</strong></a>(c, personKindInstance)</dt><dd><tt>#assert&nbsp;str(type(c))&nbsp;==&nbsp;"&lt;type&nbsp;'_mysql.connection'&gt;"<br>
+imports&nbsp;an&nbsp;Element&nbsp;of&nbsp;type&nbsp;PersonKind&nbsp;into&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;database&nbsp;connection<br>
+personKindInstance&nbsp;is&nbsp;the&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-importXml"><strong>importXml</strong></a>(r)</dt><dd><tt>reads&nbsp;in&nbsp;xml&nbsp;from&nbsp;stdin&nbsp;(a&nbsp;file)&nbsp;and&nbsp;parses&nbsp;it&nbsp;into&nbsp;an&nbsp;ElementTree<br>
+r&nbsp;is&nbsp;the&nbsp;reader<br>
+returns&nbsp;an&nbsp;ElementTree</tt></dd></dl>
+ <dl><dt><a name="-openCloseTag"><strong>openCloseTag</strong></a>(x, text)</dt><dd><tt>builds&nbsp;a&nbsp;string&nbsp;of&nbsp;an&nbsp;opening&nbsp;and&nbsp;closing&nbsp;xml&nbsp;element&nbsp;with&nbsp;a&nbsp;chosen&nbsp;tag&nbsp;and&nbsp;inner&nbsp;text<br>
+x&nbsp;is&nbsp;the&nbsp;tag<br>
+text&nbsp;is&nbsp;the&nbsp;text</tt></dd></dl>
+ <dl><dt><a name="-openTag"><strong>openTag</strong></a>(x)</dt><dd><tt>builds&nbsp;a&nbsp;string&nbsp;of&nbsp;an&nbsp;opening&nbsp;xml&nbsp;element&nbsp;with&nbsp;a&nbsp;chosen&nbsp;tag<br>
+x&nbsp;is&nbsp;the&nbsp;tag</tt></dd></dl>
+ <dl><dt><a name="-openTagAtt"><strong>openTagAtt</strong></a>(x, attName, attVal)</dt><dd><tt>builds&nbsp;a&nbsp;string&nbsp;of&nbsp;an&nbsp;opening&nbsp;xml&nbsp;element&nbsp;with&nbsp;a&nbsp;chosen&nbsp;tag,&nbsp;attribute,&nbsp;and&nbsp;value<br>
+x&nbsp;is&nbsp;the&nbsp;tag<br>
+attName&nbsp;is&nbsp;the&nbsp;attribute&nbsp;name<br>
+attVal&nbsp;is&nbsp;the&nbsp;attribute&nbsp;value</tt></dd></dl>
+ <dl><dt><a name="-parseArgs"><strong>parseArgs</strong></a>(args)</dt><dd><tt>parses&nbsp;the&nbsp;command&nbsp;line&nbsp;arguments&nbsp;into&nbsp;[&nbsp;hostname,&nbsp;user,&nbsp;password,&nbsp;database&nbsp;]<br>
+args&nbsp;are&nbsp;the&nbsp;command&nbsp;line&nbsp;arguments</tt></dd></dl>
+ <dl><dt><a name="-parseResourceType"><strong>parseResourceType</strong></a>(t)</dt></dl>
+ <dl><dt><a name="-sqlLogin"><strong>sqlLogin</strong></a>(loginInfo)</dt><dd><tt>logs&nbsp;in&nbsp;to&nbsp;a&nbsp;sql&nbsp;database&nbsp;using&nbsp;the&nbsp;given&nbsp;login&nbsp;info<br>
+loginInfo&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;[&nbsp;hostname,&nbsp;username,&nbsp;password,&nbsp;database&nbsp;]<br>
+returns&nbsp;the&nbsp;mysql&nbsp;connection</tt></dd></dl>
+ <dl><dt><a name="-sqlQuery"><strong>sqlQuery</strong></a>(c, s)</dt><dd><tt>queries&nbsp;the&nbsp;mysql&nbsp;database<br>
+c&nbsp;is&nbsp;the&nbsp;mysql&nbsp;connection<br>
+s&nbsp;is&nbsp;the&nbsp;query<br>
+returns&nbsp;the&nbsp;result&nbsp;of&nbsp;the&nbsp;query&nbsp;(a&nbsp;tuple)</tt></dd></dl>
+ <dl><dt><a name="-start"><strong>start</strong></a>(n, f, w, args)</dt><dd><tt>imports&nbsp;an&nbsp;xml&nbsp;document&nbsp;into&nbsp;an&nbsp;ElementTree,&nbsp;imports&nbsp;that&nbsp;ElementTree&nbsp;into&nbsp;a&nbsp;mysql&nbsp;database,<br>
+then&nbsp;outputs&nbsp;the&nbsp;mysql&nbsp;database&nbsp;to&nbsp;a&nbsp;valid&nbsp;xml&nbsp;document,&nbsp;which&nbsp;is&nbsp;then&nbsp;written&nbsp;to&nbsp;the&nbsp;output&nbsp;file<br>
+n&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;folder&nbsp;containg&nbsp;the&nbsp;input&nbsp;files<br>
+f&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;input&nbsp;files<br>
+w&nbsp;is&nbsp;the&nbsp;writer<br>
+args&nbsp;are&nbsp;the&nbsp;commandline&nbsp;arguments</tt></dd></dl>
+</td></tr></table>
+</body></html>
